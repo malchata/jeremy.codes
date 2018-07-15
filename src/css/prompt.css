@@ -1,0 +1,32 @@
+samp,
+kbd,
+h2 {
+  color: var(--text);
+  outline-color: var(--text);
+  font-family: var(--monospace);
+}
+
+h2 {
+  margin: 0;
+  font-weight: 700;
+  font-style: italic;
+  text-decoration: underline;
+  font-size: inherit;
+}
+
+samp {
+  display: block;
+}
+
+.prompt {
+  display: inline;
+}
+
+kbd {
+  min-width: 1rem;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: underline;
+}

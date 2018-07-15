@@ -1,0 +1,9 @@
+:root{
+  /* Colors */
+  --backdrop: #0d1321;
+  --text: #7ac7ff;
+  --accent: #f79256;
+
+  /* Fonts */
+  --monospace: "Operator Mono", "Consolas", "Courier New", monospace;
+}

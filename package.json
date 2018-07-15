@@ -1,0 +1,66 @@
+{
+  "name": "jeremy.codes",
+  "version": "1.0.0",
+  "description": "My personal website.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "NODE_ENV=development node server.js",
+    "build": "NODE_ENV=production npx webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/malchata/jeremy.codes.git"
+  },
+  "author": "Jeremy L. Wagner <jeremy.l.wagner@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/malchata/jeremy.codes/issues"
+  },
+  "homepage": "https://github.com/malchata/jeremy.codes#readme",
+  "dependencies": {
+    "autoprefixer": "^8.6.5",
+    "babel-cli": "^6.26.0",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "clean-webpack-plugin": "^0.1.19",
+    "css-loader": "^1.0.0",
+    "cssnano": "^4.0.2",
+    "express": "^4.16.3",
+    "file-loader": "^1.1.11",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.4.1",
+    "postcss-css-variables": "^0.9.0",
+    "postcss-easy-import": "^3.0.0",
+    "postcss-loader": "^2.1.6",
+    "preact": "^8.2.9",
+    "style-loader": "^0.21.0",
+    "webpack": "^4.16.0",
+    "webpack-cli": "^3.0.8",
+    "webpack-dev-middleware": "^3.1.3",
+    "webpack-hot-middleware": "^2.22.2"
+  },
+  "browserslist": [
+    "last 3 versions"
+  ],
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "modules": false
+        }
+      ]
+    ],
+    "plugins": [
+      [
+        "transform-react-jsx",
+        {
+          "pragma": "h"
+        }
+      ],
+      "syntax-dynamic-import"
+    ]
+  }
+}
