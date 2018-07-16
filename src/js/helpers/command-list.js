@@ -3,5 +3,7 @@ export default [
   "articles",
   "clear",
   "help",
-  "sudo"
+  "ls",
+  "sudo",
+  "whoami"
 ];

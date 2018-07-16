@@ -6,12 +6,16 @@ h2 {
   font-family: var(--monospace);
 }
 
-h2 {
+h2,
+p {
   margin: 0;
+  font-size: inherit;
+}
+
+h2 {
   font-weight: 700;
   font-style: italic;
   text-decoration: underline;
-  font-size: inherit;
 }
 
 samp {
@@ -29,4 +33,48 @@ kbd {
 a {
   color: var(--accent);
   text-decoration: underline;
+}
+
+ol {
+  color: var(--white);
+  font-weight: 700;
+}
+
+a:focus,
+a:hover {
+  background: var(--accent);
+  text-decoration: none;
+  color: var(--white);
+  outline: 0;
+  font-weight: 400;
+}
+
+.command {
+  color: var(--white);
+  font-weight: 700;
+  text-decoration-line: underline;
+  text-decoration-color: var(--accent);
+}
+
+.loader {
+  animation: "loader" .33s infinite;
+  content: "|";
+}
+
+@keyframes loader {
+  0% {
+    content: "|";
+  }
+
+  25% {
+    content: "/";
+  }
+
+  50% {
+    content: "—";
+  }
+
+  75% {
+    content: "\\";
+  }
 }

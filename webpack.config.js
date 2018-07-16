@@ -8,6 +8,7 @@ const paths = {
   src: path.join(__dirname, "src"),
   dist: path.join(__dirname, "dist")
 };
+let entryPoints = [path.join(paths.src, "index.js")];
 let plugins = [
   new CleanWebpackPlugin(paths.dist),
   new MiniCssExtractPlugin({
@@ -27,22 +28,20 @@ let plugins = [
 ];
 
 if (devMode === true) {
+  entryPoints.push("webpack-hot-middleware/client");
   plugins.push(new webpack.HotModuleReplacementPlugin());
   plugins.push(new webpack.NoEmitOnErrorsPlugin());
 }
 
 module.exports = {
   mode: devMode ? "development" : "production",
-  entry: [
-    "webpack-hot-middleware/client",
-    path.join(paths.src, "index.js")
-  ],
+  entry: entryPoints,
   output: {
     filename: devMode ? "js/[name].js" : "js/[name].[chunkhash:8].js",
     path: paths.dist,
     publicPath: "/"
   },
-  devtool: "sourcemap",
+  devtool: devMode ? "sourcemap" : "none",
   module: {
     rules: [
       {

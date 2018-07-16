@@ -1,10 +1,11 @@
 import { h, render, Component } from "preact";
-import CommandList from "./CommandList";
+import { CommandLink } from "./CommandLink";
+import commandList from "../helpers/command-list";
 
 export default class Prompt extends Component {
   constructor(props) {
     super(props);
-    this.promptString = "⚡️ root@jeremy.codes $";
+    this.promptString = "⚡️ guest@jeremy.codes $";
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.state = {
       "bufferContents": "",
@@ -14,16 +15,18 @@ export default class Prompt extends Component {
 
   componentDidMount() {
     this.setState({
-      bufferContents: <samp>Hi! This is my website! Type <u>help</u> to see a list of commands.</samp>
+      bufferContents: <samp>Hi! This is my website! Type (or tap) <CommandLink>help</CommandLink> to see a list of commands.</samp>
     });
   }
 
   handleKeyPress(event) {
     if (event.keyCode === 13) {
       event.preventDefault();
-      let command = event.target.innerText;
+      let input = event.target.innerText;
+      let inputParts = event.target.innerText.trim().split(" ");
+      let command = inputParts[0];
 
-      if (CommandList.indexOf(command) !== -1) {
+      if (commandList.indexOf(command) !== -1) {
         switch (command) {
           case "clear":
             this.bufferHandler("clear");
@@ -60,18 +63,17 @@ export default class Prompt extends Component {
         </output>
       });
     } else {
-      const module = import(`./commands/${command}.js`).then(module => {
+      const module = import(`../commands/${command}.js`).then(module => {
         let output = [];
 
-        module.default().forEach(line => {
-          output.push(<samp>{line}</samp>);
-        });
+        module.default().forEach(line => output.push(<samp>{line}</samp>));
 
         this.setState({
           bufferContents: <output>
             {this.state.bufferContents}
             {lastCommand}
             {output}
+            <br />
           </output>
         });
       });
@@ -82,7 +84,7 @@ export default class Prompt extends Component {
     return (
       <section>
         {this.state.bufferContents}
-        <samp class="prompt">{this.promptString}</samp>&nbsp;<kbd id="command-line" contentEditable onKeyPress={this.handleKeyPress}/>
+        <samp class="prompt">{this.promptString}</samp>&nbsp;<kbd id="command-line" contentEditable onKeyPress={this.handleKeyPress} />
       </section>
     );
   }
