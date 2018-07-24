@@ -9,6 +9,6 @@ export default () => {
 
   return [
     <br />,
-    <img src={wayne1x} srcset={`${wayne2x} 2x, ${wayne1x} 1x`} sizes="11.875rem" alt="Ah! Ah! Ah! You didn't say the magic word!" />
+    <img src={wayne1x} srcset={`${wayne2x} 2x, ${wayne1x} 1x`} className="nedry" sizes="11.875rem" alt="Ah! Ah! Ah! You didn't say the magic word!" />
   ];
 };

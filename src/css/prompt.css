@@ -30,6 +30,11 @@ kbd {
   min-width: 1rem;
 }
 
+#command-line {
+  caret-color: var(--white);
+  outline: 0;
+}
+
 a {
   color: var(--accent);
   text-decoration: underline;
@@ -46,7 +51,6 @@ a:hover {
   text-decoration: none;
   color: var(--white);
   outline: 0;
-  font-weight: 400;
 }
 
 .command {
@@ -59,6 +63,21 @@ a:hover {
 .loader {
   animation: "loader" .33s infinite;
   content: "|";
+}
+
+.nedry {
+  animation: "bulge" 1s infinite;
+  transform: scale(100%);
+}
+
+@keyframes bulge {
+  0% {
+    transform: scale(100%);
+  }
+
+  50% {
+    transform: scale(87.5%);
+  }
 }
 
 @keyframes loader {

@@ -39,7 +39,8 @@ module.exports = {
   output: {
     filename: devMode ? "js/[name].js" : "js/[name].[chunkhash:8].js",
     path: paths.dist,
-    publicPath: "/"
+    publicPath: "/",
+    chunkFilename: devMode ? "js/[name].js" : "js/[name].[chunkhash:8].js"
   },
   devtool: devMode ? "sourcemap" : "none",
   module: {
