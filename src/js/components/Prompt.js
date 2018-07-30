@@ -5,13 +5,16 @@ import commandList from "../helpers/command-list";
 export default class Prompt extends Component {
   constructor(props) {
     super(props);
+    this.promptElement = document.getElementById("command-line");
     this.promptString = "⚡️ guest@jeremy.codes ~ $";
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.setState({
       "bufferContents": "",
       "command": "",
       "commandHistory": [],
-      "commandHistoryIndex": 0
+      "commandHistoryIndex": 0,
+      "commandLink": "",
+      "loading": false
     });
     this.availableCommands = commandList.map(commandPair => commandPair[0]);
   }
@@ -22,62 +25,84 @@ export default class Prompt extends Component {
     });
   }
 
+  componentDidUpdate() {
+    window.scrollTo(0, document.body.scrollHeight);
+  }
+
   handleKeyDown(event) {
     // Up/down keys pressed
     if ((event.keyCode === 38 || event.keyCode === 40) && this.state.commandHistory.length > 0) {
       event.preventDefault();
-
-      if (event.keyCode === 38) {
-      }
-
-      if (event.keyCode === 40) {
-      }
+      this.history();
     }
 
     // Enter key pressed
     if (event.keyCode === 13) {
       event.preventDefault();
-      let input = event.target.innerText.trim();
-      let inputParts = event.target.innerText.trim().split(" ");
-      let command = inputParts[0];
-      let args;
-
-      if (inputParts.length > 1) {
-        args = inputParts[1];
-      }
-
-      if (this.availableCommands.indexOf(command) !== -1) {
-        switch (command) {
-          case "clear":
-            this.bufferHandler("clear");
-            break;
-
-          case "cd":
-          case "rm":
-            this.bufferHandler("permission", command, input, args);
-            break;
-
-          default:
-            this.bufferHandler("command", command, input, args);
-            break;
-        }
-      } else {
-        this.bufferHandler("error", command, input, args);
-      }
-
-      event.target.innerText = "";
-      this.setState({
-        command: ""
-      });
-
-      this.setState({
-        commandHistory: [...this.state.commandHistory, input]
-      });
-
-      this.setState({
-        commandHistoryIndex: this.state.commandHistory.length - 1
-      });
+      this.execCommand();
     }
+  }
+
+  history() {
+    let command;
+    let commandIndex;
+
+    if (this.state.commandHistory.length === 1) {
+      commandIndex = 0;
+    } else {
+      // Up
+      if (event.keyCode === 38) {
+      }
+
+      // Down
+      if (event.keyCode === 40) {
+      }
+    }
+
+    this.setState({
+      command: command,
+      commandHistoryIndex: commandIndex
+    });
+  }
+
+  execCommand() {
+    let input = this.textInput.innerText.trim();
+    let inputParts = this.textInput.innerText.trim().split(" ");
+    let command = inputParts[0];
+    let args;
+
+    if (inputParts.length > 1) {
+      args = inputParts[1];
+    }
+
+    if (this.availableCommands.indexOf(command.toLowerCase()) !== -1) {
+      switch (command.toLowerCase()) {
+        case "clear":
+          this.bufferHandler("clear");
+          break;
+
+        case "history":
+          this.bufferHandler("history");
+          break;
+
+        case "cd":
+        case "rm":
+          this.bufferHandler("permission", command, input, args);
+          break;
+
+        default:
+          this.bufferHandler("command", command, input, args);
+          break;
+      }
+    } else {
+      this.bufferHandler("error", command, input, args);
+    }
+
+    this.setState({
+      command: "",
+      commandHistoryIndex: this.state.commandHistory.length,
+      commandHistory: [...this.state.commandHistory, input]
+    });
   }
 
   bufferHandler(action, command, input, args = null) {
@@ -87,6 +112,8 @@ export default class Prompt extends Component {
       this.setState({
         bufferContents: ""
       });
+    } else if (action === "history") {
+      // TODO: Implement history thingy
     } else if (action === "permission") {
       this.setState({
         bufferContents: <output>
@@ -104,25 +131,42 @@ export default class Prompt extends Component {
         </output>
       });
     } else {
-      const module = import(`../commands/${command}.js`).then(module => {
+      this.setState({
+        loading: true
+      });
+
+      const module = import(/* webpackChunkName: "[request]" */ `../commands/${command.toLowerCase()}.js`).then(module => {
         this.setState({
+          loading: false,
           bufferContents: <output>
             {this.state.bufferContents}
             {lastCommand}
             {[...module.default(args).map(line => <samp>{line}</samp>)]}
             <br />
           </output>
+        })
+      }).catch(error => {
+        this.setState({
+          loading: false,
+          bufferContents: <output>
+            {this.state.bufferContents}
+            {lastCommand}
+            <samp>Network unavailable!</samp>
+            <br />
+          </output>
         });
       });
+
+      this.textInput.focus();
     }
   }
 
   render(props) {
     return (
-      <section>
+      <main>
         {this.state.bufferContents}
-        <samp class="prompt">{this.promptString}</samp>&nbsp;<kbd id="command-line" contentEditable onKeyDown={this.handleKeyDown} />
-      </section>
+        <samp class="prompt">{this.promptString}</samp>&nbsp;<kbd id="command-line" ref={ c => this.textInput = c } className={this.state.loading === true ? "loading" : ""} contentEditable={this.state.loading === true ? "false" : "true"} onKeyDown={this.handleKeyDown}>{this.state.command}</kbd>
+      </main>
     );
   }
 }

@@ -6,7 +6,9 @@ export default (args) => {
   let output;
   let fileIndex = fileList.indexOf(args);
 
-  if (fileIndex !== -1) {
+  if (args === null) {
+    output = <p>cat: No file specified!</p>;
+  } else if (fileIndex !== -1) {
     let fileName = fileList[fileIndex];
     let ext = fileName.split(".")[1];
 

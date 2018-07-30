@@ -1,8 +1,9 @@
 const path = require("path");
 const webpack = require("webpack");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 const devMode = process.env.NODE_ENV !== "production";
 const paths = {
   src: path.join(__dirname, "src"),
@@ -24,7 +25,11 @@ let plugins = [
       minifyJS: devMode ? false : true,
       minifyCSS: devMode ? false : true
     }
-  })
+  }),
+  new CopyWebpackPlugin([{
+    from: path.join(paths.src, "js", "worklets", "*.js"),
+    to: path.join(paths.dist, "js", "worklets", "[name].[ext]")
+  }])
 ];
 
 if (devMode === true) {

@@ -10,9 +10,11 @@ export default [
   ["cd", true],
   ["clear", false],
   ["help", false],
+  ["history", false],
   ["links", false],
   ["ls", true],
   ["rm", true],
   ["sudo", true],
+  ["uname", true],
   ["whoami", true]
 ];

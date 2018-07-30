@@ -1,6 +1,12 @@
+#term {
+  position: relative;
+  z-index: 2;
+}
+
 samp,
 kbd,
-h2 {
+h2,
+input {
   color: var(--text);
   outline-color: var(--text);
   font-family: var(--monospace);
@@ -26,13 +32,17 @@ samp {
   display: inline;
 }
 
-kbd {
-  min-width: 1rem;
-}
-
 #command-line {
   caret-color: var(--white);
   outline: 0;
+  background: transparent;
+  appearance: none;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  display: inline;
+  width: auto;
 }
 
 a {
@@ -42,7 +52,6 @@ a {
 
 ol {
   color: var(--white);
-  font-weight: 700;
 }
 
 a:focus,
@@ -60,24 +69,9 @@ a:hover {
   text-decoration-color: var(--accent);
 }
 
-.loader {
+.loading:after {
   animation: "loader" .33s infinite;
   content: "|";
-}
-
-.nedry {
-  animation: "bulge" 1s infinite;
-  transform: scale(100%);
-}
-
-@keyframes bulge {
-  0% {
-    transform: scale(100%);
-  }
-
-  50% {
-    transform: scale(87.5%);
-  }
 }
 
 @keyframes loader {

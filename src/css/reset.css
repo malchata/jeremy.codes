@@ -5,22 +5,13 @@
 html,
 body,
 div,
-span,
-pre,
 a,
-code,
 em,
 img,
 strong,
 ol,
 ul,
 li,
-article,
-aside,
-figure,
-figcaption,
-footer,
-header,
 nav,
 section,
 kbd,
@@ -33,13 +24,6 @@ samp {
   vertical-align: baseline;
 }
 
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
 nav,
 section {
   display: block;
@@ -53,8 +37,17 @@ body {
   font-size: 1rem;
 }
 
-img,
-video {
+body:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  background-image: paint(randots);
+}
+
+img {
   max-width: 100%;
   display: inline-block;
   height: auto;
