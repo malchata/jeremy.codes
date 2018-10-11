@@ -1,32 +1,47 @@
 class Randots {
   constructor() {
-    this.tileSize = 1;
-    this.alpha = 0.001;
-    this.alphaIncrement = this.alpha / 1.5;
-    this.probability = 0.005;
-    this.probabilityIncrement = this.probability / 1.5;
-    this.fillColor = "#f79256";
   }
 
-  paint(ctx, geom) {
-    ctx.globalAlpha = this.alpha;
-    let dots = geom.width / this.tileSize;
-    let lines = geom.height / this.tileSize;
-    ctx.fillStyle = this.fillColor;
+  static get inputProperties() {
+    return [
+      "--randots-tilesize",
+      "--randots-fill-color",
+      "--randots-starting-alpha",
+      "--randots-alpha-increment",
+      "--randots-starting-probability",
+      "--randots-probability-increment"
+    ];
+  }
 
-    for (let line = 0; line < lines; line += this.tileSize) {
-      for (let dot = 0; dot < dots; dot += this.tileSize) {
-        if (Math.random() < this.probability) {
-          ctx.rect((dot * this.tileSize), (line * this.tileSize), this.tileSize, this.tileSize);
+  paint(ctx, geom, properties) {
+    const tileSize = parseInt(properties.get("--randots-tilesize"));
+    const dots = Math.ceil(geom.width / tileSize);
+    const lines = Math.ceil(geom.height / tileSize);
+    const alphaIncrement = parseFloat(properties.get("--randots-alpha-increment"));
+    const probabilityIncrement = parseFloat(properties.get("--randots-probability-increment"));
+    const hexColor = properties.get("--randots-fill-color").toString().split("#").pop();
+    let probability = parseFloat(properties.get("--randots-starting-probability"));
+    let colorParts = {
+      r: parseInt(`${hexColor[0]}${hexColor[1]}`, 16),
+      g: parseInt(`${hexColor[2]}${hexColor[3]}`, 16),
+      b: parseInt(`${hexColor[4]}${hexColor[5]}`, 16),
+      a: parseFloat(properties.get("--randots-starting-alpha"))
+    };
+
+    for (let line = 0; line < lines; line += tileSize) {
+      ctx.fillStyle = `rgb(${colorParts.r},${colorParts.g},${colorParts.b},${colorParts.a})`;
+
+      for (let dot = 0; dot < dots; dot += tileSize) {
+        if (Math.random() < probability) {
+          ctx.fillRect((dot * tileSize), (line * tileSize), tileSize, tileSize);
         }
       }
 
-      this.alpha += this.alphaIncrement;
-      this.probability += this.probabilityIncrement;
-      ctx.globalAlpha = this.alpha;
+      probability += probabilityIncrement;
+      colorParts.a = colorParts.a += alphaIncrement;
     }
 
-    ctx.fill();
+    //ctx.fill();
   }
 }
 

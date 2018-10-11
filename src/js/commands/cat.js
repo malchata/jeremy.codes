@@ -18,8 +18,8 @@ export default (args) => {
           output = <p>Design and development: <a href="https://twitter.com/malchata" rel="noopener">Jeremy Wagner</a></p>;
           break;
       }
-    } else if (ext === "mp4") {
-      output = <p>cat: Can't output video {fileName} to buffer. Try <CommandLink>play {fileName}</CommandLink>.</p>;
+    } else if (ext === "gif") {
+      output = <p>cat: Can't display image {fileName} in buffer. Try <CommandLink>play {fileName}</CommandLink>.</p>;
     }
   } else {
     output = <p>cat: {args}: No such file or directory</p>;

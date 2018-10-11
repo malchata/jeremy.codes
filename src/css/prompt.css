@@ -33,7 +33,6 @@ samp {
 }
 
 #command-line {
-  caret-color: var(--white);
   outline: 0;
   background: transparent;
   appearance: none;
@@ -43,6 +42,15 @@ samp {
   font-size: inherit;
   display: inline;
   width: auto;
+  color: transparent;
+  text-shadow: 0 0 0 var(--text);
+  caret-color: transparent;
+}
+
+#command-line:after {
+  content: "";
+  border-right: .125rem solid var(--accent);
+  animation: input-cursor 1s infinite;
 }
 
 a {
@@ -67,14 +75,15 @@ a:hover {
   font-weight: 700;
   text-decoration-line: underline;
   text-decoration-color: var(--accent);
+  cursor: pointer;
 }
 
-.loading:after {
-  animation: "loader" .33s infinite;
+.loading {
+  animation: spinner .33s infinite;
   content: "|";
 }
 
-@keyframes loader {
+@keyframes spinner {
   0% {
     content: "|";
   }
@@ -89,5 +98,17 @@ a:hover {
 
   75% {
     content: "\\";
+  }
+}
+
+@keyframes input-cursor {
+  0%,
+  100% {
+    opacity: 0;
+  }
+
+  40%,
+  60% {
+    opacity: 1;
   }
 }

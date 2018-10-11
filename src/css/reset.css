@@ -44,6 +44,12 @@ body:after {
   top: 0;
   left: 0;
   position: fixed;
+  --randots-tilesize: 2;
+  --randots-fill-color: var(--text);
+  --randots-starting-alpha: .0125;
+  --randots-alpha-increment: .00125;
+  --randots-starting-probability: .000625;
+  --randots-probability-increment: .0025;
   background-image: paint(randots);
 }
 

@@ -7,7 +7,6 @@ export default () => {
       <li><strong>Github: </strong> <a href="https://github.com/malchata" rel="noopener">https://github.com/malchata</a></li>
       <li><strong>Twitter: </strong> <a href="https://twitter.com/malchata" rel="noopener">https://twitter.com/malchata</a></li>
       <li><strong>LinkedIn: </strong> <a href="https://www.linkedin.com/in/jeremy-wagner/" rel="noopener">https://www.linkedin.com/in/jeremy-wagner</a></li>
-      <li><strong>Medium: </strong> <a href="https://medium.com/@jeremywagner" rel="noopener">https://medium.com/@jeremywagner</a></li>
     </ul>
   ];
 };

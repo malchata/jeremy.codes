@@ -1,4 +1,4 @@
-export default (sourceUrl) => {
+export default sourceUrl => {
   if ("AudioContext" in window === true) {
     const context = new AudioContext();
 

@@ -1,17 +1,17 @@
 const path = require("path");
 const webpack = require("webpack");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const ImageminWebpackPlugin = require("imagemin-webpack-plugin").default;
 const devMode = process.env.NODE_ENV !== "production";
 const paths = {
   src: path.join(__dirname, "src"),
   dist: path.join(__dirname, "dist")
 };
-let entryPoints = [path.join(paths.src, "index.js")];
+
+let entryPoints = [path.join(paths.src, "index.js"), path.join(paths.src, "css", "styles.css")];
 let plugins = [
-  new CleanWebpackPlugin(paths.dist),
   new MiniCssExtractPlugin({
     filename: path.join("css", "styles.[contenthash:8].css"),
     chunkFilename: path.join("css", "styles.[contenthash:8].css")
@@ -29,7 +29,15 @@ let plugins = [
   new CopyWebpackPlugin([{
     from: path.join(paths.src, "js", "worklets", "*.js"),
     to: path.join(paths.dist, "js", "worklets", "[name].[ext]")
-  }])
+  }]),
+  new ImageminWebpackPlugin({
+    disable: devMode,
+    test: path.join(paths.src, "img", "*.png"),
+    pngquant: {
+      speed: 1,
+      strip: true
+    }
+  })
 ];
 
 if (devMode === true) {
@@ -47,7 +55,7 @@ module.exports = {
     publicPath: "/",
     chunkFilename: devMode ? "js/[name].js" : "js/[name].[chunkhash:8].js"
   },
-  devtool: devMode ? "sourcemap" : "none",
+  devtool: "sourcemap",
   module: {
     rules: [
       {
@@ -81,8 +89,12 @@ module.exports = {
       cacheGroups: {
         vendors: {
           test: /[\\/]node_modules[\\/]/i,
-          name: "vendors",
           chunks: "all"
+        },
+        commons: {
+          name: "commons",
+          chunks: "initial",
+          minChunks: 2
         }
       }
     },

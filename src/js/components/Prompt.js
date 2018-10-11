@@ -1,13 +1,12 @@
 import { h, render, Component } from "preact";
 import { CommandLink } from "./CommandLink";
 import commandList from "../helpers/command-list";
+// import OnDemandLiveRegion from "on-demand-live-region";
 
 export default class Prompt extends Component {
   constructor(props) {
     super(props);
-    this.promptElement = document.getElementById("command-line");
-    this.promptString = "⚡️ guest@jeremy.codes ~ $";
-    this.handleKeyDown = this.handleKeyDown.bind(this);
+
     this.setState({
       "bufferContents": "",
       "command": "",
@@ -16,12 +15,18 @@ export default class Prompt extends Component {
       "commandLink": "",
       "loading": false
     });
+
+    this.promptElement = document.getElementById("command-line");
+    this.promptString = "⚡️ guest@jeremy.codes ~ $";
+    this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.commandLink = this.commandLink.bind(this);
     this.availableCommands = commandList.map(commandPair => commandPair[0]);
+    // this.liveRegion = new OnDemandLiveRegion();
   }
 
   componentDidMount() {
     this.setState({
-      bufferContents: <samp>Hi! This is my website! Type (or tap) <CommandLink>help</CommandLink> to see a list of commands.</samp>
+      bufferContents: <samp>Hi! This is my website! Type (or tap) <CommandLink href="/help.html">help</CommandLink> to see a list of commands.</samp>
     });
   }
 
@@ -39,7 +44,15 @@ export default class Prompt extends Component {
     // Enter key pressed
     if (event.keyCode === 13) {
       event.preventDefault();
-      this.execCommand();
+      this.execCommand(this.textInput.innerText);
+    }
+  }
+
+  commandLink(event) {
+    if (event.target.nodeName === "A" && event.target.className === "command") {
+      event.preventDefault();
+      let command = event.target.innerText;
+      this.execCommand(command);
     }
   }
 
@@ -65,9 +78,8 @@ export default class Prompt extends Component {
     });
   }
 
-  execCommand() {
-    let input = this.textInput.innerText.trim();
-    let inputParts = this.textInput.innerText.trim().split(" ");
+  execCommand(input) {
+    let inputParts = input.trim().split(" ");
     let command = inputParts[0];
     let args;
 
@@ -151,7 +163,7 @@ export default class Prompt extends Component {
           bufferContents: <output>
             {this.state.bufferContents}
             {lastCommand}
-            <samp>Network unavailable!</samp>
+            <samp>{`Error: ${error}`}</samp>
             <br />
           </output>
         });
@@ -163,9 +175,9 @@ export default class Prompt extends Component {
 
   render(props) {
     return (
-      <main>
+      <main onClick={this.commandLink}>
         {this.state.bufferContents}
-        <samp class="prompt">{this.promptString}</samp>&nbsp;<kbd id="command-line" ref={ c => this.textInput = c } className={this.state.loading === true ? "loading" : ""} contentEditable={this.state.loading === true ? "false" : "true"} onKeyDown={this.handleKeyDown}>{this.state.command}</kbd>
+        <samp class="prompt">{this.promptString}</samp>&nbsp;<kbd id="command-line" ref={c => this.textInput = c} className={this.state.loading === true ? "loading" : ""} contentEditable={this.state.loading === true ? "false" : "true"} onKeyDown={this.handleKeyDown}>{this.state.command}</kbd>
       </main>
     );
   }
