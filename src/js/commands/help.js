@@ -1,6 +1,6 @@
 import { h, render, Component } from "preact";
 import commandList from "../helpers/command-list";
-import { CommandLink } from "../components/CommandLink";
+import CommandLink from "../components/CommandLink";
 
 export default (showSecrets = false) => {
   let commands = commandList.map(commandPair => {

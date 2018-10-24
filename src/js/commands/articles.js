@@ -28,6 +28,7 @@ export default () => {
     <br />,
     <h2>Google Web Fundamentals</h2>,
     <ol>
+      <li><a href="https://developers.google.com/web/fundamentals/performance/optimizing-javascript/code-splitting/" rel="noopener">Reduce JavaScript Payloads with Code Splitting*</a></li>
       <li><a href="https://developers.google.com/web/fundamentals/performance/optimizing-javascript/tree-shaking/" rel="noopener">Reduce JavaScript Payloads with Tree Shaking</a></li>
       <li><a href="https://developers.google.com/web/fundamentals/performance/navigation-and-resource-timing/" rel="noopener">Assessing Loading Performance in Real Life with Navigation and Resource Timing</a></li>
       <li><a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/replace-animated-gifs-with-video/" rel="noopener">Replace Animated GIFS with Video</a></li>
@@ -59,6 +60,6 @@ export default () => {
       <li><a href="https://www.smashingmagazine.com/2016/10/next-generation-server-compression-with-brotli/" rel="noopener">Next Generation Server Compression with Brotli</a></li>
     </ol>,
     <br />,
-    <p><em>*Indicates that I was not the primary author of the article, but received a byline as a contributor.</em></p>
+    <p><em>*I was not the sole author of the article concerned.</em></p>
   ];
 };

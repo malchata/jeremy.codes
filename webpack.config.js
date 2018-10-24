@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const ImageminWebpackPlugin = require("imagemin-webpack-plugin").default;
+
 const devMode = process.env.NODE_ENV !== "production";
 const paths = {
   src: path.join(__dirname, "src"),
@@ -17,7 +18,7 @@ let plugins = [
     chunkFilename: path.join("css", "styles.[contenthash:8].css")
   }),
   new HtmlWebpackPlugin({
-    template: path.join(paths.src, "html", "app.html"),
+    template: path.join(paths.src, "html", "index.html"),
     filename: path.join(paths.dist, "index.html"),
     minify: {
       removeComments: devMode ? false : true,
@@ -94,12 +95,12 @@ module.exports = {
         commons: {
           name: "commons",
           chunks: "initial",
-          minChunks: 2
+          minChunks: 1
         }
       }
     },
     runtimeChunk: {
-      name: "vendors"
+      name: "runtime"
     }
   },
   plugins: plugins

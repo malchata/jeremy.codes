@@ -1,4 +1,5 @@
 export default [
-  "credits.txt",
-  "tonyegg.mp4"
+  "CHANGELOG",
+  "CREDITS",
+  // "tonyegg.gif"
 ];

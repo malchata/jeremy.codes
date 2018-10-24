@@ -40,22 +40,23 @@ samp {
   margin: 0;
   padding: 0;
   font-size: inherit;
-  display: inline;
+  display: inline-block;
   width: auto;
   color: transparent;
   text-shadow: 0 0 0 var(--text);
   caret-color: transparent;
 }
 
-#command-line:after {
+#command-line::after {
   content: "";
-  border-right: .125rem solid var(--accent);
+  border-right: .625rem solid var(--accent);
   animation: input-cursor 1s infinite;
 }
 
 a {
   color: var(--accent);
   text-decoration: underline;
+  text-shadow: 0 0 0.375rem rgba(299, 99, 153, 0.75);
 }
 
 ol {
@@ -68,6 +69,7 @@ a:hover {
   text-decoration: none;
   color: var(--white);
   outline: 0;
+  text-shadow: none;
 }
 
 .command {
@@ -78,9 +80,14 @@ a:hover {
   cursor: pointer;
 }
 
-.loading {
+.loading::before {
   animation: spinner .33s infinite;
   content: "|";
+}
+
+#command-line.loading::after {
+  border-right: 0;
+  animation: none;
 }
 
 @keyframes spinner {

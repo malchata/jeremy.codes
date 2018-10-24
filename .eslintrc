@@ -1,0 +1,37 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "extends": "eslint:recommended",
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "plugins": ["react"],
+  "rules": {
+    "no-unused-vars": "off",
+    "no-fallthrough": "off",
+    "no-console": "off",
+    "indent": [
+      "error", 2, {
+        "SwitchCase": 1
+      }
+    ],
+    "linebreak-style": [
+      "error", "unix"
+    ],
+    "quotes": [
+      "error", "double"
+    ],
+    "semi": ["error", "always"]
+  },
+  "globals": {
+    "registerPaint": true
+  }
+}
