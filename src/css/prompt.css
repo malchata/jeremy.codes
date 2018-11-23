@@ -3,7 +3,7 @@
   z-index: 2;
 }
 
-samp,
+p,
 kbd,
 h2,
 input {
@@ -24,7 +24,7 @@ h2 {
   text-decoration: underline;
 }
 
-samp {
+p {
   display: block;
 }
 
@@ -32,7 +32,7 @@ samp {
   display: inline;
 }
 
-#command-line {
+#prompt {
   outline: 0;
   background: transparent;
   appearance: none;
@@ -40,14 +40,14 @@ samp {
   margin: 0;
   padding: 0;
   font-size: inherit;
-  display: inline-block;
+  display: inline;
   width: auto;
   color: transparent;
   text-shadow: 0 0 0 var(--text);
   caret-color: transparent;
 }
 
-#command-line::after {
+#prompt::after {
   content: "";
   border-right: .625rem solid var(--accent);
   animation: input-cursor 1s infinite;
@@ -59,8 +59,18 @@ a {
   text-shadow: 0 0 0.375rem rgba(299, 99, 153, 0.75);
 }
 
+ol,
+ul {
+  color: var(--text);
+}
+
 ol {
-  color: var(--white);
+  padding-left: 1.8125rem;
+  font-weight: 700;
+}
+
+li a {
+  font-weight: 400;
 }
 
 a:focus,
@@ -85,7 +95,7 @@ a:hover {
   content: "|";
 }
 
-#command-line.loading::after {
+#prompt.loading::after {
   border-right: 0;
   animation: none;
 }
@@ -114,8 +124,8 @@ a:hover {
     opacity: 0;
   }
 
-  40%,
-  60% {
+  47.5%,
+  57.5% {
     opacity: 1;
   }
 }

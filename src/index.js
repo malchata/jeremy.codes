@@ -3,20 +3,20 @@ import CommandLink from "./js/components/CommandLink";
 import Prompt from "./js/components/Prompt";
 
 // Initially renders the terminal
-const terminal = document.getElementById("term");
-render(<Prompt initialContent={<samp>Hi! This is my website! Type (or tap) <CommandLink href="/help.html">help</CommandLink> to see a list of commands.</samp>}/>, terminal, terminal.firstChild);
+render(
+  h(Prompt, {
+    initialContent: h("p", null, "Hi! This is my website! Type (or tap) ", h(CommandLink, {
+      href: "/help.html"
+    }, "help"), " to see a list of commands.")
+  }), document.getElementById("term")
+);
 
-const commandLine = document.getElementById("command-line");
+const prompt = document.getElementById("prompt");
 const focuser = () => {
-  if (document.activeElement.getAttribute("id") !== "command-line") {
-    commandLine.focus();
+  if (document.activeElement.getAttribute("id") !== "prompt") {
+    prompt.focus();
   }
 };
 
 document.documentElement.addEventListener("keypress", focuser);
 document.documentElement.addEventListener("click", focuser);
-
-// For hot reloading (dev mode)
-if (module.hot) {
-  module.hot.accept();
-}

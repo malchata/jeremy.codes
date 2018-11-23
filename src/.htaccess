@@ -1,0 +1,87 @@
+# Caching policy
+<IfModule headers_module>
+  <FilesMatch "\.(png|jpe?g|gif|svg|webm|ogv|mp4|webp|woff2?|ico|css|m?js)$">
+    FileETag None
+    Header unset ETag
+    Header set Cache-Control "public,max-age=31536000"
+  </FilesMatch>
+  <FilesMatch "\.(png|jpe?g|gif)$">
+    Header set Vary "Accept"
+  </FilesMatch>
+  <FilesMatch "\.(html)$">
+    FileETag None
+    Header unset ETag
+    Header set Cache-Control "private,must-revalidate,max-age=3600"
+  </FilesMatch>
+  <FilesMatch "\.(html|php|xml|txt|svg|css|m?js)$">
+    Header set Vary "Accept-Encoding"
+  </FilesMatch>
+</IfModule>
+
+<IfModule mime_module>
+  AddType text/javascript .mjs
+</IfModule>
+
+# Set HSTS
+# Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" env=HTTPS
+
+# Static compression!
+# <Files *.js.br>
+#     AddType "text/javascript" .br
+#     AddEncoding br .br
+# </Files>
+# <Files *.mjs.br>
+#     AddType "text/javascript" .br
+#     AddEncoding br .br
+# </Files>
+# <Files *.css.br>
+#     AddType "text/css" .br
+#     AddEncoding br .br
+# </Files>
+# <Files *.svg.br>
+#     AddType "image/svg+xml" .br
+#     AddEncoding br .br
+# </Files>
+# <Files *.html.br>
+#     AddType "text/html" .br
+#     AddEncoding br .br
+# </Files>
+# <Files *.js.gz>
+#     AddType "text/javascript" .gz
+#     AddEncoding gzip .gz
+# </Files>
+# <Files *.mjs.gz>
+#     AddType "text/javascript" .gz
+#     AddEncoding gzip .gz
+# </Files>
+# <Files *.css.gz>
+#     AddType "text/css" .gz
+#     AddEncoding gzip .gz
+# </Files>
+# <Files *.svg.gz>
+#     AddType "image/svg+xml" .gz
+#     AddEncoding gzip .gz
+# </Files>
+# <Files *.html.gz>
+#     AddType "text/html" .gz
+#     AddEncoding gzip .gz
+# </Files>
+
+# WebP rewriting
+RewriteEngine On
+
+# Serve WebPs instead of regular images (if available)
+RewriteCond %{HTTP:Accept} image/webp [NC]
+RewriteCond %{HTTP:Content-Disposition} !attachment [NC]
+RewriteCond %{DOCUMENT_ROOT}/$1.webp -f [NC]
+RewriteRule (.+)\.(png|jpe?g|gif)$ $1.webp [T=image/webp,L]
+
+# Serve pre-compressed Brotli assets
+# RewriteCond %{HTTP:Accept-Encoding} br
+# RewriteCond %{REQUEST_FILENAME}.br -f
+# RewriteRule ^(.*)$ $1.br [L]
+
+# Serve pre-compressed gzip assets
+# RewriteCond %{HTTP:Accept-Encoding} gzip
+# RewriteCond %{REQUEST_FILENAME}.gz -f
+# RewriteRule ^(.*)$ $1.gz [L]

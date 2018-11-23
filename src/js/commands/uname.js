@@ -3,6 +3,6 @@ import { version } from "../../../package.json";
 
 export default () => {
   return [
-    <p>MalchatOS jeremy.codes MalchatOS Kernel Version {version}: {new Date().toString()}; guest:{navigator.userAgent}</p>
+    h("p", null, "MalchatOS jeremy.codes MalchatOS Kernel Version ", version, ": ", new Date().toString(), "; guest:", navigator.userAgent)
   ];
 };

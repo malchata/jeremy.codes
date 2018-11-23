@@ -9,20 +9,21 @@ export default class Prompt extends Component {
   constructor(props) {
     super(props);
 
-    this.promptElement = document.getElementById("command-line");
     this.promptString = "⚡️ guest@jeremy.codes ~ $";
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.commandLink = this.commandLink.bind(this);
     this.availableCommands = commandList.map(commandPair => commandPair[0]);
-    // this.liveRegion = new OnDemandLiveRegion();
+    // this.liveRegion = new OnDemandLiveRegion({
+    //   parent: "#term > output"
+    // });
 
     let history = localStore("get", "history");
     this.setState({
-      "bufferContents": "",
+      "bufferContents": null,
       "command": "",
       "commandLink": "",
       "commandHistory": typeof history === "string" ? history.split(",") : [],
-      "commandCursor": typeof history === "string" ? history.split(",").length : 0,
+      "historyCursor": typeof history === "string" ? history.split(",").length : 0,
       "loading": false
     });
   }
@@ -33,11 +34,7 @@ export default class Prompt extends Component {
     });
 
     this.setState({
-      bufferContents: <output>
-        {this.state.bufferContents}
-        <samp><br/>This is version <strong><u>{version}</u></strong>. To find out what's new in this release, enter <CommandLink>cat CHANGELOG</CommandLink>.</samp>,
-        <br />
-      </output>
+      bufferContents: h("output", null, this.state.bufferContents, h("p", null, "This is version ", h("strong", null, h("u", null, version)), ". To find out what's new in this release, enter ", h(CommandLink, null, "cat CHANGELOG"), "."))
     });
 
     this.textInput.focus();
@@ -58,6 +55,7 @@ export default class Prompt extends Component {
 
     // Ctrl+L shortcut (clear buffer)
     if (event.ctrlKey && event.keyCode === 76) {
+      event.preventDefault();
       this.setState({
         bufferContents: ""
       });
@@ -82,20 +80,20 @@ export default class Prompt extends Component {
 
   history(up) {
     if (this.state.commandHistory.length > 0) {
-      if (up === true && this.state.commandCursor > 0) {
+      if (up === true && this.state.historyCursor > 0) {
         this.setState({
-          commandCursor: this.state.commandCursor - 1
+          historyCursor: this.state.historyCursor - 1
         });
       }
 
-      if (up === false && this.state.commandCursor < this.state.commandHistory.length) {
+      if (up === false && this.state.historyCursor < this.state.commandHistory.length) {
         this.setState({
-          commandCursor: this.state.commandCursor + 1
+          historyCursor: this.state.historyCursor + 1
         });
       }
 
       this.setState({
-        command: this.state.commandHistory[this.state.commandCursor]
+        command: this.state.commandHistory[this.state.historyCursor]
       });
     }
   }
@@ -141,12 +139,12 @@ export default class Prompt extends Component {
 
     // We need to set this in a separate call so the new value reflects the updated state
     this.setState({
-      commandCursor: this.state.commandHistory.length
+      historyCursor: this.state.commandHistory.length
     });
   }
 
   bufferHandler(action, command, input, args = null) {
-    let lastCommand = <samp><kbd>{this.promptString} {input}</kbd></samp>;
+    let lastCommand = h("p", null, this.promptString, input);
 
     if (action === "clear") {
       this.setState({
@@ -158,10 +156,7 @@ export default class Prompt extends Component {
       let output;
 
       if (args === null) {
-        output = [...this.state.commandHistory.map((command, index) => {
-          console.log(String(this.state.commandHistory).length);
-          return <samp>&nbsp;&nbsp;{String(index).padStart(String(this.state.commandHistory.length).length, " ")}&nbsp;&nbsp;<CommandLink>{command}</CommandLink></samp>;
-        })];
+        output = [...this.state.commandHistory.map((command, index) => h("p", null, h("span", null, "  "), String(index).padStart(String(this.state.commandHistory.length).length, " "), h("span", null, "  "), h(CommandLink, null, command)))];
       }
       if (args === "-c") {
         this.setState({
@@ -172,30 +167,15 @@ export default class Prompt extends Component {
       }
 
       this.setState({
-        bufferContents: <output>
-          {this.state.bufferContents}
-          {lastCommand}
-          {output},
-          <br />
-        </output>
+        bufferContents: h("output", null, this.state.bufferContents, lastCommand, output, h("br"))
       });
     } else if (action === "permission") {
       this.setState({
-        bufferContents: <output>
-          {this.state.bufferContents}
-          {lastCommand}
-          <samp>permission denied: {input}</samp>
-          <br />
-        </output>
+        bufferContents: h("output", null, this.state.bufferContents, lastCommand, h("p", null, "permission denied: ", input), h("br"))
       });
     } else if (action === "error") {
       this.setState({
-        bufferContents: <output>
-          {this.state.bufferContents}
-          {lastCommand}
-          <samp>{command}: command not found</samp>
-          <br />
-        </output>
+        bufferContents: h("output", null, this.state.bufferContents, lastCommand, h("p", null, command, ": command not found"), h("br"))
       });
     } else {
       this.setState({
@@ -205,22 +185,12 @@ export default class Prompt extends Component {
       const module = import(/* webpackChunkName: "[request]" */ `../commands/${command.toLowerCase()}.js`).then(module => {
         this.setState({
           loading: false,
-          bufferContents: <output>
-            {this.state.bufferContents}
-            {lastCommand}
-            {[...module.default(args).map(line => <samp>{line}</samp>)]}
-            <br />
-          </output>
+          bufferContents: h("output", null, this.state.bufferContents, lastCommand, [...module.default(args).map(line => line)], h("br"))
         });
       }).catch(error => {
         this.setState({
           loading: false,
-          bufferContents: <output>
-            {this.state.bufferContents}
-            {lastCommand}
-            <samp>{`Error: ${error}`}</samp>
-            <br />
-          </output>
+          bufferContents: h("output", null, this.state.bufferContents, lastCommand, "Error: ", error, h("br"))
         });
       });
     }
@@ -228,12 +198,28 @@ export default class Prompt extends Component {
     this.textInput.focus();
   }
 
-  render(props) {
+  render() {
     return (
-      <output onClick={this.commandLink}>
-        {this.state.bufferContents}
-        <samp class="prompt">{this.promptString}</samp>&nbsp;<kbd id="command-line" ref={c => this.textInput = c} className={this.state.loading === true ? "loading" : ""} role="textbox" contentEditable={this.state.loading === true ? "false" : "true"} onKeyDown={this.handleKeyDown}>{this.state.command}</kbd>
-      </output>
+      h("output", {
+        onClick: this.commandLink
+      },
+      this.state.bufferContents,
+      h("p", {
+        className: "prompt"
+      }, this.promptString),
+      h("span", null, {
+        dangerouslySetInnerHTML: {
+          __html: "&nbsp;"
+        }
+      }),
+      h("p", {
+        id: "prompt",
+        ref: c => this.textInput = c,
+        className: this.state.loading === true ? "loading" : "",
+        role: "textbox",
+        contentEditable: this.state.loading === true ? "false" : "true",
+        onKeyDown: this.handleKeyDown
+      }, this.state.command))
     );
   }
 }

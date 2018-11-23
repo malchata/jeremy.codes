@@ -12,9 +12,8 @@ strong,
 ol,
 ul,
 li,
-nav,
-section,
 kbd,
+p,
 samp {
   margin: 0;
   padding: 0;
@@ -22,11 +21,6 @@ samp {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
-}
-
-nav,
-section {
-  display: block;
 }
 
 body {
@@ -79,6 +73,7 @@ strong {
 
 ::selection {
   background: var(--accent);
+  color: var(--backdrop);
   text-shadow: none;
 }
 
