@@ -9,7 +9,6 @@ export default () => {
   playAudio(magicWord);
 
   return [
-    h("br"),
     h(Image, {
       src: wayne1x,
       srcset: `${wayne2x} 2x, ${wayne1x} 1x`,

@@ -12,6 +12,6 @@ export default (showSecrets = false) => {
   });
 
   return [
-    h("p", null, "Available commands:", h("br"), h("ul", null, commands))
+    h("p", null, "Available commands:", h("ul", null, commands))
   ];
 };

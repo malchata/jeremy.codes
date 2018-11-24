@@ -72,11 +72,11 @@ let commonPlugins = [];
 
 if (devMode === false) {
   commonPlugins.push(new CompressionWebpackPlugin({
-    test: /\.(m?js|svg|css|html)$/i,
+    test: /\.(m?js|svg|css)$/i,
     cache: true,
     filename: "[path].gz"
   }), new BrotliWebpackPlugin({
-    test: /\.(m?js|svg|css|html)$/i,
+    test: /\.(m?js|svg|css)$/i,
     asset: "[path].br"
   }));
 }
@@ -116,14 +116,14 @@ const modernConfig = Object.assign({
   },
   module: {
     rules: [
-      // {
-      //   test: /\.m?js$/i,
-      //   exclude: /node_modules/i,
-      //   use: {
-      //     loader: "babel-loader",
-      //     options: babelConfigs.modern
-      //   }
-      // },
+      {
+        test: /\.m?js$/i,
+        exclude: /node_modules/i,
+        use: {
+          loader: "babel-loader",
+          options: babelConfigs.modern
+        }
+      },
       {
         test: /\.css$/i,
         use: [
@@ -155,8 +155,6 @@ modernConfig.optimization["minimizer"] = [
     sourceMap: !devMode
   })
 ];
-
-console.dir(modernConfig.optimization);
 
 const legacyConfig = Object.assign({
   name: "legacy",

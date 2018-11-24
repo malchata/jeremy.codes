@@ -51,12 +51,9 @@ body:after {
 
 img {
   max-width: 100%;
-  display: inline-block;
+  display: block;
   height: auto;
-}
-
-ul {
-  list-style: none;
+  margin: 1rem 0;
 }
 
 em {

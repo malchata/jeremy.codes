@@ -9,7 +9,6 @@ export default () => {
   playAudio(ghost);
 
   return [
-    h("br"),
     h(Image, {
       src: mystery1x,
       srcset: `${mystery2x} 2x, ${mystery1x} 1x`,

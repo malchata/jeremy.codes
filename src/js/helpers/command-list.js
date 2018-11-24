@@ -16,7 +16,8 @@ export default [
   ["ls", true, false],
   ["rm", true, false],
   ["sudo", true, false],
-  ["touch", false, false],
+  ["talks", false, true],
+  ["touch", true, false],
   ["uname", true, false],
   ["whoami", true, false]
 ];

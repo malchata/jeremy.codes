@@ -3,7 +3,6 @@ import { h, render, Component } from "preact";
 export default () => {
   return [
     h("p", null, "I write often about the web. Here's some stuff I've written:"),
-    h("br"),
     h("h2", null, "A List Apart"),
     h("ol", null,
       h("li", null,
@@ -25,7 +24,6 @@ export default () => {
         }, "Using HTTP/2 Responsibly: Adapting for Users")
       )
     ),
-    h("br"),
     h("h2", null, "CSS-Tricks"),
     h("ol", null,
       h("li", null,
@@ -71,7 +69,6 @@ export default () => {
         }, "`font-display` for the Masses")
       )
     ),
-    h("br"),
     h("h2", null, "David Walsh Blog"),
     h("ol", null,
       h("li", null,
@@ -81,18 +78,29 @@ export default () => {
         }, "JPEG Compression with Guetzli")
       )
     ),
-    h("br"),
     h("h2", null, "Google Web Fundamentals"),
     h("ol", null,
       h("li", null,
         h("a", {
+          href: "https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/client-hints/",
+          rel: "noopener"
+        }, "Adapting to Users with Client Hints")
+      ),
+      h("li", null,
+        h("a", {
           href: "https://developers.google.com/web/fundamentals/performance/optimizing-javascript/code-splitting/",
+          rel: "noopener"
+        }, "Reduce JavaScript Payloads with Code Splitting")
+      ),
+      h("li", null,
+        h("a", {
+          href: "https://developers.google.com/web/fundamentals/performance/optimizing-javascript/tree-shaking/",
           rel: "noopener"
         }, "Reduce JavaScript Payloads with Tree Shaking")
       ),
       h("li", null,
         h("a", {
-          href: "https://developers.google.com/web/fundamentals/performance/optimizing-javascript/tree-shaking/",
+          href: "https://developers.google.com/web/fundamentals/performance/navigation-and-resource-timing/",
           rel: "noopener"
         }, "Assessing Loading Performance in Real Life with Navigation and Resource Timing")
       ),
@@ -121,7 +129,6 @@ export default () => {
         }, "Why Performance Matters")
       ),
     ),
-    h("br"),
     h("h2", null, "Manning Publications"),
     h("ol", null,
       h("li", null,
@@ -131,7 +138,6 @@ export default () => {
         }, "Web Performance in Action")
       )
     ),
-    h("br"),
     h("h2", null, "Net Magazine"),
     h("ol", null,
       h("li", null,
@@ -147,7 +153,6 @@ export default () => {
         }, "5 Tips for Super-fast CSS")
       )
     ),
-    h("br"),
     h("h2", null, "Planet Performance"),
     h("ol", null,
       h("li", null,
@@ -163,7 +168,6 @@ export default () => {
         }, "Speed vs. Speed to Market")
       )
     ),
-    h("br"),
     h("h2", null, "Smashing Magazine"),
     h("ol", null,
       h("li", null,
@@ -179,7 +183,6 @@ export default () => {
         }, "Next Generation Server Compression with Brotli")
       )
     ),
-    h("br"),
     h("p", null,
       h("em", null, "* I was not the sole author of this article.")
     )

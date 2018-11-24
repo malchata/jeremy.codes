@@ -144,7 +144,11 @@ export default class Prompt extends Component {
   }
 
   bufferHandler(action, command, input, args = null) {
-    let lastCommand = h("p", null, this.promptString, input);
+    let lastCommand = h("p", {
+      className: "prompt"
+    }, this.promptString, h("span", {
+      className: "last-command"
+    }, input));
 
     if (action === "clear") {
       this.setState({
@@ -156,7 +160,7 @@ export default class Prompt extends Component {
       let output;
 
       if (args === null) {
-        output = [...this.state.commandHistory.map((command, index) => h("p", null, h("span", null, "  "), String(index).padStart(String(this.state.commandHistory.length).length, " "), h("span", null, "  "), h(CommandLink, null, command)))];
+        output = h("ul", null, ...this.state.commandHistory.map((command, index) => h("li", null, h("span", null, "  "), String(index).padStart(String(this.state.commandHistory.length).length, " "), h("span", null, "  "), h(CommandLink, null, command))));
       }
       if (args === "-c") {
         this.setState({
@@ -167,15 +171,15 @@ export default class Prompt extends Component {
       }
 
       this.setState({
-        bufferContents: h("output", null, this.state.bufferContents, lastCommand, output, h("br"))
+        bufferContents: h("output", null, this.state.bufferContents, lastCommand, output)
       });
     } else if (action === "permission") {
       this.setState({
-        bufferContents: h("output", null, this.state.bufferContents, lastCommand, h("p", null, "permission denied: ", input), h("br"))
+        bufferContents: h("output", null, this.state.bufferContents, lastCommand, h("p", null, "permission denied: ", input))
       });
     } else if (action === "error") {
       this.setState({
-        bufferContents: h("output", null, this.state.bufferContents, lastCommand, h("p", null, command, ": command not found"), h("br"))
+        bufferContents: h("output", null, this.state.bufferContents, lastCommand, h("p", null, command, ": command not found"))
       });
     } else {
       this.setState({
@@ -185,12 +189,12 @@ export default class Prompt extends Component {
       const module = import(/* webpackChunkName: "[request]" */ `../commands/${command.toLowerCase()}.js`).then(module => {
         this.setState({
           loading: false,
-          bufferContents: h("output", null, this.state.bufferContents, lastCommand, [...module.default(args).map(line => line)], h("br"))
+          bufferContents: h("output", null, this.state.bufferContents, lastCommand, [...module.default(args).map(line => line)])
         });
       }).catch(error => {
         this.setState({
           loading: false,
-          bufferContents: h("output", null, this.state.bufferContents, lastCommand, "Error: ", error, h("br"))
+          bufferContents: h("output", null, this.state.bufferContents, lastCommand, h("p", null, `Error: ${error}`))
         });
       });
     }
@@ -207,11 +211,6 @@ export default class Prompt extends Component {
       h("p", {
         className: "prompt"
       }, this.promptString),
-      h("span", null, {
-        dangerouslySetInnerHTML: {
-          __html: "&nbsp;"
-        }
-      }),
       h("p", {
         id: "prompt",
         ref: c => this.textInput = c,

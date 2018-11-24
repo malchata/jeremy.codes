@@ -12,6 +12,7 @@ export default (args) => {
     ];
   } else if (fileIndex !== -1) {
     let fileName = fileList[fileIndex];
+    // let baseName = fileName.split(".")[0];
     let ext = fileName.split(".")[1];
 
     if (typeof ext === "undefined") {
@@ -29,10 +30,19 @@ export default (args) => {
           output = [
             h("p", null,
               h("strong", null,
+                h("u", null, "1.1.2")
+              ),
+              h("ol", null,
+                h("li", null, "Performance update: Modern browsers now receive minimally transpiled and polyfilled code to reduce total JavaScript payload."),
+                h("li", null, "Added ", h(CommandLink, null, "talks"), " command, which lists slide decks and talk videos for a few events I've done."),
+                h("li", null, "Enhancements to dev experience.")
+              )
+            ),
+            h("p", null,
+              h("strong", null,
                 h("u", null, "1.1.0")
               ),
-              h("br"),
-              h("ul", null,
+              h("ol", null,
                 h("li", null, "Command history can be accessed through up and down arrows (", h("a", {
                   href: "https://github.com/malchata/jeremy.codes/issues/2",
                   rel: "noopener"
@@ -47,17 +57,17 @@ export default (args) => {
               h("strong", null,
                 h("u", null, "1.0.0")
               ),
-              h("ul", null,
+              h("ol", null,
                 h("li", null, "Initial release.")
               )
             )
           ];
           break;
       }
-    } else if (ext === "gif") {
-      output = [
-        h("p", null, "Not implemented (yet).")
-      ];
+    } else if (ext === "mp4") {
+      let videoId;
+
+      // TODO: image/video embed logic
     }
   } else {
     output = [

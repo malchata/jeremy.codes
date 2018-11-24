@@ -3,6 +3,10 @@
   z-index: 2;
 }
 
+output {
+  display: block;
+}
+
 p,
 kbd,
 h2,
@@ -24,11 +28,19 @@ h2 {
   text-decoration: underline;
 }
 
-p {
-  display: block;
+p,
+ul,
+ol {
+  margin-bottom: 1rem;
 }
 
 .prompt {
+  display: inline;
+}
+
+.prompt::after,
+.last-command::before {
+  content: "\00a0";
   display: inline;
 }
 
@@ -65,11 +77,10 @@ ul {
 }
 
 ol {
-  padding-left: 1.8125rem;
-  font-weight: 700;
+  padding-left: 2.0625rem;
 }
 
-li a {
+li {
   font-weight: 400;
 }
 
