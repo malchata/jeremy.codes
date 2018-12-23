@@ -1,15 +1,15 @@
 import { h, render, Component } from "preact";
+import Markup from "preact-markup";
 import CommandLink from "./js/components/CommandLink";
 import Prompt from "./js/components/Prompt";
 
 // Initially renders the terminal
-render(
-  h(Prompt, {
-    initialContent: h("p", null, "Hi! This is my website! Type (or tap) ", h(CommandLink, {
-      href: "/help.html"
-    }, "help"), " to see a list of commands.")
-  }), document.getElementById("term")
-);
+render(h(Prompt, {
+  initialContent: h(Markup, {
+    markup: document.getElementById("initial-content").innerHTML,
+    trim: false
+  })
+}), document.getElementById("term"), document.getElementById("initial-content"));
 
 const prompt = document.getElementById("prompt");
 const focuser = () => {

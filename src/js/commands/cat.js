@@ -30,24 +30,33 @@ export default (args) => {
           output = [
             h("p", null,
               h("strong", null,
+                h("u", null, "1.1.3")
+              ),
+              h("ul", null,
+                h("li", null, "- Accessibility update: Tweaked some aria attributes, added server rendered pages for some commands on scriptless clients."),
+                h("li", null, "- Added an entry to the ", h(CommandLink, null, "talks"), " list."),
+              )
+            ),
+            h("p", null,
+              h("strong", null,
                 h("u", null, "1.1.2")
               ),
-              h("ol", null,
-                h("li", null, "Performance update: Modern browsers now receive minimally transpiled and polyfilled code to reduce total JavaScript payload."),
-                h("li", null, "Added ", h(CommandLink, null, "talks"), " command, which lists slide decks and talk videos for a few events I've done."),
-                h("li", null, "Enhancements to dev experience.")
+              h("ul", null,
+                h("li", null, "- Performance update: Modern browsers now receive minimally transpiled and polyfilled code to reduce total JavaScript payload."),
+                h("li", null, "- Added ", h(CommandLink, null, "talks"), " command, which lists slide decks and talk videos for a few events I've done."),
+                h("li", null, "- Enhancements to dev experience.")
               )
             ),
             h("p", null,
               h("strong", null,
                 h("u", null, "1.1.0")
               ),
-              h("ol", null,
-                h("li", null, "Command history can be accessed through up and down arrows (", h("a", {
+              h("ul", null,
+                h("li", null, "- Command history can be accessed through up and down arrows (", h("a", {
                   href: "https://github.com/malchata/jeremy.codes/issues/2",
                   rel: "noopener"
                 }, "#2"), ")."),
-                h("li", null, "Added ", h(CommandLink, null, "history"), " command to show command history. History buffer can be cleared by entering ", h(CommandLink, null, "history -c"), " command (", h("a", {
+                h("li", null, "- Added ", h(CommandLink, null, "history"), " command to show command history. History buffer can be cleared by entering ", h(CommandLink, null, "history -c"), " command (", h("a", {
                   href: "https://github.com/malchata/jeremy.codes/issues/2",
                   rel: "noopener"
                 }, "#2"), ").")
@@ -57,8 +66,8 @@ export default (args) => {
               h("strong", null,
                 h("u", null, "1.0.0")
               ),
-              h("ol", null,
-                h("li", null, "Initial release.")
+              h("ul", null,
+                h("li", null, "- Initial release.")
               )
             )
           ];

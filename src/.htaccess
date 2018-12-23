@@ -26,46 +26,46 @@
 # Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" env=HTTPS
 
 # Static compression!
-# <Files *.js.br>
-#     AddType "text/javascript" .br
-#     AddEncoding br .br
-# </Files>
-# <Files *.mjs.br>
-#     AddType "text/javascript" .br
-#     AddEncoding br .br
-# </Files>
-# <Files *.css.br>
-#     AddType "text/css" .br
-#     AddEncoding br .br
-# </Files>
-# <Files *.svg.br>
-#     AddType "image/svg+xml" .br
-#     AddEncoding br .br
-# </Files>
-# <Files *.html.br>
-#     AddType "text/html" .br
-#     AddEncoding br .br
-# </Files>
-# <Files *.js.gz>
-#     AddType "text/javascript" .gz
-#     AddEncoding gzip .gz
-# </Files>
-# <Files *.mjs.gz>
-#     AddType "text/javascript" .gz
-#     AddEncoding gzip .gz
-# </Files>
-# <Files *.css.gz>
-#     AddType "text/css" .gz
-#     AddEncoding gzip .gz
-# </Files>
-# <Files *.svg.gz>
-#     AddType "image/svg+xml" .gz
-#     AddEncoding gzip .gz
-# </Files>
-# <Files *.html.gz>
-#     AddType "text/html" .gz
-#     AddEncoding gzip .gz
-# </Files>
+<Files *.js.br>
+    AddType "text/javascript" .br
+    AddEncoding br .br
+</Files>
+<Files *.mjs.br>
+    AddType "text/javascript" .br
+    AddEncoding br .br
+</Files>
+<Files *.css.br>
+    AddType "text/css" .br
+    AddEncoding br .br
+</Files>
+<Files *.svg.br>
+    AddType "image/svg+xml" .br
+    AddEncoding br .br
+</Files>
+<Files *.html.br>
+    AddType "text/html" .br
+    AddEncoding br .br
+</Files>
+<Files *.js.gz>
+    AddType "text/javascript" .gz
+    AddEncoding gzip .gz
+</Files>
+<Files *.mjs.gz>
+    AddType "text/javascript" .gz
+    AddEncoding gzip .gz
+</Files>
+<Files *.css.gz>
+    AddType "text/css" .gz
+    AddEncoding gzip .gz
+</Files>
+<Files *.svg.gz>
+    AddType "image/svg+xml" .gz
+    AddEncoding gzip .gz
+</Files>
+<Files *.html.gz>
+    AddType "text/html" .gz
+    AddEncoding gzip .gz
+</Files>
 
 # WebP rewriting
 RewriteEngine On
@@ -77,11 +77,11 @@ RewriteCond %{DOCUMENT_ROOT}/$1.webp -f [NC]
 RewriteRule (.+)\.(png|jpe?g|gif)$ $1.webp [T=image/webp,L]
 
 # Serve pre-compressed Brotli assets
-# RewriteCond %{HTTP:Accept-Encoding} br
-# RewriteCond %{REQUEST_FILENAME}.br -f
-# RewriteRule ^(.*)$ $1.br [L]
+RewriteCond %{HTTP:Accept-Encoding} br
+RewriteCond %{REQUEST_FILENAME}.br -f
+RewriteRule ^(.*)$ $1.br [L]
 
 # Serve pre-compressed gzip assets
-# RewriteCond %{HTTP:Accept-Encoding} gzip
-# RewriteCond %{REQUEST_FILENAME}.gz -f
-# RewriteRule ^(.*)$ $1.gz [L]
+RewriteCond %{HTTP:Accept-Encoding} gzip
+RewriteCond %{REQUEST_FILENAME}.gz -f
+RewriteRule ^(.*)$ $1.gz [L]

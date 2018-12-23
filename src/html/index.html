@@ -4,15 +4,20 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>
-      guest@jeremy.codes
+      jeremy.codes
     </title>
     <script>document.documentElement.classList.remove("no-js")</script>
     <link href="<%= htmlWebpackPlugin.files.css %>" rel="stylesheet">
   </head>
-  <body>
-    <main id="term"></main>
+  <body class="<%= htmlWebpackPlugin.options.commandName %>">
+    <main id="term" aria-live="polite">
+      <output id="initial-content"><%= htmlWebpackPlugin.options.initialContent %></output>
+      <output id="help-link">
+        <p>Lost? Read the <a class="command" href="/help.html">help</a>.</p>
+      </output>
+    </main>
     <script>
-      if ("paintWorklet" in CSS) {
+      if ("CSS" in window && "paintWorklet" in CSS) {
         CSS.paintWorklet.addModule("js/worklets/randots.js");
       }
     </script>

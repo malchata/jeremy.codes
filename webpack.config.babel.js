@@ -1,21 +1,22 @@
-const path = require("path");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
-const ImageminWebpackPlugin = require("imagemin-webpack-plugin").default;
-const CompressionWebpackPlugin = require("compression-webpack-plugin");
-const BrotliWebpackPlugin = require("brotli-webpack-plugin");
-const TerserWebpackPlugin = require("terser-webpack-plugin");
-const AssetsWebpackPlugin = require("assets-webpack-plugin");
-const babelConfigs = {
-  legacy: require("./.babelrc.legacy"),
-  modern: require("./.babelrc.modern")
-};
+// Built-ins
+import path from "path";
+
+// webpack stuff
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import CopyWebpackPlugin from "copy-webpack-plugin";
+import TerserWebpackPlugin from "terser-webpack-plugin";
+import AssetsWebpackPlugin from "assets-webpack-plugin";
+
+// App stuff
+import pkg from "./package.json";
+import getHtmlOutputs from "./build-scripts/get-html-outputs";
+import commandList from "./src/js/helpers/command-list";
 
 const devMode = process.env.NODE_ENV !== "production";
 const paths = {
-  src: path.join(__dirname, "src"),
-  dist: path.join(__dirname, "dist")
+  src: path.resolve(__dirname, "src"),
+  dist: path.resolve(__dirname, "dist")
 };
 const assetsWebpackPluginInstance = new AssetsWebpackPlugin({
   filename: "assets.json",
@@ -26,11 +27,6 @@ const assetsWebpackPluginInstance = new AssetsWebpackPlugin({
   ],
   entryPoints: true
 });
-
-let entryPoints = [
-  path.join(paths.src, "index.js"),
-  path.join(paths.src, "css", "styles.css")
-];
 
 let plugins = [
   new MiniCssExtractPlugin({
@@ -57,34 +53,11 @@ let plugins = [
     to: path.join(paths.dist, ".htaccess"),
     flatten: true,
     toType: "file"
-  }]),
-  new ImageminWebpackPlugin({
-    disable: devMode,
-    test: path.join(paths.src, "img", "*.png"),
-    pngquant: {
-      speed: 1,
-      strip: true
-    }
-  })
+  }])
 ];
-
-let commonPlugins = [];
-
-if (devMode === false) {
-  commonPlugins.push(new CompressionWebpackPlugin({
-    test: /\.(m?js|svg|css)$/i,
-    cache: true,
-    filename: "[path].gz"
-  }), new BrotliWebpackPlugin({
-    test: /\.(m?js|svg|css)$/i,
-    asset: "[path].br"
-  }));
-}
 
 const commonConfig = {
   mode: devMode ? "development" : "production",
-  entry: entryPoints,
-  devtool: "sourcemap",
   optimization: {
     splitChunks: {
       cacheGroups: {
@@ -94,20 +67,28 @@ const commonConfig = {
         },
         commons: {
           name: "commons",
-          chunks: "initial"
+          chunks (chunk) {
+            let excludedChunks = [
+              "articles-js",
+              "cat-js",
+              "whoami-js",
+              "sudo-js",
+              "talks-js"
+            ];
+
+            return excludedChunks.indexOf(chunk.name) === -1;
+          }
         }
       }
     }
-  },
-  stats: {
-    exclude: /\.map$/i,
-    excludeModules: /\.map$/i,
-    excludeAssets: /\.map$/i
   }
 };
 
-const modernConfig = Object.assign({
+const modernConfig = {
   name: "modern",
+  entry: [
+    path.resolve(paths.src, "index.js")
+  ],
   output: {
     filename: devMode ? "js/[name].mjs" : "js/[name].[chunkhash:8].mjs",
     chunkFilename: devMode ? "js/[name].mjs" : "js/[name].[chunkhash:8].mjs",
@@ -121,14 +102,10 @@ const modernConfig = Object.assign({
         exclude: /node_modules/i,
         use: {
           loader: "babel-loader",
-          options: babelConfigs.modern
+          options: {
+            envName: "modern"
+          }
         }
-      },
-      {
-        test: /\.css$/i,
-        use: [
-          devMode ? "style-loader" : "null-loader"
-        ]
       },
       {
         test: /\.(png|jpe?g|gif|svg|mp3)$/i,
@@ -142,22 +119,30 @@ const modernConfig = Object.assign({
       }
     ]
   },
+  optimization: {
+    minimizer: [
+      new TerserWebpackPlugin({
+        test: /\.m?js$/i,
+        parallel: 8,
+        terserOptions: {
+          ecma: 8,
+          module: true
+        }
+      })
+    ]
+  },
   plugins: [
-    assetsWebpackPluginInstance,
-    ...commonPlugins
-  ]
-}, commonConfig);
+    assetsWebpackPluginInstance
+  ],
+  ...commonConfig
+};
 
-modernConfig.optimization["minimizer"] = [
-  new TerserWebpackPlugin({
-    test: /\.m?js$/i,
-    parallel: true,
-    sourceMap: !devMode
-  })
-];
-
-const legacyConfig = Object.assign({
+const legacyConfig = {
   name: "legacy",
+  entry: [
+    path.join(paths.src, "css", "styles.css"),
+    path.join(paths.src, "index-legacy.js")
+  ],
   output: {
     filename: devMode ? "js/[name].js" : "js/[name].[chunkhash:8].js",
     chunkFilename: devMode ? "js/[name].js" : "js/[name].[chunkhash:8].js",
@@ -167,19 +152,20 @@ const legacyConfig = Object.assign({
   module: {
     rules: [
       {
-        test: /\.m?js$/i,
+        test: /\.js$/i,
         exclude: /node_modules/i,
         use: {
           loader: "babel-loader",
-          options: babelConfigs.legacy
+          options: {
+            envName: "legacy"
+          }
         }
       },
       {
         test: /\.css$/i,
         use: [
-          devMode ? "style-loader" : MiniCssExtractPlugin.loader,
-          "css-loader",
-          "postcss-loader"
+          MiniCssExtractPlugin.loader,
+          "css-loader"
         ]
       },
       {
@@ -196,8 +182,9 @@ const legacyConfig = Object.assign({
   plugins: [
     assetsWebpackPluginInstance,
     ...plugins,
-    ...commonPlugins
-  ]
-}, commonConfig);
+    ...getHtmlOutputs(commandList, paths.src, paths.dist, devMode)
+  ],
+  ...commonConfig
+};
 
-module.exports = [modernConfig, legacyConfig];
+export default [modernConfig, legacyConfig];

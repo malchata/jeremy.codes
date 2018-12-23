@@ -3,7 +3,6 @@ import localStore from "../helpers/local-store";
 import CommandLink from "./CommandLink";
 import commandList from "../helpers/command-list";
 import { version } from "../../../package.json";
-// import OnDemandLiveRegion from "on-demand-live-region";
 
 export default class Prompt extends Component {
   constructor(props) {
@@ -13,9 +12,6 @@ export default class Prompt extends Component {
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.commandLink = this.commandLink.bind(this);
     this.availableCommands = commandList.map(commandPair => commandPair[0]);
-    // this.liveRegion = new OnDemandLiveRegion({
-    //   parent: "#term > output"
-    // });
 
     let history = localStore("get", "history");
     this.setState({
@@ -34,7 +30,7 @@ export default class Prompt extends Component {
     });
 
     this.setState({
-      bufferContents: h("output", null, this.state.bufferContents, h("p", null, "This is version ", h("strong", null, h("u", null, version)), ". To find out what's new in this release, enter ", h(CommandLink, null, "cat CHANGELOG"), "."))
+      bufferContents: h("output", null, this.state.bufferContents, h("p", null, "Welcome to my website! To learn about me, try the ", h(CommandLink, null, "about"), " command. For available commands, try the ", h(CommandLink, null, "help"), " command. To find out what's new in version ", h("strong", null, h("u", null, version)), ", enter ", h(CommandLink, null, "cat CHANGELOG"), "."))
     });
 
     this.textInput.focus();

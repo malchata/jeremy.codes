@@ -16,6 +16,18 @@ export default () => {
         }, "Slides"),
         ")"
       ),
+      h("li", null, h("strong", null, "#PerfMatters 2018: "),
+        h("a", {
+          href: "https://www.youtube.com/watch?v=tH_hWoeVydM",
+          rel: "noopener"
+        }, "Demystifying Performance Timings"),
+        " (",
+        h("a", {
+          href: "https://jlwagner.net/talks/perf-timings/",
+          rel: "noopener"
+        }, "Slides"),
+        ")"
+      ),
       h("li", null, h("strong", null, "CSSConf AU 2018: "),
         h("a", {
           href: "https://www.youtube.com/watch?v=iEinIwNppW4",
