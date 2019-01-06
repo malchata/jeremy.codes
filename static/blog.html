@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>
+      Jeremy Wagner
+    </title>
+    <script>document.documentElement.classList.remove("no-js")</script>
+    <link href="https://fonts.googleapis.com/css?family=Overpass+Mono:700|Poppins:200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="/css/base.css" rel="stylesheet">
+    <link href="/css/header.css" rel="stylesheet">
+    <link href="/css/blog.css" rel="stylesheet">
+  </head>
+  <body>
+    <header class="header">
+      <a href="/" class="header__site-name">&gt; Jeremy Wagner</a>
+      <nav class="header__nav">
+        <a class="header__nav-link" href="/" rel="noopener">Writing</a>
+        <span class="header__nav-separator">::</span>
+        <a class="header__nav-link" href="/" rel="noopener">Speaking</a>
+        <span class="header__nav-separator">::</span>
+        <a class="header__nav-link" href="/" rel="noopener">Hire me</a>
+      </nav>
+    </header>
+    <main class="blog">
+      <section class="blog__intro">
+        <h1 class="blog__title">Faster Bulk Image Optimization in Bash</h1>
+        <p class="blog__date">20 April, 2017</p>
+      </section>
+      <section class="blog__content">
+        <p><a href="/blog/bulk-image-optimization-in-bash" rel="noopener">In an earlier post</a>, I talked about how you could use the <code>find</code> command in bash to find all files of a specific extension and pass them along to the image optimizer of your choosing. In instances where I don't have time to automate this task with a tool such as gulp, this has proved incredibly valuable.</p>
+        <p>Lately I've had to convert large batches of images for various projects. The <code>find</code> command, while serviceable in its own right with the <code>-exec</code> flag, only allows for serial processing of the files it finds. This is where <code>xargs</code> came in handy. With <code>xargs</code> I had a way of doing this work in parallel. I recently optimized a batch of about 500 JPEGs using jpeg-recompress. Below was the non-<code>xargs</code> way of accomplishing this task:</p>
+        <div class="blog__code"><pre><code>find ./ -type f -name '*.jpg' -exec jpeg-recompress --min 30 --max 70 --method smallfry --accurate --strip {} {} \;</code></pre></div>
+        <p>If you're not sure of all the parameters in this command, run jpeg-recompress with the <code>--help</code> flag and read <a href="/blog/bulk-image-optimization-in-bash">my earlier post</a> for some context. All I'm doing is passing files found by <code>find</code> one by one to jpeg-recompress with the <code>-exec</code> flag. The <code>{}</code> placeholders are file references. In my testing, the above command took roughly <strong>2 minutes and 10 seconds</strong> to complete. Now what about <code>xargs</code>? Let's first see how it's used in conjunction with <code>find</code>:</p>
+        <div class="blog__code"><pre><code>find ./ -type f -name '*.jpg' | xargs -P 32 -I {} jpeg-recompress --min 30 --max 70 --method smallfry --accurate --strip {} {}</code></pre></div>
+        <p>This command is identical to the first, up until the point that we pipe the output from <code>find</code> to <code>xargs</code> (in lieu of <code>find</code>'s <code>-exec</code> flag). The <code>-P 32</code> argument is the important bit here: It represents the number of simultaneous processes. The <code>-I {}</code> bit allows us to read the name of the file provided by <code>find</code> from standard input. The rest of the command is pretty much the same as before, but it works quite a bit faster. Using <code>xargs</code> cuts the total processing time down to <strong>1 minute and 10 seconds</strong>. Not too bad. Of course, your mileage may vary depending on your hardware.</p>
+        <p>Keep in mind: Don't set the number of concurrent processes too high, as you'll likely see diminishing returns. Furthermore, you might consume too many resources and potentially make your system unresponsive. Using <code>xargs</code> may not prove much more useful than serialized processing for small batches, but it really shines when you're optimizing a large batch of images with a CPU-intensive encoder like <a href="https://davidwalsh.name/jpeg-compression-guetzli" rel="noopener">Guetzli</a>. On a batch of approximately 500 images, I was able to reduce processing time with Guetzli from 150 minutes down to about 80. Definitely worth the trouble.</p>
+        <p>Here's hoping you can find some use for <code>xargs</code>, be it for image optimization or something else altogether. I hope this article helps!</p>
+      </section>
+    </section>
+    <script>
+      if (window.CSS.paintWorklet && window.CSS.registerProperty) {
+        CSS.registerProperty({
+          name: "--tile-size",
+          syntax: "<number>",
+          inherits: true,
+          initialValue: 8
+        });
+
+        CSS.registerProperty({
+          name: "--weight",
+          syntax: "<number>",
+          inherits: true,
+          initialValue: 0.25
+        });
+
+        CSS.registerProperty({
+          name: "--probability",
+          syntax: "<number>",
+          inherits: true,
+          initialValue: 0.5
+        });
+
+        CSS.registerProperty({
+          name: "--lines-color",
+          syntax: "<color>",
+          inherits: true,
+          initialValue: "#2a2b2a"
+        });
+
+        CSS.registerProperty({
+          name: "--lines-direction",
+          syntax: "<integer>",
+          inherits: true,
+          initialValue: 0.0
+        });
+
+        CSS.registerProperty({
+          name: "--lines-alpha",
+          syntax: "<number>",
+          inherits: true,
+          initialValue: 1.0
+        });
+
+        CSS.paintWorklet.addModule("/js/lines.js");
+      }
+    </script>
+  </body>
+</html>

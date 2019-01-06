@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>
+      Jeremy Wagner
+    </title>
+    <script>document.documentElement.classList.remove("no-js")</script>
+    <link href="https://fonts.googleapis.com/css?family=Overpass+Mono:700|Poppins:200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="/css/base.css" rel="stylesheet">
+    <link href="/css/header.css" rel="stylesheet">
+    <link href="/css/home.css" rel="stylesheet">
+  </head>
+  <body>
+    <header class="header">
+      <a href="/" class="header__site-name">&gt; Jeremy Wagner</a>
+      <nav class="header__nav">
+        <a class="header__nav-link" href="/" rel="noopener">Writing</a>
+        <span class="header__nav-separator">::</span>
+        <a class="header__nav-link" href="/" rel="noopener">Speaking</a>
+        <span class="header__nav-separator">::</span>
+        <a class="header__nav-link" href="/" rel="noopener">Hire me</a>
+      </nav>
+    </header>
+    <section class="section section--intro">
+      <div class="section__copy">
+        <h1 class="section__header">Hi, I'm Jeremy.</h1>
+        <h2 class="section__body">I'm a web developer, writer, and speaker. I love to make the web both fast and fun for everyone, everywhere.</h2>
+      </div>
+      <img class="section__image" width="384" height="583" src="/img/jeremy-384w.png" srcset="/img/jeremy-384w.png 384w, /img/jeremy-512w.png 512w, /img/jeremy-640w.png 640w, /img/jeremy-768w.png 768w, /img/jeremy-896w.png 896w, /img/jeremy-1024w.png 1024w, /img/jeremy-1152w.png 1152w" alt="A photo of Jeremy Wagner smiling with his arms crossed.">
+    </section>
+    <section class="section section--writing">
+      <div class="section__copy">
+        <h2 class="section__header">I write.</h2>
+        <h3 class="section__body">An integral part of my learning involves documenting how I learn. This has lead to several articles and couple of books. I also <a href="/" rel="noopener">write on my blog</a> when the mood strikes.</h3>
+      </div>
+      <div class="writing__books">
+        <a href="https://www.manning.com/books/web-performance-in-action?a_aid=webopt&amp;a_bid=63c31090" rel="noopener"><img class="section__image" width="128" height="160" src="/img/wpia-128w.png" srcset="/img/wpia-128w.png 128w, /img/wpia-256w.png 256w, /img/wpia-384w.png 384w, /img/wpia-512w.png 512w, /img/wpia-640w.png 640w" alt="The book cover for Web Performance in Action"></a>
+        <a href="https://www.smashingmagazine.com/ebooks/the-webp-manual/" rel="noopener"><img class="section__image" width="128" height="160" src="/img/twm-128w.png" srcset="/img/twm-128w.png 128w, /img/twm-256w.png 256w, /img/twm-384w.png 384w, /img/twm-512w.png 512w, /img/twm-640w.png 640w" alt="The book cover for The WebP Manual"></a>
+      </div>
+    </section>
+    <section class="section section--speaking">
+      <div class="section__copy">
+        <h2 class="section__header">I speak.</h2>
+        <h3 class="section__body">Sometimes I speak at conferences about what I do. Conferences such as <a href="https://www.youtube.com/watch?v=iEinIwNppW4" rel="noopener">CSSConf AU</a>, <a href="https://www.youtube.com/watch?v=tH_hWoeVydM" rel="noopener">PerfMatters</a>, and <a href="https://www.youtube.com/watch?v=md7Ua82fPe4" rel="noopener">Full Stack Fest</a> have invited me to speak. If you think I'd be a good fit at your event, <a href="/" rel="noopener">please reach out</a>.</h3>
+      </div>
+      <img class="section__image" width="384" height="448" src="/img/jeremy-speaking-384w.png" srcset="/img/jeremy-speaking-384w.png 384w, /img/jeremy-speaking-512w.png 512w, /img/jeremy-speaking-640w.png 640w, /img/jeremy-speaking-768w.png 768w, /img/jeremy-speaking-896w.png 896w, /img/jeremy-speaking-1024w.png 1024w" alt="A stylized photo of Jeremy Wagner speaking at an event.">
+    </section>
+    <section class="section section--work">
+      <div class="section__copy">
+        <h2 class="section__header">I work.</h2>
+        <h3 class="section__body">I work to make the web faster as an independent web performance consultant, and <a href="https://github.com/malchata" rel="noopener">dabble in writing open source software</a>. If you think I can help your company be faster on the web, do <a href="/" rel="noopener">get in touch</a>!</h3>
+      </div>
+      <img class="section__image" width="384" height="238" src="/img/keyboard-384w.png" srcset="/img/keyboard-384w.png 384w, /img/keyboard-512w.png 512w, /img/keyboard-640w.png 640w, /img/keyboard-768w.png 768w, /img/keyboard-896w.png 896w, /img/keyboard-1024w.png 1024w, /img/keyboard-1152w.png 1152w" alt="A stylized photo of a very stylish mechanical keyboard (it's a Night Fox).">
+    </section>
+    <script>
+      if (window.CSS.paintWorklet && window.CSS.registerProperty) {
+        CSS.registerProperty({
+          name: "--tile-size",
+          syntax: "<number>",
+          inherits: true,
+          initialValue: 8
+        });
+
+        CSS.registerProperty({
+          name: "--weight",
+          syntax: "<number>",
+          inherits: true,
+          initialValue: 0.25
+        });
+
+        CSS.registerProperty({
+          name: "--probability",
+          syntax: "<number>",
+          inherits: true,
+          initialValue: 0.5
+        });
+
+        CSS.registerProperty({
+          name: "--lines-color",
+          syntax: "<color>",
+          inherits: true,
+          initialValue: "#2a2b2a"
+        });
+
+        CSS.registerProperty({
+          name: "--lines-direction",
+          syntax: "<integer>",
+          inherits: true,
+          initialValue: 0.0
+        });
+
+        CSS.registerProperty({
+          name: "--lines-alpha",
+          syntax: "<number>",
+          inherits: true,
+          initialValue: 1.0
+        });
+
+        CSS.paintWorklet.addModule("/js/lines.js");
+      }
+    </script>
+  </body>
+</html>

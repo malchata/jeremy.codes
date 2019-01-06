@@ -1,0 +1,214 @@
+.section {
+  padding: 3.507vmax 4.285vmax;
+  --lines-tile-size: 64;
+  --lines-weight: 2;
+  --lines-probability: .5;
+  --lines-alpha: .125;
+  background-image: paint(lines);
+}
+
+.section--intro {
+  padding-bottom: 0;
+  background-color: var(--color3);
+  --lines-color: var(--color2);
+  border-bottom: .29em solid var(--color2);
+}
+
+.section__copy {
+  margin: 0 0 2.016vmax;
+  text-align: center;
+}
+
+.section__header {
+  padding: 1.343vmax 1.159vmax;
+  font-size: 10.614vmin;
+  margin: 0 0 2.659vmin;
+  font-weight: 600;
+  --lines-tile-size: 64;
+  --lines-weight: 2;
+  --lines-probability: .5;
+  --lines-alpha: .125;
+  --lines-direction: 1;
+  background-image: paint(lines);
+}
+
+.section--intro .section__header {
+  background-color: var(--color2);
+  box-shadow: .504vmax .504vmax 0 var(--color2-trans);
+  color: var(--color3);
+  --lines-color: var(--color3);
+}
+
+.section__body {
+  line-height: 1.319;
+  font-size: 6.1vmin;
+  font-weight: 300;
+}
+
+.section--intro .section__body {
+  color: var(--color4);
+}
+
+.section__image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.section--writing {
+  box-shadow: inset 0 .504vmax var(--color2-trans);
+  background-color: var(--color6);
+  --lines-color: var(--color3);
+  --lines-direction: 1;
+  background-image: paint(lines);
+  border-bottom: .29em solid var(--color3);
+}
+
+.section--writing a {
+  color: var(--color3);
+}
+
+.section--writing .section__header {
+  background-color: var(--color3);
+  box-shadow: .504vmax .504vmax 0 var(--color3-trans);
+  color: var(--color4);
+  --lines-direction: 0;
+  --lines-color: var(--color4);
+}
+
+.section--writing .section__body {
+  color: var(--color5);
+}
+
+.writing__books {
+  background-color: var(--color3);
+  box-shadow: .504vmax .504vmax 0 var(--color3-trans);
+  padding: 2.016vmax;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 2.016vmax;
+  --lines-direction: 0;
+  --lines-color: var(--color4);
+  background-image: paint(lines);
+}
+
+.section--speaking {
+  padding-bottom: 0;
+  box-shadow: inset 0 .504vmax var(--color3-trans);
+  background-color: var(--color1);
+  --lines-color: var(--color4);
+  border-bottom: .29em solid var(--color4);
+}
+
+.section--speaking a {
+  color: var(--color4);
+}
+
+.section--speaking .section__header {
+  background-color: var(--color4);
+  box-shadow: .504vmax .504vmax 0 var(--color4-trans);
+  color: var(--color1);
+  --lines-direction: 1;
+  --lines-color: var(--color1);
+}
+
+.section--speaking .section__body {
+  color: var(--color4);
+}
+
+.section--work {
+  box-shadow: inset 0 .504vmax var(--color4-trans);
+  background-color: var(--color2);
+  --lines-color: var(--color1);
+  border-bottom: .29em solid var(--color1);
+}
+
+.section--work a {
+  color: var(--color1);
+}
+
+.section--work .section__header {
+  background-color: var(--color1);
+  box-shadow: .504vmax .504vmax 0 var(--color1-trans);
+  color: var(--color2);
+  --lines-direction: 1;
+  --lines-color: var(--color2);
+}
+
+.section--work .section__body {
+  color: var(--color5);
+}
+
+@media (min-width: 25em) {
+  .section__body {
+    font-size: 4.265vmin;
+  }
+
+  .section {
+    border-bottom-width: .383em;
+  }
+}
+
+@media (min-width: 38em) {
+  .section {
+    display: grid;
+    padding: 3.236vmax;
+    grid-column-gap: 3.236vmax;
+    grid-template-columns: 2.016fr 1.159fr;
+    align-items: center;
+  }
+
+  .section--intro {
+    padding: 3.236vmax 3.236vmax 0;
+  }
+
+  .section__copy {
+    text-align: left;
+    align-self: center;
+    margin: 0;
+  }
+
+  .section__header {
+    font-size: 4.598vmax;
+  }
+
+  .section__body {
+    font-size: 2.643vmax;
+  }
+
+  .section--intro .section__image,
+  .section--speaking .section__image {
+    align-self: flex-end;
+  }
+
+  .section--writing,
+  .section--work {
+    grid-template-columns: 1.159fr 2.016fr;
+  }
+
+  .section--writing .section__copy,
+  .section--work .section__copy {
+    order: 1;
+    text-align: left;
+    margin: 0;
+  }
+
+  .writing__books {
+    padding: 1.159vmax;
+    grid-gap: 1.159vmax;
+  }
+
+  .writing__book {
+    position: relative;
+    z-index: 2;
+    border: .125em solid var(--color3-trans);
+  }
+
+  .section--speaking {
+    padding: 3.236vmax 3.236vmax 0;
+  }
+
+  .section {
+    border-bottom-width: .505em;
+  }
+}
