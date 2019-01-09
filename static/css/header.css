@@ -1,13 +1,19 @@
 .header {
   background: var(--color5);
-  padding: 1.319vmax;
+  box-shadow: 0 .5ch var(--color5-trans);
+  position: relative;
+  z-index: 6;
+}
+
+.header__container {
+  width: 100%;
+  max-width: 66rem;
+  padding: 1rem;
   overflow-x: auto;
   display: flex;
-  flex-flow: row nowrap;
+  justify-content: space-between;
+  margin: 0 auto;
   white-space: nowrap;
-  box-shadow: 0 .5vmax var(--color5-trans);
-  position: relative;
-  z-index: 3;
 }
 
 .header__nav {
@@ -15,7 +21,7 @@
 }
 
 .header__site-name {
-  margin: 0 5.333vh 0 0;
+  margin: 0 5.333ch 0 0;
 }
 
 .header__site-name,
@@ -25,7 +31,7 @@
   font-family: var(--monospace);
   text-decoration: none;
   color: var(--color2);
-  font-size: 6vw;
+  font-size: var(--p);
   font-weight: 700;
   position: relative;
   text-transform: lowercase;
@@ -33,11 +39,10 @@
 
 .header__site-name:before,
 .header__nav-link:before {
-  font-size: 0;
   content: "";
   display: block;
   width: 0%;
-  height: .5vh;
+  height: .25ch;
   background-color: var(--color4);
   position: absolute;
   bottom: -.5vh;
@@ -56,22 +61,5 @@
 }
 
 .header__nav-separator {
-  margin: 0 1.333vh;
-}
-
-@media (min-width: 38em) {
-  .header {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .header:after {
-    content: none;
-  }
-
-  .header__site-name,
-  .header__nav-link,
-  .header__nav-separator {
-    font-size: 2vmax;
-  }
+  margin: 0 .666ch;
 }

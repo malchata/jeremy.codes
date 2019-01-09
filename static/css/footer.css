@@ -1,0 +1,50 @@
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  height: 6rem;
+  padding-bottom: 1.5rem;
+  position: relative;
+  z-index: 3;
+  mix-blend-mode: multiply;
+}
+
+.footer:before,
+.footer:after {
+  content: "";
+  width: 100%;
+  height: 6rem;
+  display: block;
+  position: absolute;
+  bottom: 0;
+}
+
+.footer:before {
+  height: 6rem;
+  background-color: var(--color1);
+  -webkit-clip-path: polygon(0 5rem, 100% 0, 100% 100%, 0 100%);
+  clip-path: polygon(0 5rem, 100% 0, 100% 100%, 0 100%);
+  z-index: 3;
+}
+
+.footer:after {
+  height: 6rem;
+  background-color: var(--color3);
+  -webkit-clip-path: polygon(0 0, 100% 5rem, 100% 100%, 0 100%);
+  clip-path: polygon(0 0, 100% 5rem, 100% 100%, 0 100%);
+  z-index: 4;
+}
+
+.footer__links {
+  width: 100%;
+  max-width: 66rem;
+  margin: 0 auto;
+  position: relative;
+  z-index: 5;
+  color: var(--color4);
+  font-weight: 300;
+  padding: 0 1rem;
+  font-size: var(--tiny);
+  text-shadow: .126ch .126ch var(--color5);
+  line-height: 1.319;
+}

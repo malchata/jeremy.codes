@@ -1,6 +1,6 @@
 .blog__intro {
   position: relative;
-  padding: 3.507vmax 4.285vmax 8.047vmax;
+  padding: 2rem .625rem 6rem;
   text-align: center;
 }
 
@@ -16,31 +16,39 @@
   mix-blend-mode: multiply;
   --lines-tile-size: 64;
   --lines-weight: 2;
-  --lines-probability: .5;
-  --lines-alpha: .5;
+  --lines-probability: .25;
+  --lines-alpha: .375;
   --lines-color: var(--color2);
+  background-image: url("/img/pattern-peach.svg");
+  background-size: 16rem 16rem;
   background-image: paint(lines);
+}
+
+.blog__intro:after {
+  background-position: 8rem 8rem;
 }
 
 .blog__intro:after {
   left: 0;
   background-color: var(--color1);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 75%);
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 75%);
 }
 
 .blog__intro:before {
   right: 0;
   background-color: var(--color3);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
   clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
 }
 
 .blog__title {
-  font-size: 4.625vmax;
-  margin: 0 0 1.528vmax;
+  font-size: var(--h1);
+  margin: 0 0 .666ch;
 }
 
 .blog__date {
-  font-size: 2.659vmax;
+  font-size: var(--h3);
 }
 
 .blog__title,
@@ -52,16 +60,31 @@
 }
 
 .blog__content {
-  font-size: 2.659vmax;
-  width: 83.333%;
-  max-width: 90em;
-  margin: 6.1vmax auto 0;
+  font-size: var(--p);
+  width: 100%;
+  max-width: 66rem;
+  padding: 0 1rem;
+  margin: 5ch auto 0;
 }
 
 .blog__content p {
   line-height: 1.618;
   font-weight: 300;
   margin: 0 0 2.016ch;
+  color: var(--color5);
+}
+
+.blog__content p:first-of-type {
+  font-size: var(--h4);
+}
+
+.blog__content p:last-of-type:after {
+  content: "";
+  display: inline-block;
+  width: 1.333ch;
+  height: 1.333ch;
+  margin: 0 0 0 .666ch;
+  background-color: var(--color1);
 }
 
 .blog__content code {
@@ -69,11 +92,16 @@
   color: var(--color4);
   background-color: var(--color1);
   padding: 0 .29ch;
+  margin: 0 .133ch 0 0;
   text-shadow: .167ch .167ch var(--color5);
+  display: inline-block;
+  line-height: 1.319;
 }
 
 .blog__content a {
   color: var(--color1);
+  font-weight: 600;
+  text-decoration-color: var(--color3);
 }
 
 .blog__code {
@@ -81,7 +109,7 @@
   font-weight: 300;
   margin: 0 0 2.016ch;
   background-color: var(--color3);
-  border-radius: .25em;
+  border-radius: .25rem;
 }
 
 .blog__code pre {
@@ -91,38 +119,4 @@
 
 .blog__code pre code {
   background-color: transparent;
-}
-
-@media (min-width: 38em) {
-  .blog__content {
-    font-size: 2.371vmax;
-  }
-
-  .blog__date {
-    font-size: 2.659vmax;
-  }
-}
-
-@media (min-width: 60em) {
-  .blog__content {
-    font-size: 2.016vmax;
-  }
-}
-
-@media (min-width: 80em) {
-  .blog__content {
-    font-size: 1.771vmax;
-  }
-}
-
-@media (min-width: 100em) {
-  .blog__content {
-    font-size: 1.528vmax;
-  }
-}
-
-@media (min-width: 110em) {
-  .blog__content {
-    font-size: 1.159vmax;
-  }
 }

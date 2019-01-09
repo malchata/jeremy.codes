@@ -1,0 +1,136 @@
+.writing__intro {
+  --lines-tile-size: 64;
+  --lines-weight: 2;
+  --lines-probability: .25;
+  --lines-alpha: .375;
+  --lines-color: var(--color2);
+  background-color: var(--color1);
+  background-image: url("/img/pattern-peach.svg");
+  background-size: 16rem 16rem;
+  background-image: paint(lines);
+  padding: 1.75rem 1rem 4rem;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 2.25rem));
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 2.25rem));
+  position: relative;
+  margin: 0 0 1rem;
+}
+
+.writing__intro:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2.125rem;
+  background-color: var(--color5-trans);
+  display: block;
+  position: absolute;
+  content: "";
+  mix-blend-mode: luminosity;
+  -webkit-clip-path: polygon(0 0, 100% 66.666%, 100% 100%, 0 calc(100% - 1.5rem));
+  clip-path: polygon(0 0, 100% 66.666%, 100% 100%, 0 calc(100% - 1.5rem));
+}
+
+.writing__header {
+  font-size: var(--h1);
+  margin: 0 auto;
+  max-width: 64rem;
+  line-height: 1.319;
+  color: var(--color4);
+  text-shadow: .126ch .126ch var(--color5);
+  font-weight: 600;
+}
+
+.writing__archive {
+  list-style: none;
+  max-width: 66rem;
+  padding: 0 1rem;
+  margin: 0 auto;
+}
+
+.writing__year {
+  margin: 0 0 3ch;
+}
+
+.writing__year__header {
+  font-size: var(--h2);
+  color: var(--color1);
+  text-shadow: .126ch .126ch var(--color2-trans);
+  font-weight: 600;
+  line-height: 1.1595;
+  position: relative;
+  margin: 0 0 .666ch;
+}
+
+.writing__year__header:after {
+  content: "";
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: -.125rem;
+  display: block;
+  height: .125rem;
+  background-image: linear-gradient(22.5deg, var(--color1), var(--color2));
+}
+
+.article {
+  line-height: 1.618;
+  margin: 0 0 1.333ch 1.666%;
+}
+
+.article:last-child {
+  margin-bottom: 0;
+}
+
+.article__date {
+  font-size: var(--p);
+  font-weight: 600;
+  color: var(--color3);
+  display: block;
+}
+
+.article__title,
+.article__publication {
+  font-style: italic;
+}
+
+.article__title {
+  font-size: var(--h4);
+  font-weight: 600;
+  color: var(--color1);
+}
+
+.article__publication {
+  font-size: var(--p);
+  font-weight: 300;
+  color: var(--color3);
+  display: block;
+  text-decoration: none;
+}
+
+.writing__footnote {
+  color: var(--color5);
+  font-size: var(--tiny);
+  font-style: italic;
+  font-weight: 300;
+  max-width: 66rem;
+  padding: 0 1rem;
+  margin: 0 auto 2ch;
+  text-align: right;
+}
+
+@media (min-width: 34em) {
+  .article {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-flow: row wrap;
+  }
+
+  .article__date {
+    flex-basis: 30.002%;
+  }
+
+  .article__meta {
+    flex-basis: 66.666%;
+  }
+}

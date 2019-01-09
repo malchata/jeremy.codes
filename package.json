@@ -43,11 +43,11 @@
     "babel-eslint": "^10.0.1",
     "cssnano": "^4.1.8",
     "cwebp-bin": "^5.0.0",
-    "eslint": "^5.11.1",
-    "eslint-plugin-react": "^7.12.0",
+    "eslint": "^5.12.0",
+    "eslint-plugin-react": "^7.12.3",
     "express": "^4.16.4",
     "pngquant-bin": "^5.0.1",
     "preact-render-to-string": "^4.1.0",
-    "rimraf": "^2.6.2"
+    "rimraf": "^2.6.3"
   }
 }

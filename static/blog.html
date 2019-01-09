@@ -11,22 +11,25 @@
     <link href="/css/base.css" rel="stylesheet">
     <link href="/css/header.css" rel="stylesheet">
     <link href="/css/blog.css" rel="stylesheet">
+    <link href="/css/footer.css" rel="stylesheet">
   </head>
   <body>
     <header class="header">
-      <a href="/" class="header__site-name">&gt; Jeremy Wagner</a>
-      <nav class="header__nav">
-        <a class="header__nav-link" href="/" rel="noopener">Writing</a>
-        <span class="header__nav-separator">::</span>
-        <a class="header__nav-link" href="/" rel="noopener">Speaking</a>
-        <span class="header__nav-separator">::</span>
-        <a class="header__nav-link" href="/" rel="noopener">Hire me</a>
-      </nav>
+      <div class="header__container">
+        <a href="/" class="header__site-name">&gt; Jeremy Wagner</a>
+        <nav class="header__nav">
+          <a class="header__nav-link" href="/" rel="noopener">Writing</a>
+          <span class="header__nav-separator">::</span>
+          <a class="header__nav-link" href="https://noti.st/malchata" rel="noopener">Speaking</a>
+          <span class="header__nav-separator">::</span>
+          <a class="header__nav-link" href="/" rel="noopener">Contact</a>
+        </nav>
+      </div>
     </header>
     <main class="blog">
       <section class="blog__intro">
         <h1 class="blog__title">Faster Bulk Image Optimization in Bash</h1>
-        <p class="blog__date">20 April, 2017</p>
+        <h3 class="blog__date">20 April, 2017</h3>
       </section>
       <section class="blog__content">
         <p><a href="/blog/bulk-image-optimization-in-bash" rel="noopener">In an earlier post</a>, I talked about how you could use the <code>find</code> command in bash to find all files of a specific extension and pass them along to the image optimizer of your choosing. In instances where I don't have time to automate this task with a tool such as gulp, this has proved incredibly valuable.</p>
@@ -38,7 +41,12 @@
         <p>Keep in mind: Don't set the number of concurrent processes too high, as you'll likely see diminishing returns. Furthermore, you might consume too many resources and potentially make your system unresponsive. Using <code>xargs</code> may not prove much more useful than serialized processing for small batches, but it really shines when you're optimizing a large batch of images with a CPU-intensive encoder like <a href="https://davidwalsh.name/jpeg-compression-guetzli" rel="noopener">Guetzli</a>. On a batch of approximately 500 images, I was able to reduce processing time with Guetzli from 150 minutes down to about 80. Definitely worth the trouble.</p>
         <p>Here's hoping you can find some use for <code>xargs</code>, be it for image optimization or something else altogether. I hope this article helps!</p>
       </section>
-    </section>
+    </main>
+    <footer class="footer">
+      <div class="footer__links">
+        &copy; 2019 Jeremy Wagner
+      </div>
+    </footer>
     <script>
       if (window.CSS.paintWorklet && window.CSS.registerProperty) {
         CSS.registerProperty({

@@ -16,6 +16,24 @@
   /* Fonts */
   --sans: "Poppins", sans-serif;
   --monospace: "Overpass Mono", monospace;
+
+  /* Base Type Sizes */
+  --h1: calc(2.25rem + (2.968 - 2.25) * ((100vw - 20rem) / (60 - 20)));
+  --h2: calc(1.94rem + (2.25 - 1.94) * ((100vw - 20rem) / (60 - 20)));
+  --h3: calc(1.674rem + (1.94 - 1.674) * ((100vw - 20rem) / (60 - 20)));
+  --h4: calc(1.443rem + (1.674 - 1.443) * ((100vw - 20rem) / (60 - 20)));
+  --p: calc(1.245rem + (1.443 - 1.245) * ((100vw - 20rem) / (60 - 20)));
+  --tiny: calc(.796rem + (.926 - .796) * ((100vw - 20rem) / (60 - 20)));
+}
+
+@media (min-width: 60em) {
+  :root {
+    --h1: 2.967rem;
+    --h2: 2.249675rem;
+    --h3: 1.9402125rem;
+    --h4: 1.67331875rem;
+    --p: 1.4431375rem;
+  }
 }
 
 img {
@@ -107,6 +125,11 @@ video {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
+}
+
+sup {
+  vertical-align: super;
+  font-size: 1ch;
 }
 
 article,
