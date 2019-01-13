@@ -1,13 +1,17 @@
 .section {
   position: relative;
-  padding: 2rem 1rem;
+  padding: 3.5rem 1rem;
   --lines-tile-size: 64;
   --lines-weight: 2;
   --lines-probability: .5;
-  --lines-alpha: .125;
+  --lines-alpha: .2;
   background-image: url("/img/pattern-black.svg");
   background-size: 16rem 16rem;
   background-image: paint(lines);
+}
+
+.section a {
+  font-weight: 600;
 }
 
 .section:before {
@@ -23,7 +27,7 @@
 }
 
 .section--intro {
-  padding-top: 2rem;
+  padding-top: 1.5rem;
   padding-bottom: 0;
   background-color: var(--color3);
   --lines-color: var(--color2);
@@ -60,7 +64,7 @@
 .section__body {
   line-height: 1.618;
   font-size: var(--h4);
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .section--intro .section__body {
@@ -75,7 +79,6 @@
 }
 
 .section--writing {
-  padding-bottom: 4rem;
   background-color: var(--color4);
   --lines-color: var(--color3);
   --lines-direction: 1;
@@ -154,7 +157,6 @@
 .section--work {
   background-color: var(--color2);
   --lines-color: var(--color1);
-  padding-top: 4rem;
   padding-bottom: 7rem;
   margin-bottom: -6rem;
   -webkit-clip-path: polygon(0 0, 100% 1.5rem, 100% 100%, 0 100%);
@@ -183,7 +185,7 @@
   color: var(--color5);
 }
 
-@media (min-width: 40em) {
+@media (min-width: 40rem) {
   .section__container {
     display: grid;
     grid-column-gap: 2rem;
@@ -271,7 +273,7 @@
   }
 }
 
-@media (min-width: 50em) {
+@media (min-width: 50rem) {
   .books a {
     padding: .625em;
   }
@@ -287,7 +289,7 @@
   }
 }
 
-@media (min-width: 60em) {
+@media (min-width: 60rem) {
   .books a {
     padding: .75em;
   }

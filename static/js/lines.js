@@ -1,3 +1,5 @@
+/* global registerPaint */
+
 class LinesPainter {
   constructor() {
   }
@@ -18,7 +20,7 @@ class LinesPainter {
     const color = properties.get("--lines-color").toString();
     const weight = parseFloat(properties.get("--lines-weight"));
     const probability = parseFloat(properties.get("--lines-probability"));
-    const crosshatchProbability = probability + (Math.abs(probability - 1) / 2)
+    const crosshatchProbability = probability + (Math.abs(probability - 1) / 2);
     const direction = !!parseInt(properties.get("--lines-direction"));
     const alpha = parseFloat(properties.get("--lines-alpha"));
 

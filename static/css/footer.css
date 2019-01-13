@@ -42,7 +42,7 @@
   position: relative;
   z-index: 5;
   color: var(--color4);
-  font-weight: 300;
+  font-weight: 400;
   padding: 0 1rem;
   font-size: var(--tiny);
   text-shadow: .126ch .126ch var(--color5);

@@ -60,6 +60,14 @@
   width: 100%;
 }
 
+.header__nav-link--on {
+  color: var(--color4);
+}
+
+.header__nav-link--on:before {
+  width: 100%;
+}
+
 .header__nav-separator {
   margin: 0 .666ch;
 }

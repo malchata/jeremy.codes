@@ -9,15 +9,15 @@
   z-index: -1;
   content: "";
   display: block;
-  bottom: -3vmax;
+  top: 0;
   position: absolute;
   width: 100%;
-  height: 50vmax;
+  height: 100%;
   mix-blend-mode: multiply;
   --lines-tile-size: 64;
   --lines-weight: 2;
   --lines-probability: .25;
-  --lines-alpha: .375;
+  --lines-alpha: .2;
   --lines-color: var(--color2);
   background-image: url("/img/pattern-peach.svg");
   background-size: 16rem 16rem;
@@ -69,7 +69,7 @@
 
 .blog__content p {
   line-height: 1.618;
-  font-weight: 300;
+  font-weight: 400;
   margin: 0 0 2.016ch;
   color: var(--color5);
 }
@@ -106,7 +106,7 @@
 
 .blog__code {
   line-height: 1.618;
-  font-weight: 300;
+  font-weight: 400;
   margin: 0 0 2.016ch;
   background-color: var(--color3);
   border-radius: .25rem;
@@ -119,4 +119,16 @@
 
 .blog__code pre code {
   background-color: transparent;
+}
+
+@media (min-width: 40rem) {
+  .blog__intro {
+    padding-bottom: 5rem;
+  }
+}
+
+@media (min-width: 50rem) {
+  .blog__intro {
+    padding-bottom: 4.5rem;
+  }
 }

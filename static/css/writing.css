@@ -1,45 +1,3 @@
-.writing__intro {
-  --lines-tile-size: 64;
-  --lines-weight: 2;
-  --lines-probability: .25;
-  --lines-alpha: .375;
-  --lines-color: var(--color2);
-  background-color: var(--color1);
-  background-image: url("/img/pattern-peach.svg");
-  background-size: 16rem 16rem;
-  background-image: paint(lines);
-  padding: 1.75rem 1rem 4rem;
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 2.25rem));
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 2.25rem));
-  position: relative;
-  margin: 0 0 1rem;
-}
-
-.writing__intro:after {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2.125rem;
-  background-color: var(--color5-trans);
-  display: block;
-  position: absolute;
-  content: "";
-  mix-blend-mode: luminosity;
-  -webkit-clip-path: polygon(0 0, 100% 66.666%, 100% 100%, 0 calc(100% - 1.5rem));
-  clip-path: polygon(0 0, 100% 66.666%, 100% 100%, 0 calc(100% - 1.5rem));
-}
-
-.writing__header {
-  font-size: var(--h1);
-  margin: 0 auto;
-  max-width: 64rem;
-  line-height: 1.319;
-  color: var(--color4);
-  text-shadow: .126ch .126ch var(--color5);
-  font-weight: 600;
-}
-
 .writing__archive {
   list-style: none;
   max-width: 66rem;
@@ -101,7 +59,7 @@
 
 .article__publication {
   font-size: var(--p);
-  font-weight: 300;
+  font-weight: 400;
   color: var(--color3);
   display: block;
   text-decoration: none;
@@ -111,14 +69,14 @@
   color: var(--color5);
   font-size: var(--tiny);
   font-style: italic;
-  font-weight: 300;
+  font-weight: 400;
   max-width: 66rem;
   padding: 0 1rem;
   margin: 0 auto 2ch;
   text-align: right;
 }
 
-@media (min-width: 34em) {
+@media (min-width: 34rem) {
   .article {
     display: flex;
     justify-content: space-between;

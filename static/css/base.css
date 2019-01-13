@@ -5,6 +5,7 @@
   --color3: #541388;
   --color4: #f7fff7;
   --color5: #131515;
+  --color6: #fafafa;
 
   /* Transparent Color Variants */
   --color1-trans: #b8336a66;
@@ -18,21 +19,21 @@
   --monospace: "Overpass Mono", monospace;
 
   /* Base Type Sizes */
-  --h1: calc(2.25rem + (2.968 - 2.25) * ((100vw - 20rem) / (60 - 20)));
-  --h2: calc(1.94rem + (2.25 - 1.94) * ((100vw - 20rem) / (60 - 20)));
-  --h3: calc(1.674rem + (1.94 - 1.674) * ((100vw - 20rem) / (60 - 20)));
-  --h4: calc(1.443rem + (1.674 - 1.443) * ((100vw - 20rem) / (60 - 20)));
-  --p: calc(1.245rem + (1.443 - 1.245) * ((100vw - 20rem) / (60 - 20)));
+  --h1: calc(2rem + (2.319 - 2) * ((100vw - 20rem) / (60 - 20)));
+  --h2: calc(1.6736401674rem + (2 - 1.6736401674) * ((100vw - 20rem) / (60 - 20)));
+  --h3: calc(1.4876079469rem + (1.6736401674 - 1.4876079469) * ((100vw - 20rem) / (60 - 20)));
+  --h4: calc(1.2829736497rem + (1.4876079469 - 1.2829736497) * ((100vw - 20rem) / (60 - 20)));
+  --p: calc(1.1064887018rem + (1.2829736497 - 1.1064887018) * ((100vw - 20rem) / (60 - 20)));
   --tiny: calc(.796rem + (.926 - .796) * ((100vw - 20rem) / (60 - 20)));
 }
 
 @media (min-width: 60em) {
   :root {
-    --h1: 2.967rem;
-    --h2: 2.249675rem;
-    --h3: 1.9402125rem;
-    --h4: 1.67331875rem;
-    --p: 1.4431375rem;
+    --h1: 2.24841875rem;
+    --h2: 1.92779375rem;
+    --h3: 1.63248125rem;
+    --h4: 1.44233125rem;
+    --p: 1.243925rem;
   }
 }
 
@@ -59,10 +60,6 @@ p,
 blockquote,
 pre,
 a,
-abbr,
-acronym,
-address,
-big,
 cite,
 code,
 del,
@@ -79,11 +76,7 @@ strike,
 strong,
 sub,
 sup,
-tt,
-var,
-b,
 u,
-i,
 dl,
 dt,
 dd,
@@ -109,14 +102,10 @@ figure,
 figcaption,
 footer,
 header,
-hgroup,
-menu,
 nav,
 output,
 section,
 summary,
-time,
-mark,
 audio,
 video {
   margin: 0;
@@ -125,6 +114,14 @@ video {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
+}
+
+strong {
+  font-weight: 600;
+}
+
+em {
+  font-style: italic;
 }
 
 sup {
@@ -150,6 +147,7 @@ body {
   line-height: 1;
   font-family: var(--sans);
   background-color: var(--color4);
+  font-size: 16px;
 }
 
 ol,

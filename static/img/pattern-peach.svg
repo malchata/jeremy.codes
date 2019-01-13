@@ -6,7 +6,7 @@
         stroke: #ffc09f;
         stroke-miterlimit: 10;
         stroke-width: 2px;
-        opacity: 0.5;
+        opacity: 0.2;
       }
     </style>
   </defs>
