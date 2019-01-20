@@ -5,10 +5,9 @@
   "main": "./src/index.js",
   "scripts": {
     "clean": "npx rimraf dist",
-    "build": "npm run clean && npm run webpack && npm run cssnano && npm run imageopt && npm run compress",
+    "build": "npm run clean && npm run webpack && npm run imageopt && npm run compress",
     "webpack": "NODE_ENV=production npx webpack --progress",
     "compress": "npm run gzip && npm run brotli",
-    "cssnano": "echo \"Minifying CSS...\" && find ./dist -type f -name '*.css' | xargs -P 32 -I {} npx cssnano {} {} \\;",
     "gzip": "echo \"Statically compressing assets (gzip)...\" && find -E ./dist -regex '.*\\.(m?js|css|xml|svg|html)' -exec gzip -9k {} \\;",
     "brotli": "echo \"Statically compressing assets (brotli)...\" && find -E ./dist -regex '.*\\.(m?js|css|xml|svg|html)' -exec brotli -o {}.br -k -q 11 {} \\;",
     "imageopt": "echo \"Optimizing images...\" && npm run imageopt:png && npm run imageopt:png-placeholder && npm run imageopt:webp-png && npm run imageopt:svg",

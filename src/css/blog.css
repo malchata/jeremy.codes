@@ -18,7 +18,6 @@
   --lines-weight: 3;
   --lines-probability: .25;
   --lines-alpha: .1;
-  --lines-color: #ffc09f;
   background-image: url("/img/pattern-peach.svg");
   background-size: 16rem 16rem;
 }
@@ -35,14 +34,12 @@
 .blog__intro:after {
   left: 0;
   background-color: #b8336a;
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 75%);
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 75%);
 }
 
 .blog__intro:before {
   right: 0;
   background-color: #541388;
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
   clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
 }
 

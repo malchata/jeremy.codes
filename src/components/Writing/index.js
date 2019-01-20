@@ -15,7 +15,7 @@ export default () => (
             date="28 December"
             link="https://calendar.perfplanet.com/2018/doing-differential-serving-in-2019/"
             title="Doing Differential Serving in 2019"
-            publication="Performance Calendar"
+            publication="Performance Calendar (2018)"
             publicationLink="https://calendar.perfplanet.com/2018/"
           />
           <ArticleEntry
@@ -106,7 +106,7 @@ export default () => (
             date="21 December"
             link="https://calendar.perfplanet.com/2017/3-tips-for-faster-font-loading/"
             title="3 Tips for Faster Font Loading"
-            publication="Performance Calendar"
+            publication="Performance Calendar (2017)"
             publicationLink="https://calendar.perfplanet.com/2017/"
           />
           <ArticleEntry
@@ -196,9 +196,9 @@ export default () => (
         <ol className="articles">
           <ArticleEntry
             date="10 December"
-            link="Speed Versus Speed to Market"
-            title="https://calendar.perfplanet.com/2016/speed-versus-speed-to-market/"
-            publication="Performance Calendar"
+            link="https://calendar.perfplanet.com/2016/speed-versus-speed-to-market/"
+            title="Speed Versus Speed to Market"
+            publication="Performance Calendar (2016)"
             publicationLink="https://calendar.perfplanet.com/2016/"
           />
           <ArticleEntry

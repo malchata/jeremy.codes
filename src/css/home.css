@@ -38,7 +38,6 @@
   padding-bottom: 0;
   background-color: #541388;
   background-image: url("/img/pattern-peach.svg");
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 1.5rem));
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 1.5rem));
   margin-bottom: -1.5rem;
 }
@@ -58,7 +57,6 @@
   font-size: 2.24841875rem;
   margin: 0 0 .666ch;
   font-weight: 600;
-  -webkit-clip-path: polygon(0 0, 100% .25rem, 100% calc(100% - .25rem), 0 100%);
   clip-path: polygon(0 0, 100% .25rem, 100% calc(100% - .25rem), 0 100%);
   box-shadow: inset .166ch 0 0 #13151566;
 }
@@ -89,13 +87,11 @@
   --lines-direction: 1;
   background-image: url("/img/pattern-purple.svg");
   background-size: 16rem 16rem;
-  -webkit-clip-path: polygon(0 0, 100% 1.5rem, 100% calc(100% - 1.5rem), 0 100%);
   clip-path: polygon(0 0, 100% 1.5rem, 100% calc(100% - 1.5rem), 0 100%);
   margin-bottom: -1.5rem;
 }
 
 .section--writing:before {
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 .15rem);
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 .15rem);
 }
 
@@ -107,7 +103,6 @@
   background-color: #541388;
   box-shadow: inset -.166ch 0 0 #13151566;
   color: #f7fff7;
-  -webkit-clip-path: polygon(0 .25rem, 100% 0, 100% 100%, 0 calc(100% - .25rem));
   clip-path: polygon(0 .25rem, 100% 0, 100% 100%, 0 calc(100% - .25rem));
 }
 
@@ -139,13 +134,11 @@
   padding-bottom: 0;
   background-color: #b8336a;
   background-image: url("/img/pattern-white.svg");
-  -webkit-clip-path: polygon(0 1.5rem, 100% 0, 100% 100%, 0 calc(100% - 1.5rem));
   clip-path: polygon(0 1.5rem, 100% 0, 100% 100%, 0 calc(100% - 1.5rem));
   margin-bottom: -1.5rem;
 }
 
 .section--speaking:before {
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% calc(100% - 1.5rem), 0 calc(100% - .375rem));
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 1.5rem), 0 calc(100% - .375rem));
 }
 
@@ -167,12 +160,10 @@
   background-color: #ffc09f;
   padding-bottom: 7rem;
   margin-bottom: -6rem;
-  -webkit-clip-path: polygon(0 0, 100% 1.5rem, 100% 100%, 0 100%);
   clip-path: polygon(0 0, 100% 1.5rem, 100% 100%, 0 100%);
 }
 
 .section--work:before {
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 .15rem);
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 .15rem);
 }
 
@@ -185,7 +176,6 @@
   box-shadow: .25ch .25ch 0 #b8336a66;
   color: #ffc09f;
   box-shadow: inset -.166ch 0 0 #13151566;
-  -webkit-clip-path: polygon(0 .25rem, 100% 0, 100% 100%, 0 calc(100% - .25rem));
   clip-path: polygon(0 .25rem, 100% 0, 100% 100%, 0 calc(100% - .25rem));
 }
 

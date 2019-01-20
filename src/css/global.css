@@ -196,6 +196,10 @@ table {
   transition: width .1s ease-out;
 }
 
+.header__nav-link:last-child {
+  margin: 0 1rem 0 0;
+}
+
 .header__site-name:hover,
 .header__nav-link:hover {
   color: #f7fff7;
@@ -245,7 +249,6 @@ table {
 .footer:before {
   height: 6rem;
   background: #b8336a;
-  -webkit-clip-path: polygon(0 5rem, 100% 0, 100% 100%, 0 100%);
   clip-path: polygon(0 5rem, 100% 0, 100% 100%, 0 100%);
   z-index: 3;
 }
@@ -253,7 +256,6 @@ table {
 .footer:after {
   height: 6rem;
   background: #541388;
-  -webkit-clip-path: polygon(0 0, 100% 5rem, 100% 100%, 0 100%);
   clip-path: polygon(0 0, 100% 5rem, 100% 100%, 0 100%);
   z-index: 4;
 }

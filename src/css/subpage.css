@@ -3,12 +3,10 @@
   --lines-weight: 3;
   --lines-probability: .25;
   --lines-alpha: .1;
-  --lines-color: #ffc09f;
   background-color: #b8336a;
   background-image: url("/img/pattern-peach.svg");
   background-size: 16rem 16rem;
   padding: 1.75rem 1rem 4rem;
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 2.25rem));
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 2.25rem));
   position: relative;
   margin: 0 0 1rem;
@@ -33,7 +31,6 @@
   position: absolute;
   content: "";
   mix-blend-mode: luminosity;
-  -webkit-clip-path: polygon(0 0, 100% 66.666%, 100% 100%, 0 calc(100% - 1.5rem));
   clip-path: polygon(0 0, 100% 66.666%, 100% 100%, 0 calc(100% - 1.5rem));
 }
 
