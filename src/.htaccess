@@ -11,7 +11,7 @@
   <FilesMatch "\.(html|php|xml|txt|svg|css|m?js)$">
     Header set Vary "Accept-Encoding"
   </FilesMatch>
-  <FilesMatch "\.(html|html\.br|html\.gz)$">
+  <FilesMatch "\.(html|html\.br|html\.gz|txt)$">
     FileETag None
     Header unset ETag
     Header set Cache-Control "private,must-revalidate,max-age=3600"

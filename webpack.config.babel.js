@@ -137,7 +137,12 @@ export default {
     }]),
     new CopyWebpackPlugin([{
       from: path.join(paths.src, "icons"),
-      to: path.join(paths.dist)
-    }])
+      to: paths.dist
+    }]),
+    new CopyWebpackPlugin([{
+      from: path.join(paths.src, "*.txt"),
+      to: paths.dist,
+      flatten: true
+    }]),
   ]
 };

@@ -89,11 +89,17 @@
   color: #131515;
 }
 
+.blog__content .blog__footnote {
+  font-style: italic;
+  padding: 2.016ch 0 0;
+  border-top: .125rem solid #b8336a;
+}
+
 .blog__content p:first-of-type {
   font-size: 1.44233125rem;
 }
 
-.blog__content p:last-of-type:after {
+.blog__content p:nth-last-of-type(2):after {
   content: "";
   display: inline-block;
   width: 1.333ch;
@@ -196,7 +202,11 @@
     font-size: var(--h4);
   }
 
-  .blog__content p:last-of-type:after {
+  .blog__content .blog__footnote {
+    border-top-color: var(--color1);
+  }
+
+  .blog__content p:nth-last-of-type(2):after {
     background-color: var(--color1);
   }
 

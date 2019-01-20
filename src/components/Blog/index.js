@@ -8,6 +8,7 @@ export default props => (
     </section>
     <section className="blog__content">
       {props.children}
+      <p className="blog__footnote">Feel like reading more? Head on back to <a href="/writing/" rel="noopener">the article list</a>!</p>
     </section>
   </main>
 );
