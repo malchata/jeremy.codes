@@ -1,7 +1,9 @@
+/* eslint-env node */
+
 const path = require("path");
 const express = require("express");
 const app = express();
-const htdocs = path.join(__dirname, "static");
+const htdocs = path.join(__dirname, "dist");
 
 // Run static server
 app.use(express.static(htdocs));

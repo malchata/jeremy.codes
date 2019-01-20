@@ -64,7 +64,6 @@
 .section__body {
   line-height: 1.618;
   font-size: var(--h4);
-  font-weight: 400;
 }
 
 .section--intro .section__body {
@@ -190,7 +189,7 @@
     display: grid;
     grid-column-gap: 2rem;
     align-items: center;
-    max-width: 64rem;
+    max-width: 60rem;
     margin: 0 auto;
   }
 

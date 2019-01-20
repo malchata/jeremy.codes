@@ -1,6 +1,6 @@
 .writing__archive {
   list-style: none;
-  max-width: 66rem;
+  max-width: 62rem;
   padding: 0 1rem;
   margin: 0 auto;
 }
@@ -70,7 +70,7 @@
   font-size: var(--tiny);
   font-style: italic;
   font-weight: 400;
-  max-width: 66rem;
+  max-width: 62rem;
   padding: 0 1rem;
   margin: 0 auto 2ch;
   text-align: right;

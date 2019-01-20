@@ -28,7 +28,7 @@
       </div>
     </header>
     <main>
-      <section class="subpage__intro">
+      <section class="subpage__intro subpage__intro--alternate">
         <h1 class="subpage__header">Get in touch</h1>
         <h4 class="subpage__subheader">Interested in working with me, or want to book me to speak at your event? Or maybe you just want to say &quot;hello&quot;? The form below will deliver your message to my inbox in no time.</h4>
       </section>
@@ -37,15 +37,15 @@
           <fielset>
             <div class="contact__form__field-group">
               <label class="contact__form__label" for="name">Your name?</label>
-              <input class="contact__form__field" type="text" name="name" id="name">
+              <input class="contact__form__field" type="text" name="name" id="name" required>
             </div>
             <div class="contact__form__field-group">
               <label class="contact__form__label" for="email">Email, please!</label>
-              <input class="contact__form__field" type="email" name="email" id="email">
+              <input class="contact__form__field" type="email" name="email" id="email" required>
             </div>
             <div class="contact__form__field-group">
               <label class="contact__form__label" for="message">Tell me what's on your mind.</label>
-              <textarea class="contact__form__field contact__form__field--textarea" name="message" id="message"></textarea>
+              <textarea class="contact__form__field contact__form__field--textarea" name="message" id="message" required></textarea>
             </div>
           </fielset>
           <p class="contact__form__note">Dotted all your i's and crossed your t's? Then click the button below:</p>

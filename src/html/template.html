@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <title>
+      <%= htmlWebpackPlugin.options.title %> &mdash; Jeremy Wagner
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="<%= htmlWebpackPlugin.options.description %>">
+    <meta name="og:description" content="<%= htmlWebpackPlugin.options.description %>">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <% if (htmlWebpackPlugin.options.saveData === false) { %>
+      <link rel="dns-prefetch" href="https://fonts.googleapis.com/" crossorigin>
+      <link rel="preconnect" href="https://fonts.googleapis.com/" crossorigin>
+      <link rel="dns-prefetch" href="https://fonts.gstatic.com/" crossorigin>
+      <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <% } %>
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Jeremy Wagner&apos;s Personal Site and Blog">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#5c2c87">
+    <meta name="application-name" content="Jeremy Wagner&apos;s Web Development Blog">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <script>document.documentElement.classList.remove("no-js")</script>
+    <% if (htmlWebpackPlugin.options.saveData === false) { %>
+      <link href="https://fonts.googleapis.com/css?family=Overpass+Mono:700|Poppins:400,400i,600,600i" rel="stylesheet">
+    <% } %>
+    <% for (chunk in htmlWebpackPlugin.files.css) { %>
+      <% if (htmlWebpackPlugin.files.css[chunk].indexOf("global") !== -1) { %>
+        <link href="<%= htmlWebpackPlugin.files.css[chunk] %>" rel="stylesheet">
+      <% } %>
+    <% } %>
+
+    <% for (chunk in htmlWebpackPlugin.files.css) { %>
+      <% if (htmlWebpackPlugin.options.slug === "home" && htmlWebpackPlugin.files.css[chunk].indexOf("home") !== -1) { %>
+        <link href="<%= htmlWebpackPlugin.files.css[chunk] %>" rel="stylesheet">
+      <% } %>
+    <% } %>
+
+    <% for (chunk in htmlWebpackPlugin.files.css) { %>
+      <% if (htmlWebpackPlugin.options.slug === "blog" && htmlWebpackPlugin.files.css[chunk].indexOf("blog") !== -1) { %>
+        <link href="<%= htmlWebpackPlugin.files.css[chunk] %>" rel="stylesheet">
+      <% } %>
+    <% } %>
+
+    <% for (chunk in htmlWebpackPlugin.files.css) { %>
+      <% if (htmlWebpackPlugin.options.slug === "contact" && htmlWebpackPlugin.files.css[chunk].indexOf("subpage") !== -1) { %>
+        <link href="<%= htmlWebpackPlugin.files.css[chunk] %>" rel="stylesheet">
+      <% } %>
+    <% } %>
+
+    <% for (chunk in htmlWebpackPlugin.files.css) { %>
+      <% if (htmlWebpackPlugin.options.slug === "contact" && htmlWebpackPlugin.files.css[chunk].indexOf("contact") !== -1) { %>
+        <link href="<%= htmlWebpackPlugin.files.css[chunk] %>" rel="stylesheet">
+      <% } %>
+    <% } %>
+
+    <% for (chunk in htmlWebpackPlugin.files.css) { %>
+      <% if (htmlWebpackPlugin.options.slug === "writing" && htmlWebpackPlugin.files.css[chunk].indexOf("subpage") !== -1) { %>
+        <link href="<%= htmlWebpackPlugin.files.css[chunk] %>" rel="stylesheet">
+      <% } %>
+    <% } %>
+
+    <% for (chunk in htmlWebpackPlugin.files.css) { %>
+      <% if (htmlWebpackPlugin.options.slug === "writing" && htmlWebpackPlugin.files.css[chunk].indexOf("writing") !== -1) { %>
+        <link href="<%= htmlWebpackPlugin.files.css[chunk] %>" rel="stylesheet">
+      <% } %>
+    <% } %>
+  </head>
+  <body<% if (htmlWebpackPlugin.options.saveData === false) { %> class="no-save-data"<% } %>>
+    <%= htmlWebpackPlugin.options.header %>
+    <%= htmlWebpackPlugin.options.content %>
+    <%= htmlWebpackPlugin.options.footer %>
+    <% for (chunk in htmlWebpackPlugin.files.js) { %>
+      <% if (htmlWebpackPlugin.options.slug === "home" && htmlWebpackPlugin.files.js[chunk].indexOf("yall") !== -1) { %>
+        <script defer src="<%= htmlWebpackPlugin.files.js[chunk] %>"></script>
+      <% } %>
+
+      <% if (htmlWebpackPlugin.files.js[chunk].indexOf("quicklink") !== -1) { %>
+        <script defer src="<%= htmlWebpackPlugin.files.js[chunk] %>"></script>
+      <% } %>
+    <% } %>
+    <script>
+      var deviceMemory = navigator.deviceMemory || 8;
+      var saveData = navigator.connection.saveData || false;
+
+      if (window.CSS.registerProperty) {
+        CSS.registerProperty({
+          name: "--lines-tile-size",
+          syntax: "<number>",
+          inherits: true,
+          initialValue: 8
+        });
+
+        CSS.registerProperty({
+          name: "--lines-weight",
+          syntax: "<number>",
+          inherits: true,
+          initialValue: 0.25
+        });
+
+        CSS.registerProperty({
+          name: "--lines-probability",
+          syntax: "<number>",
+          inherits: true,
+          initialValue: 0.5
+        });
+
+        CSS.registerProperty({
+          name: "--lines-color",
+          syntax: "<color>",
+          inherits: true,
+          initialValue: "#2a2b2a"
+        });
+
+        CSS.registerProperty({
+          name: "--lines-direction",
+          syntax: "<integer>",
+          inherits: true,
+          initialValue: 0.0
+        });
+
+        CSS.registerProperty({
+          name: "--lines-alpha",
+          syntax: "<number>",
+          inherits: true,
+          initialValue: 1.0
+        });
+      }
+
+      if (window.CSS.paintWorklet && deviceMemory >= 4 && saveData === false) {
+        CSS.paintWorklet.addModule("/js/lines.js");
+      }
+    </script>
+  </body>
+</html>

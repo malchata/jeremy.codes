@@ -5,16 +5,20 @@
   "main": "./src/index.js",
   "scripts": {
     "clean": "npx rimraf dist",
+    "build": "npm run clean && npm run webpack && npm run cssnano && npm run imageopt && npm run compress",
+    "webpack": "NODE_ENV=production npx webpack --progress",
     "compress": "npm run gzip && npm run brotli",
-    "cssnano": "echo \"Minifying CSS...\" && find ./dist -type f -name '*.css' -exec npx cssnano {} {} \\;",
-    "gzip": "echo \"Statically compressing assets (gzip)...\" && find -E ./dist -regex '.*\\.(m?js|css|svg|html)' -exec gzip -9k {} \\;",
-    "brotli": "echo \"Statically compressing assets (brotli)...\" && find -E ./dist -regex '.*\\.(m?js|css|svg|html)' -exec brotli -o {}.br -k -q 11 {} \\;",
-    "imageopt": "echo \"Optimizing images...\" && npm run imageopt:png && npm run imageopt:webp-png",
-    "imageopt:webp-png": "echo \"Converting PNGs to lossless WebP...\" && find ./dist -type f -name '*.png' | xargs -P 8 -I {} sh -c 'npx cwebp -quiet -lossless -q 100 -z 9 -m 6 $1 -o \"${1%.png}.webp\"' _ {} \\;",
-    "imageopt:png": "echo \"Optimizing PNGs...\" && find ./dist -type f -name '*.png' | xargs -P 8 -I {} sh -c 'npx pngquant --force --skip-if-larger --output $1 --speed 1 --strip $1' _ {} \\;",
+    "cssnano": "echo \"Minifying CSS...\" && find ./dist -type f -name '*.css' | xargs -P 32 -I {} npx cssnano {} {} \\;",
+    "gzip": "echo \"Statically compressing assets (gzip)...\" && find -E ./dist -regex '.*\\.(m?js|css|txt|xml|svg|html)' -exec gzip -9k {} \\;",
+    "brotli": "echo \"Statically compressing assets (brotli)...\" && find -E ./dist -regex '.*\\.(m?js|css|txt|xml|svg|html)' -exec brotli -o {}.br -k -q 11 {} \\;",
+    "imageopt": "echo \"Optimizing images...\" && npm run imageopt:png && npm run imageopt:png-placeholder && npm run imageopt:webp-png && npm run imageopt:svg",
+    "imageopt:webp-png": "echo \"Converting PNGs to WebP...\" && find ./dist/img -type f -name '*.png' | xargs -P 32 -I {} sh -c 'npx cwebp -quiet -q 80 $1 -o \"${1%.png}.webp\"' _ {} \\;",
+    "imageopt:png": "echo \"Optimizing PNGs...\" && find ./dist -type f -name '*.png' | xargs -P 32 -I {} sh -c 'npx pngquant --force --skip-if-larger --quality 60-80 --output $1 --speed 1 --strip $1' _ {} \\;",
+    "imageopt:png-placeholder": "echo \"Optimizing Placeholder PNGs...\" && find ./dist -type f -name '*-placeholder.png' | xargs -P 32 -I {} sh -c 'npx pngquant --force --skip-if-larger --quality 0-1 --nofs --output $1 --speed 1 --posterize 0 --strip $1' _ {} \\;",
+    "imageopt:svg": "echo \"Optimizing SVGs...\" && find ./dist -type f -name '*.svg' | xargs -P 32 -I {} sh -c 'npx svgo -q -i $1 -o $1 -p 1 --multipass' _ {} \\;",
     "analyze": "npm run clean && NODE_ENV=production npx webpack --profile --progress --json > bundle-stats.json && npx webpack-bundle-analyzer bundle-stats.json",
     "audit": "npm run build && npx bundle-buddy dist/js/*.map",
-    "lint": "npx eslint --no-inline-config ./src/**/*.js"
+    "lint": "npx eslint ./src/**/*.js"
   },
   "repository": {
     "type": "git",
@@ -29,8 +33,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
     "@babel/runtime": "^7.2.0",
-    "preact": "^8.4.2",
-    "preact-markup": "^1.6.0"
+    "quicklink": "^1.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
@@ -41,13 +44,24 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.0.0",
     "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.5",
+    "copy-webpack-plugin": "^4.6.0",
+    "css-loader": "^2.1.0",
     "cssnano": "^4.1.8",
     "cwebp-bin": "^5.0.0",
     "eslint": "^5.12.0",
     "eslint-plugin-react": "^7.12.3",
     "express": "^4.16.4",
+    "file-loader": "^3.0.1",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.5.0",
+    "null-loader": "^0.1.1",
     "pngquant-bin": "^5.0.1",
+    "postcss-loader": "^3.0.0",
+    "preact": "^8.4.2",
     "preact-render-to-string": "^4.1.0",
-    "rimraf": "^2.6.3"
+    "rimraf": "^2.6.3",
+    "webpack": "^4.28.4",
+    "webpack-cli": "^3.2.1"
   }
 }

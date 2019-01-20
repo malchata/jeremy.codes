@@ -16,7 +16,6 @@
   color: var(--color5);
   display: block;
   margin: 0 0 .666ch;
-  font-weight: 400;
 }
 
 .contact__form__field {
@@ -31,12 +30,12 @@
   outline-color: var(--color1);
   padding: .5ch;
   box-shadow: .25ch .25ch 0 var(--color5-trans);
-  font-weight: 400;
+  appearance: none;
 }
 
 .contact__form__field--textarea {
   min-height: 6rem;
-  max-width: 40rem;
+  max-width: 60rem;
 }
 
 .contact__form__button {
@@ -48,10 +47,12 @@
   font-size: var(--tiny);
   padding: .666ch;
   cursor: pointer;
+  appearance: none;
+  border: 0;
+  outline-color: var(--color1);
 }
 
 .contact__form__note {
-  font-weight: 400;
   font-size: var(--tiny);
   color: var(--color5);
   margin: 0 0 .666ch;

@@ -15,6 +15,10 @@
   margin: 0 0 1rem;
 }
 
+.subpage__intro--alternate {
+  background-color: var(--color3);
+}
+
 .subpage__intro:after {
   position: absolute;
   bottom: 0;
@@ -33,10 +37,10 @@
 .subpage__header,
 .subpage__subheader {
   margin: 0 auto;
-  max-width: 64rem;
+  max-width: 60rem;
   line-height: 1.319;
   color: var(--color4);
-  text-shadow: .126ch .126ch var(--color5);
+  text-shadow: .126ch .126ch var(--color5-trans);
 }
 
 .subpage__header {

@@ -3,18 +3,19 @@
   <FilesMatch "\.(png|jpe?g|gif|svg|webm|ogv|mp4|webp|woff2?|ico|css|m?js)$">
     FileETag None
     Header unset ETag
-    Header set Cache-Control "public,max-age=31536000"
+    Header set Cache-Control "public,max-age=31536000,immutable"
   </FilesMatch>
   <FilesMatch "\.(png|jpe?g|gif)$">
     Header set Vary "Accept"
   </FilesMatch>
-  <FilesMatch "\.(html)$">
+  <FilesMatch "\.(html|php|xml|txt|svg|css|m?js)$">
+    Header set Vary "Accept-Encoding"
+  </FilesMatch>
+  <FilesMatch "\.(html|html\.br|html\.gz)$">
     FileETag None
     Header unset ETag
     Header set Cache-Control "private,must-revalidate,max-age=3600"
-  </FilesMatch>
-  <FilesMatch "\.(html|php|xml|txt|svg|css|m?js)$">
-    Header set Vary "Accept-Encoding"
+    Header set Vary "Accept-Encoding, Save-Data"
   </FilesMatch>
 </IfModule>
 
@@ -69,6 +70,15 @@
 
 # WebP rewriting
 RewriteEngine On
+
+# Rewrites for the Save-Data header
+RewriteCond %{HTTP:Save-Data} =on [NC]
+RewriteCond %{REQUEST_URI} !savedata.html$
+RewriteRule ^(.*).html$ $1.savedata.html [L]
+
+RewriteCond %{HTTP:Save-Data} !=on [NC]
+RewriteCond %{REQUEST_URI} savedata.html$
+RewriteRule ^(.*).savedata.html$ $1.html [L,R=302]
 
 # Serve WebPs instead of regular images (if available)
 RewriteCond %{HTTP:Accept} image/webp [NC]

@@ -1,7 +1,14 @@
+/* global module */
+
 module.exports = {
   env: {
     production: {
       presets: [
+        [
+          "@babel/preset-react", {
+            pragma: "h"
+          }
+        ],
         [
           "@babel/preset-env", {
             useBuiltIns: "usage",
@@ -18,6 +25,11 @@ module.exports = {
     development: {
       presets: [
         [
+          "@babel/preset-react", {
+            pragma: "h"
+          }
+        ],
+        [
           "@babel/preset-env", {
             useBuiltIns: "usage",
             targets: {
@@ -32,6 +44,11 @@ module.exports = {
     },
     modern: {
       presets: [
+        [
+          "@babel/preset-react", {
+            pragma: "h"
+          }
+        ],
         [
           "@babel/preset-env",
           {
@@ -50,8 +67,12 @@ module.exports = {
     legacy: {
       presets: [
         [
-          "@babel/preset-env",
-          {
+          "@babel/preset-react", {
+            pragma: "h"
+          }
+        ],
+        [
+          "@babel/preset-env", {
             modules: false,
             useBuiltIns: "entry",
             targets: "> 0.25%, last 2 versions, Firefox ESR"
