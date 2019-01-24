@@ -376,7 +376,10 @@
       grid-template-columns: 2.016fr minmax(22rem, 1.159fr);
     }
 
-    .section--writing .section__container,
+    .section--writing .section__container {
+      grid-template-columns: 1.159fr 2.016fr;
+    }
+
     .section--work .section__container {
       grid-template-columns: minmax(12rem, 1.159fr) 2.016fr;
     }

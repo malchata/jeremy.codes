@@ -16,6 +16,7 @@
   color: #131515;
   display: block;
   margin: 0 0 .666ch;
+  font-weight: 600;
 }
 
 .contact__form__field {
@@ -30,6 +31,7 @@
   padding: .5ch;
   box-shadow: .25ch .25ch 0 #13151566;
   appearance: none;
+  border-radius: 0;
 }
 
 .contact__form__field:focus {
@@ -52,6 +54,7 @@
   cursor: pointer;
   appearance: none;
   border: 0;
+  border-radius: 0;
 }
 
 .contact__form__button:focus {

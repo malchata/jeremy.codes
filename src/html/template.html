@@ -11,6 +11,8 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <% if (htmlWebpackPlugin.options.saveData === false) { %>
+      <link rel="dns-prefetch" href="https://polyfill.io/" crossorigin>
+      <link rel="preconnect" href="https://polyfill.io/" crossorigin>
       <link rel="dns-prefetch" href="https://fonts.googleapis.com/" crossorigin>
       <link rel="preconnect" href="https://fonts.googleapis.com/" crossorigin>
       <link rel="dns-prefetch" href="https://fonts.gstatic.com/" crossorigin>
@@ -93,12 +95,13 @@
       <% } %>
 
       <% if (htmlWebpackPlugin.files.js[chunk].indexOf("quicklink") !== -1) { %>
+        <script defer src="https://polyfill.io/v2/polyfill.min.js?features=IntersectionObserver"></script>
         <script defer src="<%= htmlWebpackPlugin.files.js[chunk] %>"></script>
       <% } %>
     <% } %>
     <script>
       var deviceMemory = navigator.deviceMemory || 8;
-      var saveData = navigator.connection.saveData || false;
+      var saveData = typeof navigator.connection !== "undefined" && "saveData" in navigator.connection ? navigator.connection.saveData : false;
 
       if (window.CSS.registerProperty) {
         CSS.registerProperty({

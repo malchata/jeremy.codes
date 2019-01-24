@@ -139,7 +139,7 @@ export default () => (
           />
           <ArticleEntry
             date="20 April"
-            link="/blog/faster-bulk-image-optimization-in-bash"
+            link="/blog/faster-bulk-image-optimization-in-bash/"
             title="Faster Bulk Image Optimization in Bash"
           />
           <ArticleEntry

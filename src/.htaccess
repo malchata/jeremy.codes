@@ -1,17 +1,17 @@
 # Caching policy
 <IfModule headers_module>
-  <FilesMatch "\.(png|jpe?g|gif|svg|webm|ogv|mp4|webp|woff2?|ico|css|m?js)$">
+  <FilesMatch "\.(png|jpe?g|gif|svg|svg\.gz|svg\.br|webm|ogv|mp4|webp|woff2?|ico|css|css\.gz|css\.br|m?js|m?js\.gz|m?js\.br)$">
     FileETag None
     Header unset ETag
-    Header set Cache-Control "public,max-age=31536000,immutable"
+    Header set Cache-Control "public,max-age=31536000"
   </FilesMatch>
-  <FilesMatch "\.(png|jpe?g|gif)$">
+  <FilesMatch "\.(png|jpe?g|gif|webp)$">
     Header set Vary "Accept"
   </FilesMatch>
-  <FilesMatch "\.(html|php|xml|txt|svg|css|m?js)$">
+  <FilesMatch "\.(html|php|xml|xml\.gz|xml\.br|txt|svg|svg\.gz|svg\.br|css|css\.gz|css\.br|m?js|m?js\.gz|m?js\.br)$">
     Header set Vary "Accept-Encoding"
   </FilesMatch>
-  <FilesMatch "\.(html|html\.br|html\.gz|txt)$">
+  <FilesMatch "\.(html|html\.br|html\.gz|txt|xml|xml\.gz|xml\.br)$">
     FileETag None
     Header unset ETag
     Header set Cache-Control "private,must-revalidate,max-age=3600"
@@ -24,7 +24,7 @@
 </IfModule>
 
 # Set HSTS
-# Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" env=HTTPS
+Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" env=HTTPS
 
 # Static compression!
 <Files *.js.br>
