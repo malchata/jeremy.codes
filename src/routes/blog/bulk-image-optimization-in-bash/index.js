@@ -12,7 +12,7 @@ export const Metadata = {
 
 export default () => (
   <Blog title={Metadata.title} date={Metadata.date}>
-    <p>Have you ever needed to optimize a bunch of images in a folder on your computer, but you don't want to go through the hassle of writing an build system to take care of it? Then bash and your image optimization binary of choice are your best friends. I've had situations where I just needed to pull down files from a website already in production, optimize images, and re-upload everything. The exact syntax depends on the optimizer you use, but your workhorse will be the <code>{"find"}</code>command.</p>
+    <p>Have you ever needed to optimize a bunch of images in a folder on your computer, but you don't want to go through the hassle of writing an build system to take care of it? Then bash and your image optimization binary of choice are your best friends. I've had situations where I just needed to pull down files from a website already in production, optimize images, and re-upload everything. The exact syntax depends on the optimizer you use, but your workhorse will be the <code>{"find"}</code> command.</p>
     <p><code>{"find"}</code> is a command that, well, finds stuff. For example, if I wanted to find all files in the current directory and its subdirectories with a <code>{".jpg"}</code> extension, I could run this command:</p>
     <CodeBlock>{"find ./ -type f -name '*.jpg'"}</CodeBlock>
     <p>This will dump a list of files ending in the <code>{".jpg"}</code> extension to the terminal like so:</p>
@@ -24,8 +24,8 @@ export default () => (
     <CodeBlock>{"find ./ -type f -name '*.jpg' -exec du -h {} \\;"}</CodeBlock>
     <p>This would return output like this:</p>
     <CodeBlock>{`196K    ./images/george.jpg
-16K     ./images/frank.jpg
-28K     ./images/estelle.jpg`}</CodeBlock>
+ 16K    ./images/frank.jpg
+ 28K    ./images/estelle.jpg`}</CodeBlock>
     <p>The <code>{"-exec"}</code> parameter uses a placeholder of <code>{"{}"}</code> to represent the file that was found with <code>{"find"}</code>. We can feed this placeholder into a command such as an image optimizer, and terminate the command with an escaped semicolon (don't forget!). From here, the sky's the limit. Here's a some examples of using <code>{"find"}</code> with different optimizers to replace unoptimized images with optimized ones.</p>
     <SubHeading>Bulk JPEG optimization with jpeg-recompress</SubHeading>
     <p>Here's a simple example of using the <code>{"find"}</code> command to optimize JPEGs with <a href="https://github.com/imagemin/jpeg-recompress-bin" rel="noopener">jpeg-recompress</a>:</p>

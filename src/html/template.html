@@ -8,16 +8,23 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="description" content="<%= htmlWebpackPlugin.options.description %>">
     <meta name="og:description" content="<%= htmlWebpackPlugin.options.description %>">
+    <meta name="robots" content="<%= htmlWebpackPlugin.options.robots %>">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <% if (htmlWebpackPlugin.options.saveData === false) { %>
       <link rel="dns-prefetch" href="https://polyfill.io/" crossorigin>
       <link rel="preconnect" href="https://polyfill.io/" crossorigin>
-      <link rel="dns-prefetch" href="https://fonts.googleapis.com/" crossorigin>
-      <link rel="preconnect" href="https://fonts.googleapis.com/" crossorigin>
-      <link rel="dns-prefetch" href="https://fonts.gstatic.com/" crossorigin>
-      <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <% } %>
+    <link rel="canonical" href="<%= htmlWebpackPlugin.options.pageUrl %>">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@malchata">
+    <meta property="og:type" content="website">
+    <meta content="<%= htmlWebpackPlugin.options.pageUrl %>" property="og:url">
+    <meta content="<%= htmlWebpackPlugin.options.pageUrl %>" property="twitter:url">
+    <meta name="twitter:title" property="og:title" content="<%= htmlWebpackPlugin.options.title %> &mdash; Jeremy Wagner">
+    <meta content="<%= htmlWebpackPlugin.options.description %>" name="twitter:description" property="og:description">
+    <meta property="og:image" content="https://jeremy.codes/img/jeremy-thumb.jpg" />
+    <meta name="twitter:image" content="https://jeremy.codes/img/jeremy-thumb.jpg" />
     <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
@@ -40,9 +47,6 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="shortcut icon" href="/favicon.ico">
     <script>document.documentElement.classList.remove("no-js")</script>
-    <% if (htmlWebpackPlugin.options.saveData === false) { %>
-      <link href="https://fonts.googleapis.com/css?family=Overpass+Mono:700|Poppins:400,400i,600,600i" rel="stylesheet">
-    <% } %>
     <% for (chunk in htmlWebpackPlugin.files.css) { %>
       <% if (htmlWebpackPlugin.files.css[chunk].indexOf("global") !== -1) { %>
         <link href="<%= htmlWebpackPlugin.files.css[chunk] %>" rel="stylesheet">

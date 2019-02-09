@@ -1,12 +1,9 @@
 # Caching policy
 <IfModule headers_module>
-  <FilesMatch "\.(png|jpe?g|gif|svg|svg\.gz|svg\.br|webm|ogv|mp4|webp|woff2?|ico|css|css\.gz|css\.br|m?js|m?js\.gz|m?js\.br)$">
+  <FilesMatch "\.(png|jpe?g|gif|svg|svg\.gz|svg\.br|webm|mp4|webp|woff2?|ico|css|css\.gz|css\.br|m?js|m?js\.gz|m?js\.br)$">
     FileETag None
     Header unset ETag
-    Header set Cache-Control "public,max-age=31536000"
-  </FilesMatch>
-  <FilesMatch "\.(png|jpe?g|gif|webp)$">
-    Header set Vary "Accept"
+    Header set Cache-Control "public, max-age=31536000"
   </FilesMatch>
   <FilesMatch "\.(html|php|xml|xml\.gz|xml\.br|txt|svg|svg\.gz|svg\.br|css|css\.gz|css\.br|m?js|m?js\.gz|m?js\.br)$">
     Header set Vary "Accept-Encoding"
@@ -14,7 +11,7 @@
   <FilesMatch "\.(html|html\.br|html\.gz|txt|xml|xml\.gz|xml\.br)$">
     FileETag None
     Header unset ETag
-    Header set Cache-Control "private,must-revalidate,max-age=3600"
+    Header set Cache-Control "private, max-age=600"
     Header set Vary "Accept-Encoding, Save-Data"
   </FilesMatch>
 </IfModule>
@@ -68,7 +65,7 @@ Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; prelo
     AddEncoding gzip .gz
 </Files>
 
-# WebP rewriting
+# Allow URL rewriting
 RewriteEngine On
 
 # Rewrites for the Save-Data header
@@ -79,12 +76,6 @@ RewriteRule ^(.*).html$ $1.savedata.html [L]
 RewriteCond %{HTTP:Save-Data} !=on [NC]
 RewriteCond %{REQUEST_URI} savedata.html$
 RewriteRule ^(.*).savedata.html$ $1.html [L,R=302]
-
-# Serve WebPs instead of regular images (if available)
-RewriteCond %{HTTP:Accept} image/webp [NC]
-RewriteCond %{HTTP:Content-Disposition} !attachment [NC]
-RewriteCond %{DOCUMENT_ROOT}/$1.webp -f [NC]
-RewriteRule (.+)\.(png|jpe?g|gif)$ $1.webp [T=image/webp,L]
 
 # Serve pre-compressed Brotli assets
 RewriteCond %{HTTP:Accept-Encoding} br

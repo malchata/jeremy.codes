@@ -7,7 +7,6 @@ import path from "path";
 // webpack-specific
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import CopyWebpackPlugin from "copy-webpack-plugin";
 
 // App-specific
 import { h } from "preact";
@@ -52,25 +51,27 @@ function buildRoutes(routes) {
       let routeSlug = routeParts[routeParts.length - 2] === "blog" ? "blog" : routeParts[routeParts.length - 1];
       let metadata = routeModule.Metadata;
 
-      htmlOutputs.push(new HtmlWebpackPlugin({
+      const commonHtmlOpts = {
         title: metadata.title,
-        filename: path.join(routes.replace("src/routes", "dist"), "index.html"),
         description: metadata.description,
         content: renderToString(<routeModule.default />),
         header: renderToString(<Header slug={routeSlug} />),
         slug: routeSlug === "routes" ? "home" : routeSlug,
+        robots: metadata.hide ? "noindex, nofollow" : "index, follow",
+        pageUrl: `https://jeremy.codes${metadata.slug}`
+      };
+
+      htmlOutputs.push(new HtmlWebpackPlugin({
+        filename: path.join(routes.replace("src/routes", "dist"), "index.html"),
         saveData: false,
+        ...commonHtmlOpts,
         ...defaultHtmlOpts
       }));
 
       htmlOutputs.push(new HtmlWebpackPlugin({
-        title: metadata.title,
         filename: path.join(routes.replace("src/routes", "dist"), "index.savedata.html"),
-        description: metadata.description,
-        content: renderToString(<routeModule.default />),
-        header: renderToString(<Header slug={routeSlug} />),
-        slug: routeSlug === "routes" ? "home" : routeSlug,
         saveData: true,
+        ...commonHtmlOpts,
         ...defaultHtmlOpts
       }));
     }
@@ -111,39 +112,24 @@ export default {
           "css-loader",
           "postcss-loader"
         ]
+      },
+      {
+        test: /\.woff2?/i,
+        use: {
+          loader: "file-loader",
+          options: {
+            outputPath: "fonts",
+            name: devMode ? "[name].[ext]" : "[name].[hash:8].[ext]"
+          }
+        }
       }
     ]
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: path.join("css", "[name].[contenthash:8].css"),
-      chunkFilename: path.join("css", "[name].[contenthash:8].css")
+      filename: path.join("css", devMode ? "[name].css" : "[name].[contenthash:8].css"),
+      chunkFilename: path.join("css", devMode ? "[name].css" : "[name].[contenthash:8].css")
     }),
-    ...htmlOutputs,
-    new CopyWebpackPlugin([{
-      from: path.join(paths.src, ".htaccess"),
-      to: path.join(paths.dist, ".htaccess"),
-      flatten: true,
-      toType: "file"
-    }]),
-    new CopyWebpackPlugin([{
-      from: path.join(paths.src, "js", "lines.js"),
-      to: path.join(paths.dist, "js", "lines.js"),
-      flatten: true,
-      toType: "file"
-    }]),
-    new CopyWebpackPlugin([{
-      from: path.join(paths.src, "icons"),
-      to: paths.dist
-    }]),
-    new CopyWebpackPlugin([{
-      from: path.join(paths.src, "*.txt"),
-      to: paths.dist,
-      flatten: true
-    }]),
-    new CopyWebpackPlugin([{
-      from: path.join(paths.src, "img"),
-      to: path.join(paths.dist, "img")
-    }]),
+    ...htmlOutputs
   ]
 };

@@ -6,3 +6,4 @@ dist
 bundle-stats.json
 .cache
 assets.json
+.webpcache
