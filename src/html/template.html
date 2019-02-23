@@ -98,7 +98,7 @@
         <script defer src="<%= htmlWebpackPlugin.files.js[chunk] %>"></script>
       <% } %>
 
-      <% if (htmlWebpackPlugin.files.js[chunk].indexOf("quicklink") !== -1) { %>
+      <% if (htmlWebpackPlugin.files.js[chunk].indexOf("prefetchers") !== -1) { %>
         <script defer src="https://polyfill.io/v2/polyfill.min.js?features=IntersectionObserver"></script>
         <script defer src="<%= htmlWebpackPlugin.files.js[chunk] %>"></script>
       <% } %>

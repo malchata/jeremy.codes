@@ -12,6 +12,14 @@ export default () => (
         <h2 className="writing__year__header">2019</h2>
         <ol className="articles">
           <ArticleEntry
+            date="15 February"
+            link="https://developers.google.com/web/updates/2019/02/priority-hints"
+            title="Get Ready for Priority Hints"
+            coauthor={true}
+            publication="Google Web Fundamentals"
+            publicationLink="https://developers.google.com/web/fundamentals/"
+          />
+          <ArticleEntry
             date="9 February"
             link="/blog/make-it-boring/"
             title="Make it Boring"

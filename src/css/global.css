@@ -288,7 +288,7 @@ table {
 
 .footer {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: flex-end;
   height: 6rem;
   padding-bottom: 1.5rem;
@@ -336,6 +336,10 @@ table {
   font-size: .92579375rem;
   text-shadow: .126ch .126ch #131515;
   line-height: 1.319;
+}
+
+.footer__link {
+  color: #f7fff7
 }
 
 @supports (--css: variables) {
@@ -433,5 +437,9 @@ table {
     color: var(--color4);
     font-size: var(--tiny);
     text-shadow: .126ch .126ch var(--color5);
+  }
+
+  .footer__link {
+    color: var(--color4);
   }
 }

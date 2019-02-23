@@ -7,7 +7,8 @@ export const Metadata = {
   title: "Bulk Image Optimization in Bash",
   date: "9 March, 2017",
   description: "Sometimes you need to optimize a whole lot of images at once. Learn how to do it offline with bash!",
-  slug: "/blog/bulk-image-optimization-in-bash/"
+  slug: "/blog/bulk-image-optimization-in-bash/",
+  sitemapPriority: 1.0
 };
 
 export default () => (

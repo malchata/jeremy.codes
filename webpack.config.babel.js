@@ -21,7 +21,7 @@ const paths = {
 };
 let entryPoints = {
   "yall": path.join(paths.src, "js", "yall.js"),
-  "quicklink": path.join(paths.src, "js", "quicklink.js"),
+  "prefetchers": path.join(paths.src, "js", "prefetchers.js"),
   "blog-css": path.join(paths.src, "css", "blog.css"),
   "contact-css": path.join(paths.src, "css", "contact.css"),
   "global-css": path.join(paths.src, "css", "global.css"),

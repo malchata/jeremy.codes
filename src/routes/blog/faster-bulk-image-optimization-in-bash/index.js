@@ -6,7 +6,8 @@ export const Metadata = {
   title: "Faster Bulk Image Optimization in Bash",
   date: "20 April, 2017",
   description: "Continuing on from an earlier post on optimizing batches of images in bash, I show you how to do it even faster with xargs.",
-  slug: "/blog/faster-bulk-image-optimization-in-bash/"
+  slug: "/blog/faster-bulk-image-optimization-in-bash/",
+  sitemapPriority: 1.0
 };
 
 export default () => (

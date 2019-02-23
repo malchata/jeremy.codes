@@ -6,9 +6,9 @@ export default props => (
       <h1 className="blog__title">{props.title}</h1>
       <h3 className="blog__date">{props.date}</h3>
     </section>
-    <section className="blog__content">
+    <article className="blog__content">
       {props.children}
       <p className="blog__footnote">Feel like reading more? Head on back to <a href="/writing/" rel="noopener">the article list</a>!</p>
-    </section>
+    </article>
   </main>
 );

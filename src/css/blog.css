@@ -72,6 +72,7 @@
   font-size: 1.92779375rem;
   margin: 0 0 .666ch;
   position: relative;
+  line-height: 1.319;
 }
 
 .blog__content h2 a {
@@ -232,6 +233,6 @@
   }
 
   .blog__code pre code {
-    color: var(--colo4);
+    color: var(--color4);
   }
 }

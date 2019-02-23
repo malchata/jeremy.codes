@@ -44,6 +44,10 @@ Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; prelo
     AddType "text/html" .br
     AddEncoding br .br
 </Files>
+<Files *.xml.br>
+    AddType "text/xml" .br
+    AddEncoding br .br
+</Files>
 <Files *.js.gz>
     AddType "text/javascript" .gz
     AddEncoding gzip .gz
@@ -62,6 +66,10 @@ Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; prelo
 </Files>
 <Files *.html.gz>
     AddType "text/html" .gz
+    AddEncoding gzip .gz
+</Files>
+<Files *.xml.gz>
+    AddType "text/xml" .gz
     AddEncoding gzip .gz
 </Files>
 
