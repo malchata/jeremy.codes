@@ -8,7 +8,7 @@
     "build": "npm run clean && npm run webpack && npm run copy && npm run imageopt && npm run build:xml && npm run compress",
     "build:dev": "npm run clean && npx webpack --progress && npm run copy && npm run imageopt:webp-png && npm run build:xml",
     "webpack": "NODE_ENV=production npx webpack --progress",
-    "copy": "echo \"Copying assets...\" && cp -fv ./src/.htaccess ./dist/.htaccess && cp -fv ./src/js/lines.js ./dist/js/lines.js && cp -fv ./src/icons/*.* ./dist && cp -fv ./src/*.txt ./dist && cp -Rfv ./src/img ./dist/img",
+    "copy": "echo \"Copying assets...\" && cp -fv ./src/google7b88ad726109dad3.html ./dist/google7b88ad726109dad3.html && cp -fv ./src/.htaccess ./dist/.htaccess && cp -fv ./src/js/lines.js ./dist/js/lines.js && cp -fv ./src/icons/*.* ./dist && cp -fv ./src/*.txt ./dist && cp -Rfv ./src/img ./dist/img",
     "compress": "npm run gzip && npm run brotli",
     "gzip": "echo \"Statically compressing assets (gzip)...\" && find -E ./dist -regex '.*\\.(m?js|css|xml|svg|html)' -exec gzip -9k {} \\;",
     "brotli": "echo \"Statically compressing assets (brotli)...\" && find -E ./dist -regex '.*\\.(m?js|css|xml|svg|html)' -exec brotli -o {}.br -k -q 11 -w 24 {} \\;",
