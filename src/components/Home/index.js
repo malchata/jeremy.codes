@@ -18,7 +18,7 @@ export default () => (
       <div class="section__container">
         <div class="section__copy">
           <h2 class="section__header">I write.</h2>
-          <h3 class="section__body">A central part of my learning involves documenting it. This has lead to <a href="/writing/" rel="noopener">articles and books</a>. I also write on my blog when the mood strikes.</h3>
+          <h3 class="section__body">A central part of my learning involves documenting it. This has lead to <a href="/writing/" rel="noopener">articles and books</a>. I also write on my blog when the mood strikes. <em>Latest post: <a href="/blog/make-it-boring/" rel="noopener">Make it Boring</a></em></h3>
         </div>
         <div class="books">
           <a href="https://www.manning.com/books/web-performance-in-action?a_aid=webopt&amp;a_bid=63c31090" rel="noopener" class="book__link">

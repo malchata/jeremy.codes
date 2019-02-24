@@ -5,8 +5,8 @@
   "main": "./src/index.js",
   "scripts": {
     "clean": "npx rimraf dist",
-    "build": "npm run clean && npm run webpack && npm run copy && npm run imageopt && npm run build-rss && npm run compress",
-    "build:dev": "npm run clean && npx webpack --progress && npm run copy && npm run imageopt:webp-png && npm run build-rss",
+    "build": "npm run clean && npm run webpack && npm run copy && npm run imageopt && npm run build:xml && npm run compress",
+    "build:dev": "npm run clean && npx webpack --progress && npm run copy && npm run imageopt:webp-png && npm run build:xml",
     "webpack": "NODE_ENV=production npx webpack --progress",
     "copy": "echo \"Copying assets...\" && cp -fv ./src/.htaccess ./dist/.htaccess && cp -fv ./src/js/lines.js ./dist/js/lines.js && cp -fv ./src/icons/*.* ./dist && cp -fv ./src/*.txt ./dist && cp -Rfv ./src/img ./dist/img",
     "compress": "npm run gzip && npm run brotli",
@@ -18,7 +18,9 @@
     "imageopt:png-placeholder": "echo \"Optimizing Placeholder PNGs...\" && find ./dist -type f -name '*-placeholder.png' | xargs -P 32 -I {} sh -c 'npx pngquant --force --skip-if-larger --quality 0-1 --nofs --output $1 --speed 1 --posterize 0 --strip $1' _ {} \\;",
     "imageopt:jpg": "echo \"Optimizing JPEGs...\" && find ./dist -type f -name '*.jpg' | xargs -P 32 -I {} sh -c 'npx jpeg-recompress -a -l 16 -m smallfry -s -n 55 -x 85 -Q $1 $1' _ {} \\;",
     "imageopt:svg": "echo \"Optimizing SVGs...\" && find ./dist -type f -name '*.svg' | xargs -P 32 -I {} sh -c 'npx svgo -q -i $1 -o $1 -p 1 --multipass' _ {} \\;",
-    "build-rss": "echo \"Building RSS feed...\" && npx babel-node ./scripts/build-rss.js > ./dist/rss.xml",
+    "build:xml": "npm run build:rss && npm run build:sitemap",
+    "build:rss": "echo \"Building RSS feed...\" && npx babel-node ./scripts/build-rss.js > ./dist/rss.xml",
+    "build:sitemap": "echo \"Building Sitemap...\" && npx babel-node ./scripts/build-sitemap.js > ./dist/sitemap.xml",
     "lint": "npx eslint ./src/**/*.js"
   },
   "repository": {
@@ -47,7 +49,6 @@
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.0.0",
-    "assets-webpack-plugin": "^3.9.7",
     "autoprefixer": "^9.4.8",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",

@@ -46,15 +46,11 @@
   display: block;
 }
 
-.article__title,
-.article__publication {
-  font-style: italic;
-}
-
 .article__title {
   font-size: 1.44233125rem;
   font-weight: 600;
   color: #b8336a;
+  font-style: italic;
 }
 
 .article__publication {
