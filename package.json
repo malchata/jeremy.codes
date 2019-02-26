@@ -21,6 +21,12 @@
     "build:xml": "npm run build:rss && npm run build:sitemap",
     "build:rss": "echo \"Building RSS feed...\" && npx babel-node ./scripts/build-rss.js > ./dist/rss.xml",
     "build:sitemap": "echo \"Building Sitemap...\" && npx babel-node ./scripts/build-sitemap.js > ./dist/sitemap.xml",
+    "deploy:checkvars": "if [ -z ${SITE_HOST+x} ]; then echo \"SITE_HOST is unset\" && exit 1; else echo \"SITE_HOST is set!\"; fi && if [ -z ${SITE_USER+x} ]; then echo \"SITE_USER is unset\" && exit 1; else echo \"SITE_USER is set!\"; fi",
+    "deploy:pack": "cd ./dist && tar -cvzpf dist.tar.gz . && mv ./dist.tar.gz ../ && cd ..",
+    "deploy:push": "sftp \"${SITE_USER}@${SITE_HOST}\" <<< $'put ./dist.tar.gz'",
+    "deploy:unpack": "ssh \"${SITE_USER}@${SITE_HOST}\" \"cd ./jeremy.codes && rm -rf * ._*.html* .htaccess && mv ../dist.tar.gz ./ && tar xvf ./dist.tar.gz && rm ./dist.tar.gz\"",
+    "deploy:cleanup": "rm ./dist.tar.gz",
+    "deploy": "npm run build && npm run deploy:checkvars && npm run deploy:pack && npm run deploy:push && npm run deploy:unpack && npm run deploy:cleanup",
     "lint": "npx eslint ./src/**/*.js"
   },
   "repository": {

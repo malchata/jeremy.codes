@@ -52,7 +52,8 @@ export default () => (
       <div class="section__container">
         <div class="section__copy">
           <h2 class="section__header">I speak.</h2>
-          <h3 class="section__body">Sometimes <a href="https://noti.st/malchata" rel="noopener">I speak at conferences</a> about the web. If you think I'd be a good fit for your event, <a href="/contact/" rel="noopener">let's chat</a>.</h3>
+          <h3 class="section__body">Sometimes <a href="https://speaking.jeremy.codes/" rel="noopener">I speak at conferences</a> about the web. If you think I'd be a good fit for your event, <a href="/contact/" rel="noopener">let's chat</a>. <em>Latest talk: <a href="https://www.youtube.com/watch?v=md7Ua82fPe4" rel="noopener">Take a (Client) Hint!</a></em>
+          </h3>
         </div>
         <picture>
           <source data-srcset="/img/home/jeremy-speaking-256w.webp 256w, /img/home/jeremy-speaking-384w.webp 384w, /img/home/jeremy-speaking-512w.webp 512w, /img/home/jeremy-speaking-640w.webp 640w, /img/home/jeremy-speaking-768w.webp 768w, /img/home/jeremy-speaking-896w.webp 896w, /img/home/jeremy-speaking-1024w.webp 1024w" type="image/webp" />

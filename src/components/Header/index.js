@@ -7,7 +7,7 @@ export default props => (
       <nav className="header__nav">
         <a className={`header__nav-link ${props.slug === "writing" || props.slug === "blog" ? "header__nav-link--on" : ""}`} href="/writing/" rel="noopener">Writing</a>
         <span className="header__nav-separator">::</span>
-        <a className="header__nav-link" href="https://noti.st/malchata" rel="noopener">Speaking</a>
+        <a className="header__nav-link" href="https://speaking.jeremy.codes/" rel="noopener">Speaking</a>
         <span className="header__nav-separator">::</span>
         <a className={`header__nav-link ${props.slug === "contact" ? "header__nav-link--on" : ""}`} href="/contact/" rel="noopener">Get in touch</a>
       </nav>
