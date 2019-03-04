@@ -8,7 +8,7 @@ export default () => (
     </section>
     <section className="contact">
       <form className="contact__form" method="POST" action="https://formspree.io/jeremy.l.wagner@gmail.com">
-        <fielset>
+        <fieldset>
           <div className="contact__form__field-group">
             <label className="contact__form__label" for="name">Your name?</label>
             <input className="contact__form__field" type="text" name="name" id="name" required />
@@ -21,7 +21,7 @@ export default () => (
             <label className="contact__form__label" for="message">Tell me what's on your mind.</label>
             <textarea className="contact__form__field contact__form__field--textarea" name="message" id="message" required></textarea>
           </div>
-        </fielset>
+        </fieldset>
         <p className="contact__form__note">Dotted all your i's and crossed your t's? Then click the button below:</p>
         <button className="contact__form__button" type="submit">Send message</button>
       </form>
