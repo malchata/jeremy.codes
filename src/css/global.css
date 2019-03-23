@@ -291,7 +291,7 @@ table {
   justify-content: space-between;
   align-items: flex-end;
   height: 6rem;
-  padding-bottom: 1.5rem;
+  padding-bottom: .5rem;
   position: absolute;
   width: 100%;
   left: 0;

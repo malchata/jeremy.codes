@@ -1,8 +1,8 @@
 /* eslint-env node */
 
 // Built-ins
-import fs from "fs";
-import path from "path";
+import { readdirSync, lstatSync } from "fs";
+import { resolve, join } from "path";
 
 // webpack-specific
 import HtmlWebpackPlugin from "html-webpack-plugin";
@@ -14,39 +14,36 @@ import renderToString from "preact-render-to-string";
 import Header from "./src/components/Header";
 import Footer from "./src/components/Footer";
 
-const devMode = process.env.NODE_ENV !== "production";
-const paths = {
-  src: path.resolve(__dirname, "src"),
-  dist: path.resolve(__dirname, "dist")
-};
+const mode = process.env.NODE_ENV !== "production" ? "development": "production";
+const src = (...args) => resolve(__dirname, "src", ...args);
 let entryPoints = {
-  "yall": path.join(paths.src, "js", "yall.js"),
-  "prefetchers": path.join(paths.src, "js", "prefetchers.js"),
-  "blog-css": path.join(paths.src, "css", "blog.css"),
-  "contact-css": path.join(paths.src, "css", "contact.css"),
-  "global-css": path.join(paths.src, "css", "global.css"),
-  "home-css": path.join(paths.src, "css", "home.css"),
-  "subpage-css": path.join(paths.src, "css", "subpage.css"),
-  "writing-css": path.join(paths.src, "css", "writing.css"),
+  "yall": src("js", "yall.js"),
+  "prefetchers": src("js", "prefetchers.js"),
+  "blog-css": src("css", "blog.css"),
+  "contact-css": src("css", "contact.css"),
+  "global-css": src("css", "global.css"),
+  "home-css": src("css", "home.css"),
+  "subpage-css": src("css", "subpage.css"),
+  "writing-css": src("css", "writing.css"),
 };
 let htmlOutputs = [];
 
 function buildRoutes(routes) {
   const defaultHtmlOpts = {
-    template: path.join("src", "html", "template.html"),
+    template: join("src", "html", "template.html"),
     inject: false,
     minify: {
-      removeComments: devMode ? false : true,
-      collapseWhitespace: devMode ? false : true,
-      minifyJS: devMode ? false : true,
-      minifyCSS: devMode ? false : true
+      removeComments: mode === "development" ? false : true,
+      collapseWhitespace: mode === "development" ? false : true,
+      minifyJS: mode === "development" ? false : true,
+      minifyCSS: mode === "development" ? false : true
     },
     footer: renderToString(<Footer />)
   };
 
-  fs.readdirSync(routes).forEach(route => {
+  readdirSync(routes).forEach(route => {
     if (/index\.js$/i.test(route) === true) {
-      let routeModule = require(path.join(routes, route));
+      let routeModule = require(join(routes, route));
       let routeParts = routes.split("/");
       let routeSlug = routeParts[routeParts.length - 2] === "blog" ? "blog" : routeParts[routeParts.length - 1];
       let metadata = routeModule.Metadata;
@@ -62,46 +59,46 @@ function buildRoutes(routes) {
       };
 
       htmlOutputs.push(new HtmlWebpackPlugin({
-        filename: path.join(routes.replace("src/routes", "dist"), "index.html"),
+        filename: join(routes.replace("src/routes", "dist"), "index.html"),
         saveData: false,
         ...commonHtmlOpts,
         ...defaultHtmlOpts
       }));
 
       htmlOutputs.push(new HtmlWebpackPlugin({
-        filename: path.join(routes.replace("src/routes", "dist"), "index.savedata.html"),
+        filename: join(routes.replace("src/routes", "dist"), "index.savedata.html"),
         saveData: true,
         ...commonHtmlOpts,
         ...defaultHtmlOpts
       }));
     }
 
-    if (fs.lstatSync(path.join(routes, route)).isDirectory() === true) {
-      buildRoutes(path.join(routes, route));
+    if (lstatSync(join(routes, route)).isDirectory() === true) {
+      buildRoutes(join(routes, route));
     }
   });
 }
 
-buildRoutes(path.join(__dirname, "src", "routes"));
+buildRoutes(join(__dirname, "src", "routes"));
 
 export default {
-  mode: devMode ? "development" : "production",
+  mode,
   entry: entryPoints,
   output: {
-    filename: devMode ? "js/[name].js" : "js/[name].[chunkhash:8].js",
-    chunkFilename: devMode ? "js/[name].js" : "js/[name].[chunkhash:8].js",
-    path: paths.dist,
+    filename: mode === "development" ? "js/[name].js" : "js/[name].[chunkhash:8].js",
+    chunkFilename: mode === "development" ? "js/[name].js" : "js/[name].[chunkhash:8].js",
+    path: resolve(__dirname, "dist"),
     publicPath: "/"
   },
   module: {
     rules: [
       {
-        test: /\.js$/i,
-        exclude: /node_modules/i,
+        test: /\.m?js$/i,
+        exclude: /node_modules\/(?!(yall-js|quicklink|dnstradamus)\/)/i,
         use: {
           loader: "babel-loader",
           options: {
-            envName: "legacy"
+            envName: "client"
           }
         }
       },
@@ -119,7 +116,7 @@ export default {
           loader: "file-loader",
           options: {
             outputPath: "fonts",
-            name: devMode ? "[name].[ext]" : "[name].[hash:8].[ext]"
+            name: mode === "development" ? "[name].[ext]" : "[name].[hash:8].[ext]"
           }
         }
       }
@@ -127,8 +124,8 @@ export default {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: path.join("css", devMode ? "[name].css" : "[name].[contenthash:8].css"),
-      chunkFilename: path.join("css", devMode ? "[name].css" : "[name].[contenthash:8].css")
+      filename: join("css", mode === "development" ? "[name].css" : "[name].[contenthash:8].css"),
+      chunkFilename: join("css", mode === "development" ? "[name].css" : "[name].[contenthash:8].css")
     }),
     ...htmlOutputs
   ]

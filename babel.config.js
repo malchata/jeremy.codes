@@ -1,4 +1,4 @@
-/* global module */
+/* eslint-env node */
 
 module.exports = {
   env: {
@@ -11,7 +11,6 @@ module.exports = {
         ],
         [
           "@babel/preset-env", {
-            useBuiltIns: "usage",
             targets: {
               node: "current"
             }
@@ -31,7 +30,6 @@ module.exports = {
         ],
         [
           "@babel/preset-env", {
-            useBuiltIns: "usage",
             targets: {
               node: "current"
             }
@@ -42,29 +40,7 @@ module.exports = {
         "@babel/plugin-syntax-dynamic-import"
       ],
     },
-    modern: {
-      presets: [
-        [
-          "@babel/preset-react", {
-            pragma: "h"
-          }
-        ],
-        [
-          "@babel/preset-env",
-          {
-            modules: false,
-            targets: {
-              esmodules: true
-            }
-          }
-        ]
-      ],
-      plugins: [
-        "@babel/plugin-transform-runtime",
-        "@babel/plugin-syntax-dynamic-import"
-      ]
-    },
-    legacy: {
+    client: {
       presets: [
         [
           "@babel/preset-react", {
@@ -74,13 +50,16 @@ module.exports = {
         [
           "@babel/preset-env", {
             modules: false,
-            useBuiltIns: "entry",
-            targets: "> 0.25%, last 2 versions, Firefox ESR"
+            corejs: 2,
+            useBuiltIns: "usage",
+            targets: "> 0.25%, last 2 versions, IE > 10, Firefox ESR"
           }
         ]
       ],
       plugins: [
-        "@babel/plugin-transform-runtime",
+        ["@babel/plugin-transform-runtime", {
+          useESModules: true
+        }],
         "@babel/plugin-syntax-dynamic-import"
       ]
     }
