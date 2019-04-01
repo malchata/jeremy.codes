@@ -51,15 +51,13 @@ module.exports = {
           "@babel/preset-env", {
             modules: false,
             corejs: 2,
+            loose: true,
             useBuiltIns: "usage",
             targets: "> 0.25%, last 2 versions, IE > 10, Firefox ESR"
           }
         ]
       ],
       plugins: [
-        ["@babel/plugin-transform-runtime", {
-          useESModules: true
-        }],
         "@babel/plugin-syntax-dynamic-import"
       ]
     }

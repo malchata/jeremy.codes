@@ -1,6 +1,6 @@
 import { h, render } from "preact";
 
-export default () => (
+export default props => (
   <main>
     <section className="section section--intro">
       <div className="section__container">
@@ -18,7 +18,7 @@ export default () => (
       <div className="section__container">
         <div className="section__copy">
           <h2 className="section__header">I write.</h2>
-          <h3 className="section__body">A central part of my learning involves documenting it. This has lead to <a href="/writing/" rel="noopener">articles and books</a>. I also write on my blog when the mood strikes. <em>Latest post: <a href="/blog/make-it-boring/" rel="noopener">Make it Boring</a></em></h3>
+          <h3 className="section__body">A central part of my learning involves documenting it. This has lead to <a href="/writing/" rel="noopener">articles and books</a>. I also write on my blog when the mood strikes. My latest article is: <em><a href={props.latestArticleLink} rel="noopener">{props.latestArticleTitle}</a></em></h3>
         </div>
         <div className="books">
           <a href="https://www.manning.com/books/web-performance-in-action?a_aid=webopt&amp;a_bid=63c31090" rel="noopener" className="book__link">

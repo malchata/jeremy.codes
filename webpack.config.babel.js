@@ -1,4 +1,5 @@
 /* eslint-env node */
+/* eslint no-console: "off" */
 
 // Built-ins
 import { readdirSync, lstatSync } from "fs";
@@ -13,12 +14,12 @@ import { h } from "preact";
 import renderToString from "preact-render-to-string";
 import Header from "./src/components/Header";
 import Footer from "./src/components/Footer";
+import Writing from "./src/components/Writing";
 
 const mode = process.env.NODE_ENV !== "production" ? "development": "production";
 const src = (...args) => resolve(__dirname, "src", ...args);
 let entryPoints = {
-  "yall": src("js", "yall.js"),
-  "prefetchers": src("js", "prefetchers.js"),
+  "scripts": src("js", "scripts.js"),
   "blog-css": src("css", "blog.css"),
   "contact-css": src("css", "contact.css"),
   "global-css": src("css", "global.css"),
@@ -48,29 +49,39 @@ function buildRoutes(routes) {
       let routeSlug = routeParts[routeParts.length - 2] === "blog" ? "blog" : routeParts[routeParts.length - 1];
       let metadata = routeModule.Metadata;
 
-      const commonHtmlOpts = {
-        title: metadata.title,
-        description: metadata.description,
-        content: renderToString(<routeModule.default />),
-        header: renderToString(<Header slug={routeSlug} />),
-        slug: routeSlug === "routes" ? "home" : routeSlug,
-        robots: metadata.hide ? "noindex, nofollow" : "index, follow",
-        pageUrl: `https://jeremy.codes${metadata.slug}`
-      };
+      if (!metadata.exclude) {
+        if (routeSlug === "routes") {
+          const { title, link } = Writing().children[1].children[0].children[1].children[0].attributes;
+          var latestArticle = {
+            title,
+            link
+          };
+        }
 
-      htmlOutputs.push(new HtmlWebpackPlugin({
-        filename: join(routes.replace("src/routes", "dist"), "index.html"),
-        saveData: false,
-        ...commonHtmlOpts,
-        ...defaultHtmlOpts
-      }));
+        const commonHtmlOpts = {
+          title: metadata.title,
+          description: metadata.description,
+          content: routeSlug === "routes" ? renderToString(<routeModule.default latestArticleTitle={latestArticle.title} latestArticleLink={latestArticle.link} />) : renderToString(<routeModule.default />),
+          header: renderToString(<Header slug={routeSlug} />),
+          slug: routeSlug === "routes" ? "home" : routeSlug,
+          robots: metadata.hide ? "noindex, nofollow" : "index, follow",
+          pageUrl: `https://jeremy.codes${metadata.slug}`
+        };
 
-      htmlOutputs.push(new HtmlWebpackPlugin({
-        filename: join(routes.replace("src/routes", "dist"), "index.savedata.html"),
-        saveData: true,
-        ...commonHtmlOpts,
-        ...defaultHtmlOpts
-      }));
+        htmlOutputs.push(new HtmlWebpackPlugin({
+          filename: join(routes.replace("src/routes", "dist"), "index.html"),
+          saveData: false,
+          ...commonHtmlOpts,
+          ...defaultHtmlOpts
+        }));
+
+        htmlOutputs.push(new HtmlWebpackPlugin({
+          filename: join(routes.replace("src/routes", "dist"), "index.savedata.html"),
+          saveData: true,
+          ...commonHtmlOpts,
+          ...defaultHtmlOpts
+        }));
+      }
     }
 
     if (lstatSync(join(routes, route)).isDirectory() === true) {
@@ -79,6 +90,7 @@ function buildRoutes(routes) {
   });
 }
 
+console.log("Building HTML routes...");
 buildRoutes(join(__dirname, "src", "routes"));
 
 export default {

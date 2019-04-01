@@ -12,6 +12,18 @@ export default () => (
         <h2 className="writing__year__header">2019</h2>
         <ol className="articles">
           <ArticleEntry
+            date="31 March"
+            link="/blog/defining-productivity/"
+            title="Defining Productivity"
+          />
+          <ArticleEntry
+            date="28 March"
+            link="https://alistapart.com/article/responsible-javascript-part-1"
+            title="Responsible JavaScript: Part I"
+            publication="A List Apart"
+            publicationLink="https://alistapart.com/"
+          />
+          <ArticleEntry
             date="15 February"
             link="https://developers.google.com/web/updates/2019/02/priority-hints"
             title="Get Ready for Priority Hints"
@@ -202,7 +214,7 @@ export default () => (
           />
           <ArticleEntry
             date="16 January"
-            link="https://www.manning.com/books/web-performance-in-action?a_aid=webopt&a_bid=63c31090"
+            link="https://www.manning.com/books/web-performance-in-action?a_aid=webopt&amp;a_bid=63c31090"
             title="Web Performance in Action, First Edition"
             publication="Manning Publications"
             publicationLink="https://www.manning.com/"

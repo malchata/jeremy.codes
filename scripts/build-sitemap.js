@@ -14,7 +14,10 @@ function buildRoutes(routes) {
   fs.readdirSync(routes).forEach(route => {
     if (/index\.js$/i.test(route) === true) {
       let postMeta = require(path.join(routes, route)).Metadata;
-      sitemapXml += `<url><loc>https://jeremy.codes${postMeta.slug}</loc><lastmod>${lastmod(postMeta.date)}</lastmod><priority>${postMeta.sitemapPriority}</priority></url>`;
+
+      if (!postMeta.hide && !postMeta.exclude) {
+        sitemapXml += `<url><loc>https://jeremy.codes${postMeta.slug}</loc><lastmod>${lastmod(postMeta.date)}</lastmod><priority>${postMeta.sitemapPriority}</priority></url>`;
+      }
     }
 
     if (fs.lstatSync(path.join(routes, route)).isDirectory() === true) {

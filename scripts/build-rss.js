@@ -1,23 +1,35 @@
 /* eslint-env node */
 /* eslint no-console: "off" */
 
-const fs = require("fs");
-const path = require("path");
+import Writing from "../src/components/Writing";
 
+// Begin RSS feed markup
 let rssXml = "<?xml version=\"1.0\" encoding=\"utf-8\" ?><rss version=\"2.0\"><channel><title>Jeremy Wagner's web development blog.</title><description>The assorted thoughts, research, and opinion of web developer and speaker Jeremy Wagner.</description><link>https://jeremy.codes/</link>";
-rssXml += buildRoutes(path.resolve("src", "routes", "blog"));
+
+const postLists = Writing().children[1].children;
+
+for (let postList of postLists) {
+  const posts = postList.children[1].children;
+  const year = postList.children[0].children;
+
+  for (let post of posts) {
+    const { date, title } = post.attributes;
+    let { link } = post.attributes;
+
+    if (link.indexOf("?") > -1) {
+      const linkParts = link.split("?");
+
+      link = linkParts[0] + "?" + encodeURIComponent(linkParts[1]);
+    }
+
+    rssXml += `<item><title>${title}</title><link>${link.search(/^https?:\/\//i) < 0 ? `https://jeremy.codes${link}` : link}</link><guid isPermaLink="true">${link.search(/^https?:\/\//i) < 0 ? `https://jeremy.codes${link}` : link}</guid><pubDate>${pubDate(`${date}, ${year}`)}</pubDate></item>`;
+  }
+}
+
+// End RSS feed markup
 rssXml += "</channel></rss>";
 
 console.log(rssXml);
-
-function buildRoutes(routes, rssXml = "") {
-  fs.readdirSync(routes).forEach(route => {
-    let postMeta = require(path.join(routes, route, "index.js")).Metadata;
-    rssXml += `<item><title>${postMeta.title}</title><description>${postMeta.description}</description><link>https://jeremy.codes${postMeta.slug}</link><pubDate>${pubDate(postMeta.date)}</pubDate></item>`;
-  });
-
-  return rssXml;
-}
 
 function pubDate (dateString) {
   let date = new Date(Date.parse(dateString));
