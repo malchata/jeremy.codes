@@ -123,7 +123,7 @@ export default {
         ]
       },
       {
-        test: /\.woff2?/i,
+        test: /\.woff2?$/i,
         use: {
           loader: "file-loader",
           options: {
