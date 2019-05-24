@@ -52,7 +52,7 @@ export default props => (
       <div className="section__container">
         <div className="section__copy">
           <h2 className="section__header">I speak.</h2>
-          <h3 className="section__body">Sometimes <a href="https://speaking.jeremy.codes/" rel="noopener">I speak at conferences</a> about the web. If you think I'd be a good fit for your event, <a href="/contact/" rel="noopener">let's chat</a>. <em>Latest talk: <a href="https://www.youtube.com/watch?v=md7Ua82fPe4" rel="noopener">Take a (Client) Hint!</a></em>
+          <h3 className="section__body">Sometimes <a href="https://speaking.jeremy.codes/" rel="noopener">I speak at conferences</a> about the web. If you think I'd be a good fit for your event, <a href="/contact/" rel="noopener">let's chat</a>. <em>Latest talk: <a href="https://vimeo.com/331573291" rel="noopener">Making a Difference with Differential Serving</a>.</em>
           </h3>
         </div>
         <picture>

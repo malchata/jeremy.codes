@@ -76,7 +76,6 @@
 }
 
 .section--intro .section__image {
-  opacity: 1;
   transition: none;
 }
 
@@ -85,8 +84,6 @@
   width: 66.666%;
   height: auto;
   margin: 0 auto;
-  opacity: 0.25;
-  transition: 2s opacity ease-out;
 }
 
 .section--writing {
@@ -135,13 +132,6 @@
   display: block;
   width: 100%;
   height: auto;
-  opacity: 0.25;
-  transition: 2s opacity ease-out;
-}
-
-.section__image.yall__loaded,
-.book__image.yall__loaded {
-  opacity: 1;
 }
 
 .section--speaking {
@@ -195,11 +185,6 @@
 
 .section--work .section__body {
   color: #131515;
-}
-
-.no-js .section__image,
-.no-js .book__image {
-  opacity: 1;
 }
 
 @media (min-width: 40rem) {
