@@ -6,5 +6,4 @@ dist
 bundle-stats.json
 .cache
 assets.json
-.webpcache
-dist.tar.gz
+.netlify

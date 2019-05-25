@@ -1,0 +1,72 @@
+[Settings]
+ID = "jeremy.codes"
+
+[build]
+  publish = "dist/"
+  command = "npm run build"
+
+[[headers]]
+  for = "/*.xml"
+
+  [headers.values]
+    Cache-Control = "max-age=600, must-revalidate, private"
+
+[[headers]]
+  for = "/*.css"
+
+  [headers.values]
+    Cache-Control = "max-age=31557600, immutable, public"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "max-age=31557600, immutable, public"
+
+[[headers]]
+  for = "/*.mjs"
+
+  [headers.values]
+    Cache-Control = "max-age=31557600, immutable, public"
+    Content-Type = "text/javascript"
+
+[[headers]]
+  for = "/*.gif"
+
+  [headers.values]
+    Cache-Control = "max-age=31557600, immutable, public"
+
+[[headers]]
+  for = "/*.ico"
+
+  [headers.values]
+    Cache-Control = "max-age=31557600, immutable, public"
+
+[[headers]]
+  for = "/*.webp"
+
+  [headers.values]
+    Cache-Control = "max-age=31557600, immutable, public"
+
+[[headers]]
+  for = "/*.png"
+
+  [headers.values]
+    Cache-Control = "max-age=31557600, immutable, public"
+
+[[headers]]
+  for = "/*.jpg"
+
+  [headers.values]
+    Cache-Control = "max-age=31557600, immutable, public"
+
+[[headers]]
+  for = "/*.woff2"
+
+  [headers.values]
+    Cache-Control = "max-age=31557600, immutable, public"
+
+[[headers]]
+  for = "/*.woff"
+
+  [headers.values]
+    Cache-Control = "max-age=31557600, immutable, public"
