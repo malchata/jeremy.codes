@@ -18,7 +18,14 @@ module.exports = {
         ]
       ],
       plugins: [
-        "@babel/plugin-syntax-dynamic-import"
+        "@babel/plugin-syntax-dynamic-import",
+        "@babel/plugin-proposal-object-rest-spread",
+        [
+          "@babel/plugin-transform-runtime", {
+            useESModules: true,
+            helpers: false
+          }
+        ]
       ],
     },
     development: {
@@ -37,7 +44,14 @@ module.exports = {
         ]
       ],
       plugins: [
-        "@babel/plugin-syntax-dynamic-import"
+        "@babel/plugin-syntax-dynamic-import",
+        "@babel/plugin-proposal-object-rest-spread",
+        [
+          "@babel/plugin-transform-runtime", {
+            useESModules: true,
+            helpers: false
+          }
+        ]
       ],
     },
     client: {
@@ -57,11 +71,11 @@ module.exports = {
       ],
       plugins: [
         "@babel/plugin-syntax-dynamic-import",
+        "@babel/plugin-proposal-object-rest-spread",
         [
           "@babel/plugin-transform-runtime", {
             useESModules: true,
-            helpers: false,
-            corejs: 2
+            helpers: false
           }
         ]
       ]

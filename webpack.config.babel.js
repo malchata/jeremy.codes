@@ -92,6 +92,7 @@ function buildRoutes(routes) {
 
 console.log("Building HTML routes...");
 buildRoutes(join(__dirname, "src", "routes"));
+console.log("Routes built! Starting webpack...");
 
 export default {
   mode,
@@ -102,6 +103,7 @@ export default {
     path: resolve(__dirname, "dist"),
     publicPath: "/"
   },
+  devtool: mode === "development" ? "source-map" : "hidden-source-map",
   module: {
     rules: [
       {
@@ -133,6 +135,14 @@ export default {
         }
       }
     ]
+  },
+  stats: {
+    exclude: /\.map$/i,
+    excludeAssets: /\.map$/i,
+    excludeModules: /\.map$/i,
+    builtAt: false,
+    children: false,
+    modules: false
   },
   plugins: [
     new MiniCssExtractPlugin({

@@ -2,11 +2,11 @@
 
 let plugins = [
   require("autoprefixer")({
-    browsers: ["last 2 versions", "> 0.25%", "IE > 10", "iOS >= 9", "Firefox ESR", "not dead"]
+    overrideBrowserslist: ["last 2 versions", "> 0.25%", "IE > 10", "iOS >= 9", "Firefox ESR", "not dead"]
   })
 ];
 
-if (process.env.NODE_ENV !== "production") {
+if (process.env.NODE_ENV === "production") {
   plugins.push(require("cssnano"));
 }
 
