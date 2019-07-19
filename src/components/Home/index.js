@@ -6,7 +6,7 @@ export default props => (
       <div className="section__container">
         <div className="section__copy">
           <h1 className="section__header">Hi, I'm Jeremy.</h1>
-          <h2 className="section__body">I'm a web developer, writer, and speaker. I love to make the web both fast and fun for everyone, everywhere.</h2>
+          <h2 className="section__body">I'm a web developer, writer, and speaker. I work to make the web faster for everyone, everywhere.</h2>
         </div>
         <picture>
           <source srcset="/img/home/jeremy-384w.webp 384w, /img/home/jeremy-512w.webp 512w, /img/home/jeremy-640w.webp 640w, /img/home/jeremy-768w.webp 768w, /img/home/jeremy-896w.webp 896w, /img/home/jeremy-1024w.webp 1024w, /img/home/jeremy-1152w.webp 1152w" type="image/webp" />

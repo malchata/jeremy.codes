@@ -58,27 +58,15 @@ function buildRoutes(routes) {
           };
         }
 
-        const commonHtmlOpts = {
+        htmlOutputs.push(new HtmlWebpackPlugin({
+          filename: join(routes.replace("src/routes", "dist"), "index.html"),
           title: metadata.title,
           description: metadata.description,
           content: routeSlug === "routes" ? renderToString(<routeModule.default latestArticleTitle={latestArticle.title} latestArticleLink={latestArticle.link} />) : renderToString(<routeModule.default />),
           header: renderToString(<Header slug={routeSlug} />),
           slug: routeSlug === "routes" ? "home" : routeSlug,
           robots: metadata.hide ? "noindex, nofollow" : "index, follow",
-          pageUrl: `https://jeremy.codes${metadata.slug}`
-        };
-
-        htmlOutputs.push(new HtmlWebpackPlugin({
-          filename: join(routes.replace("src/routes", "dist"), "index.html"),
-          saveData: false,
-          ...commonHtmlOpts,
-          ...defaultHtmlOpts
-        }));
-
-        htmlOutputs.push(new HtmlWebpackPlugin({
-          filename: join(routes.replace("src/routes", "dist"), "index.savedata.html"),
-          saveData: true,
-          ...commonHtmlOpts,
+          pageUrl: `https://jeremy.codes${metadata.slug}`,
           ...defaultHtmlOpts
         }));
       }

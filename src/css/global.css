@@ -388,7 +388,7 @@ table {
     background: var(--color4);
   }
 
-  .no-save-data {
+  .no-save-data body {
     font-family: var(--sans);
   }
 

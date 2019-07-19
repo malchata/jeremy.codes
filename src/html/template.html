@@ -39,7 +39,14 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="shortcut icon" href="/favicon.ico">
-    <script>document.documentElement.classList.remove("no-js")</script>
+    <script>
+      document.documentElement.classList.remove("no-js");
+      var saveData = typeof navigator.connection !== "undefined" && "saveData" in navigator.connection ? navigator.connection.saveData : false;
+
+      if (!saveData) {
+        document.documentElement.classList.add("no-save-data");
+      }
+    </script>
     <% for (chunk in htmlWebpackPlugin.files.css) { %>
       <% if (htmlWebpackPlugin.files.css[chunk].indexOf("global") !== -1) { %>
         <link href="<%= htmlWebpackPlugin.files.css[chunk] %>" rel="stylesheet">
@@ -82,7 +89,7 @@
       <% } %>
     <% } %>
   </head>
-  <body<% if (htmlWebpackPlugin.options.saveData === false) { %> class="no-save-data"<% } %>>
+  <body>
     <%= htmlWebpackPlugin.options.header %>
     <%= htmlWebpackPlugin.options.content %>
     <%= htmlWebpackPlugin.options.footer %>
@@ -94,7 +101,6 @@
     <% } %>
     <script>
       var deviceMemory = navigator.deviceMemory || 8;
-      var saveData = typeof navigator.connection !== "undefined" && "saveData" in navigator.connection ? navigator.connection.saveData : false;
 
       if (window.CSS.registerProperty) {
         CSS.registerProperty({

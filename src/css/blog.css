@@ -127,6 +127,12 @@
   text-decoration-color: #541388;
 }
 
+.blog__content a code {
+  text-decoration: inherit;
+  text-decoration-color: inherit;
+  color: inherit;
+}
+
 .blog__code {
   line-height: 1.618;
   font-weight: 400;

@@ -5,12 +5,17 @@ export default () => (
   <main>
     <section className="subpage__intro">
       <h1 className="subpage__header">Bylines &amp; blog posts</h1>
-      <h4 className="subpage__subheader">Whenever I write something&mdash;and write I will&mdash;I'll post it here. If I wrote an article for someone else, you'll see that publication's name under the title. Otherwise, it's just one of my random blog posts.</h4>
+      <h4 className="subpage__subheader">Whenever I write something&mdash;and write I will&mdash;I'll post it here. If I wrote an article for someone else, you'll see that publication's name under the title. Otherwise, it's just another one of my random blog posts.</h4>
     </section>
     <ol className="writing__archive">
       <li className="writing__year">
         <h2 className="writing__year__header">2019</h2>
         <ol className="articles">
+          <ArticleEntry
+            date="18 July"
+            link="/blog/a-less-risky-differential-serving-pattern/"
+            title="A Less Risky Differential Serving Pattern"
+          />
           <ArticleEntry
             date="13 June"
             link="https://alistapart.com/article/responsible-javascript-part-2"
