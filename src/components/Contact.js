@@ -2,7 +2,7 @@ import { h, render } from "preact";
 
 export default () => (
   <main>
-    <section className="subpage__intro subpage__intro--alternate">
+    <section className="subpage__intro subpage__intro--secondary">
       <h1 className="subpage__header">Get in touch</h1>
       <h4 className="subpage__subheader">Interested in working with me, or want to book me to speak at your event? Or maybe you just want to say &quot;hello&quot;? The form below will deliver your message to my inbox in no time.</h4>
     </section>

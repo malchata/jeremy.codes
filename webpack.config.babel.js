@@ -18,18 +18,19 @@ import Writing from "./src/components/Writing";
 
 const mode = process.env.NODE_ENV !== "production" ? "development": "production";
 const src = (...args) => resolve(__dirname, "src", ...args);
-let entryPoints = {
+let entry = {
   "scripts": src("js", "scripts.js"),
   "blog-css": src("css", "blog.css"),
   "contact-css": src("css", "contact.css"),
   "global-css": src("css", "global.css"),
   "home-css": src("css", "home.css"),
+  "projects-css": src("css", "projects.css"),
   "subpage-css": src("css", "subpage.css"),
   "writing-css": src("css", "writing.css"),
 };
 let htmlOutputs = [];
 
-function buildRoutes(routes) {
+function buildRoutes (routes) {
   const defaultHtmlOpts = {
     template: join("src", "html", "template.html"),
     inject: false,
@@ -74,17 +75,19 @@ function buildRoutes(routes) {
 
     if (lstatSync(join(routes, route)).isDirectory() === true) {
       buildRoutes(join(routes, route));
+    } else {
+      console.log(`Gathered: ${join(routes.replace("src/routes", "dist"), "index.html")}`);
     }
   });
 }
 
-console.log("Building HTML routes...");
+console.log("Gathering HTML routes...");
 buildRoutes(join(__dirname, "src", "routes"));
-console.log("Routes built! Starting webpack...");
+console.log("Routes gathered! Building site...");
 
 export default {
   mode,
-  entry: entryPoints,
+  entry,
   output: {
     filename: mode === "development" ? "js/[name].js" : "js/[name].[chunkhash:8].js",
     chunkFilename: mode === "development" ? "js/[name].js" : "js/[name].[chunkhash:8].js",

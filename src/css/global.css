@@ -87,12 +87,8 @@ pre,
 a,
 cite,
 code,
-del,
-dfn,
 em,
 img,
-ins,
-kbd,
 q,
 s,
 samp,
@@ -102,9 +98,6 @@ strong,
 sub,
 sup,
 u,
-dl,
-dt,
-dd,
 ol,
 ul,
 li,
@@ -131,7 +124,6 @@ nav,
 output,
 section,
 summary,
-audio,
 video {
   margin: 0;
   padding: 0;
@@ -240,7 +232,7 @@ table {
   display: inline-block;
   font-family: "Overpass Mono", monospace;
   text-decoration: none;
-  color: #ffc09f;
+  color: #ffdbc7;
   font-size: 1.243925rem;
   font-weight: 700;
   position: relative;
@@ -334,7 +326,6 @@ table {
   font-weight: 400;
   padding: 0 1rem;
   font-size: .92579375rem;
-  text-shadow: .126ch .126ch #131515;
   line-height: 1.319;
 }
 
@@ -345,19 +336,24 @@ table {
 @supports (--css: variables) {
   :root {
     /* Colors */
-    --color1: #b8336a;
-    --color2: #ffc09f;
-    --color3: #541388;
-    --color4: #f7fff7;
-    --color5: #131515;
-    --color6: #fafafa;
+    --magenta: #b8336a;
+    --peach: #ffdbc7;
+    --purple: #541388;
+    --white: #f7fff7;
+    --black: #131515;
+    --off-white: #fafafa;
 
     /* Transparent Color Variants */
-    --color1-trans: #b8336a66;
-    --color2-trans: #ffc09f66;
-    --color3-trans: #54138866;
-    --color4-trans: #f7fff766;
-    --color5-trans: #13151566;
+    --magenta-trans: #b8336a66;
+    --peach-trans: #ffdbc766;
+    --purple-trans: #54138866;
+    --white-trans: #f7fff766;
+    --black-trans: #13151566;
+    --magenta-more-trans: #b8336a11;
+    --peach-more-trans: #ffdbc711;
+    --purple-more-trans: #54138811;
+    --white-more-trans: #f7fff711;
+    --black-more-trans: #13151511;
 
     /* Fonts */
     --sans: "Poppins", sans-serif;
@@ -385,7 +381,7 @@ table {
 
   body {
     font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-    background: var(--color4);
+    background: var(--white);
   }
 
   .no-save-data body {
@@ -393,15 +389,15 @@ table {
   }
 
   .header {
-    background: var(--color5);
-    box-shadow: 0 .5ch var(--color5-trans);
+    background: var(--black);
+    box-shadow: 0 .5ch var(--black-trans);
   }
 
   .header__site-name,
   .header__nav-link,
   .header__nav-separator {
     font-family: "Consolas", "Courier New", monospace;
-    color: var(--color2);
+    color: var(--peach);
     font-size: var(--p);
   }
 
@@ -413,34 +409,33 @@ table {
 
   .header__site-name:before,
   .header__nav-link:before {
-    background-color: var(--color4);
+    background-color: var(--white);
   }
 
   .header__site-name:hover,
   .header__nav-link:hover {
-    color: var(--color4);
+    color: var(--white);
   }
 
   .header__nav-link--on {
-    color: var(--color4);
+    color: var(--white);
   }
 
   .footer:before {
-    background: var(--color1);
+    background: var(--magenta);
   }
 
   .footer:after {
-    background: var(--color3);
+    background: var(--purple);
   }
 
   .footer__links {
-    color: var(--color4);
+    color: var(--white);
     font-size: var(--tiny);
-    text-shadow: .126ch .126ch var(--color5);
   }
 
   .footer__link {
-    color: var(--color4);
+    color: var(--white);
   }
 }
 

@@ -18,7 +18,7 @@ export default props => (
       <div className="section__container">
         <div className="section__copy">
           <h2 className="section__header">I write.</h2>
-          <h3 className="section__body">A central part of my learning involves documenting it. This has lead to <a href="/writing/" rel="noopener">articles and books</a>. I also write on my blog when the mood strikes. My latest article is: <em><a href={props.latestArticleLink} rel="noopener">{props.latestArticleTitle}</a></em></h3>
+          <h3 className="section__body">A central part of my learning is documenting it. This has lead to <a href="/writing/" rel="noopener">articles and books</a>. I also write on my blog when the mood strikes. My latest article is: <em><a href={props.latestArticleLink} rel="noopener">{props.latestArticleTitle}</a></em></h3>
         </div>
         <div className="books">
           <a href="https://www.manning.com/books/web-performance-in-action?a_aid=webopt&amp;a_bid=63c31090" rel="noopener" className="book__link">
@@ -70,8 +70,8 @@ export default props => (
     <section className="section section--work">
       <div className="section__container">
         <div className="section__copy">
-          <h2 className="section__header">I work.</h2>
-          <h3 className="section__body">I work to make the web faster as a web performance consultant. If you think I can help you to be faster on the web, <a href="/contact/" rel="noopener">get in touch</a>!</h3>
+          <h2 className="section__header">I make things.</h2>
+          <h3 className="section__body">I make things when the mood strikes me. I've written various bits of open source software, and have even a bit of music from time to time.</h3>
         </div>
         <picture>
           <source data-srcset="/img/home/keyboard-256w.webp 256w, /img/home/keyboard-384w.webp 384w, /img/home/keyboard-512w.webp 512w, /img/home/keyboard-640w.webp 640w, /img/home/keyboard-768w.webp 768w, /img/home/keyboard-896w.webp 896w, /img/home/keyboard-1024w.webp 1024w, /img/home/keyboard-1152w.webp 1152w" type="image/webp" />

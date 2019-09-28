@@ -12,7 +12,6 @@
 .writing__year__header {
   font-size: 1.92779375rem;
   color: #b8336a;
-  text-shadow: .126ch .126ch #ffc09f66;
   font-weight: 600;
   line-height: 1.1595;
   position: relative;
@@ -27,7 +26,7 @@
   bottom: -.125rem;
   display: block;
   height: .125rem;
-  background-image: linear-gradient(22.5deg, #b8336a, #ffc09f);
+  background-image: linear-gradient(22.5deg, #b8336a, #ffdbc7);
 }
 
 .article {
@@ -92,31 +91,30 @@
 @supports (--css: variables) {
   .writing__year__header {
     font-size: var(--h2);
-    color: var(--color1);
-    text-shadow: .126ch .126ch var(--color2-trans);
+    color: var(--magenta);
   }
 
   .writing__year__header:after {
-    background-image: linear-gradient(22.5deg, var(--color1), var(--color2));
+    background-image: linear-gradient(22.5deg, var(--magenta), var(--peach));
   }
 
   .article__date {
     font-size: var(--p);
-    color: var(--color3);
+    color: var(--purple);
   }
 
   .article__title {
     font-size: var(--h4);
-    color: var(--color1);
+    color: var(--magenta);
   }
 
   .article__publication {
     font-size: var(--p);
-    color: var(--color3);
+    color: var(--purple);
   }
 
   .writing__footnote {
-    color: var(--color5);
+    color: var(--black);
     font-size: var(--tiny);
   }
 }

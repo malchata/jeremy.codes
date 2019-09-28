@@ -1,16 +1,11 @@
 .section {
   position: relative;
   padding: 3.5rem 1rem;
-  --lines-tile-size: 96;
-  --lines-weight: 3;
-  --lines-probability: .5;
-  --lines-alpha: .1;
+  --slapdash-tile-size: 64;
+  --slapdash-weight: 3;
+  --slapdash-probability: .33;
   background-image: url("/img/pattern-black.svg");
   background-size: 16rem 16rem;
-}
-
-.no-save-data .section {
-  background-image: paint(lines);
 }
 
 .section a {
@@ -38,6 +33,7 @@
   padding-bottom: 0;
   background-color: #541388;
   background-image: url("/img/pattern-peach.svg");
+  background-image: paint(slapdash);
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 1.5rem));
   margin-bottom: -1.5rem;
 }
@@ -62,7 +58,7 @@
 }
 
 .section--intro .section__header {
-  background-color: #ffc09f;
+  background-color: #ffdbc7;
   color: #541388;
 }
 
@@ -72,7 +68,7 @@
 }
 
 .section--intro .section__body {
-  color: #f7fff7;
+  color: #ffdbc7;
 }
 
 .section--intro .section__image {
@@ -88,8 +84,9 @@
 
 .section--writing {
   background-color: #f7fff7;
-  --lines-direction: 1;
+  --slapdash-direction: 1;
   background-image: url("/img/pattern-purple.svg");
+  background-image: paint(slapdash);
   background-size: 16rem 16rem;
   clip-path: polygon(0 0, 100% 1.5rem, 100% calc(100% - 1.5rem), 0 100%);
   margin-bottom: -1.5rem;
@@ -111,7 +108,7 @@
 }
 
 .section--writing .section__body {
-  color: #131515;
+  color: #541388;
 }
 
 .section--writing .section__container {
@@ -138,6 +135,7 @@
   padding-bottom: 0;
   background-color: #b8336a;
   background-image: url("/img/pattern-white.svg");
+  background-image: paint(slapdash);
   clip-path: polygon(0 1.5rem, 100% 0, 100% 100%, 0 calc(100% - 1.5rem));
   margin-bottom: -1.5rem;
 }
@@ -161,7 +159,8 @@
 
 .section--work {
   background-image: url("/img/pattern-magenta.svg");
-  background-color: #ffc09f;
+  background-image: paint(slapdash);
+  background-color: #ffdbc7;
   padding-bottom: 7rem;
   margin-bottom: -6rem;
   clip-path: polygon(0 0, 100% 1.5rem, 100% 100%, 0 100%);
@@ -178,13 +177,13 @@
 .section--work .section__header {
   background-color: #b8336a;
   box-shadow: .25ch .25ch 0 #b8336a66;
-  color: #ffc09f;
+  color: #ffdbc7;
   box-shadow: inset -.166ch 0 0 #13151566;
   clip-path: polygon(0 .25rem, 100% 0, 100% 100%, 0 calc(100% - .25rem));
 }
 
 .section--work .section__body {
-  color: #131515;
+  color: #b8336a;
 }
 
 @media (min-width: 40rem) {
@@ -251,22 +250,22 @@
 
 @supports (--css: variables) {
   .section:before {
-    background-color: var(--color5-trans);
+    background-color: var(--black-trans);
   }
 
   .section--intro {
-    background-color: var(--color3);
-    --lines-color: var(--color2);
+    background-color: var(--purple);
+    --slapdash-color: var(--peach-more-trans);
   }
 
   .section__header {
     font-size: var(--h1);
-    box-shadow: inset .166ch 0 0 var(--color5-trans);
+    box-shadow: inset .166ch 0 0 var(--black-trans);
   }
 
   .section--intro .section__header {
-    background-color: var(--color2);
-    color: var(--color3);
+    background-color: var(--peach);
+    color: var(--purple);
   }
 
   .section__body {
@@ -274,78 +273,78 @@
   }
 
   .section--intro .section__body {
-    color: var(--color4);
+    color: var(--peach);
   }
 
   .section--writing {
-    background-color: var(--color4);
-    --lines-color: var(--color3);
+    background-color: var(--white);
+    --slapdash-color: var(--purple-more-trans);
   }
 
   .section--writing a {
-    color: var(--color3);
+    color: var(--purple);
   }
 
   .section--writing .section__header {
-    background-color: var(--color3);
-    box-shadow: inset -.166ch 0 0 var(--color5-trans);
-    color: var(--color4);
+    background-color: var(--purple);
+    box-shadow: inset -.166ch 0 0 var(--black-trans);
+    color: var(--white);
   }
 
   .section--writing .section__body {
-    color: var(--color5);
+    color: var(--purple);
   }
 
   .books {
-    background-color: var(--color3);
+    background-color: var(--purple);
   }
 
   .section--speaking {
-    background-color: var(--color1);
-    --lines-color: var(--color4);
+    background-color: var(--magenta);
+    --slapdash-color: var(--white-more-trans);
   }
 
   .section--speaking a {
-    color: var(--color4);
+    color: var(--white);
   }
 
   .section--speaking .section__header {
-    background-color: var(--color4);
-    color: var(--color1);
+    background-color: var(--white);
+    color: var(--magenta);
   }
 
   .section--speaking .section__body {
-    color: var(--color4);
+    color: var(--white);
   }
 
   .section--work {
-    background-color: var(--color2);
-    --lines-color: var(--color1);
+    background-color: var(--peach);
+    --slapdash-color: var(--magenta-more-trans);
   }
 
   .section--work a {
-    color: var(--color1);
+    color: var(--magenta);
   }
 
   .section--work .section__header {
-    background-color: var(--color1);
-    box-shadow: .25ch .25ch 0 var(--color1-trans);
-    color: var(--color2);
-    box-shadow: inset -.166ch 0 0 var(--color5-trans);
+    background-color: var(--magenta);
+    box-shadow: .25ch .25ch 0 var(--magenta-trans);
+    color: var(--peach);
+    box-shadow: inset -.166ch 0 0 var(--black-trans);
   }
 
   .section--work .section__body {
-    color: var(--color5);
+    color: var(--magenta);
   }
 
   @media (min-width: 40rem) {
     .books a {
-      background-color: var(--color3);
-      box-shadow: .666ch .666ch 0 var(--color3-trans);
+      background-color: var(--purple);
+      box-shadow: .666ch .666ch 0 var(--purple-trans);
     }
 
     .writing__book {
-      border: .125em solid var(--color3-trans);
+      border: .125em solid var(--purple-trans);
     }
   }
 }

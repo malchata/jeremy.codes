@@ -14,17 +14,12 @@
   width: 100%;
   height: 100%;
   mix-blend-mode: multiply;
-  --lines-tile-size: 96;
-  --lines-weight: 3;
-  --lines-probability: .25;
-  --lines-alpha: .1;
+  --slapdash-tile-size: 64;
+  --slapdash-weight: 3;
+  --slapdash-probability: .33;
   background-image: url("/img/pattern-peach.svg");
   background-size: 16rem 16rem;
-}
-
-.no-save-data .blog__intro:before,
-.no-save-data .blog__intro:after {
-  background-image: paint(lines);
+  background-image: paint(slapdash);
 }
 
 .blog__intro:after {
@@ -57,7 +52,6 @@
   line-height: 1.319;
   font-weight: 600;
   color: #f7fff7;
-  text-shadow: .126ch .126ch #131515;
 }
 
 .blog__content {
@@ -165,15 +159,15 @@
 @supports (--css: variables) {
   .blog__intro:before,
   .blog__intro:after {
-    --lines-color: var(--color2);
+    --slapdash-color: var(--peach-more-trans);
   }
 
   .blog__intro:after {
-    background-color: var(--color1);
+    background-color: var(--magenta);
   }
 
   .blog__intro:before {
-    background-color: var(--color3);
+    background-color: var(--purple);
   }
 
   .blog__title {
@@ -186,8 +180,7 @@
 
   .blog__title,
   .blog__date {
-    color: var(--color4);
-    text-shadow: .126ch .126ch var(--color5);
+    color: var(--white);
   }
 
   .blog__content {
@@ -199,13 +192,13 @@
   }
 
   .blog__content h2 a {
-    color: var(--color3);
+    color: var(--purple);
   }
 
   .blog__content p,
   .blog__content blockquote,
   .blog__content code {
-    color: var(--color5);
+    color: var(--black);
   }
 
   .blog__content p:first-of-type {
@@ -213,16 +206,16 @@
   }
 
   .blog__content .blog__footnote {
-    border-top-color: var(--color1);
+    border-top-color: var(--magenta);
   }
 
   .blog__content p:nth-last-of-type(2):after {
     font-size: var(--h4);
-    background-image: linear-gradient(45deg, var(--color3), var(--color1));
+    background-image: linear-gradient(45deg, var(--purple), var(--magenta));
   }
 
   .blog__content blockquote {
-    border-left-color: var(--color1);
+    border-left-color: var(--magenta);
   }
 
   .no-save-data .blog__content code {
@@ -230,15 +223,15 @@
   }
 
   .blog__content a {
-    color: var(--color1);
-    text-decoration-color: var(--color3);
+    color: var(--magenta);
+    text-decoration-color: var(--purple);
   }
 
   .blog__code {
-    background-color: var(--color3);
+    background-color: var(--purple);
   }
 
   .blog__code pre code {
-    color: var(--color4);
+    color: var(--white);
   }
 }

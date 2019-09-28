@@ -1,23 +1,25 @@
 .subpage__intro {
-  --lines-tile-size: 96;
-  --lines-weight: 3;
-  --lines-probability: .25;
-  --lines-alpha: .1;
+  --slapdash-tile-size: 64;
+  --slapdash-weight: 3;
+  --slapdash-probability: .33;
   background-color: #b8336a;
-  background-image: url("/img/pattern-peach.svg");
+  background-image: url("/img/pattern-white.svg");
   background-size: 16rem 16rem;
+  background-image: paint(slapdash);
   padding: 1.75rem 1rem 4rem;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 2.25rem));
   position: relative;
   margin: 0 0 1rem;
 }
 
-.no-save-data .subpage__intro {
-  background-image: paint(lines);
+.subpage__intro--secondary {
+  background-color: #541388;
+  background-image: url("/img/pattern-peach.svg");
 }
 
-.subpage__intro--alternate {
-  background-color: #541388;
+.subpage__intro--tertiary {
+  background-color: #ffdbc7;
+  background-image: url("/img/pattern-magenta.svg");
 }
 
 .subpage__intro:after {
@@ -40,7 +42,6 @@
   max-width: 60rem;
   line-height: 1.319;
   color: #f7fff7;
-  text-shadow: .126ch .126ch #13151566;
 }
 
 .subpage__header {
@@ -56,22 +57,37 @@
 
 @supports (--css: variables) {
   .subpage__intro {
-    --lines-color: var(--color2);
-    background-color: var(--color1);
+    --slapdash-color: var(--white-more-trans);
+    background-color: var(--magenta);
   }
 
-  .subpage__intro--alternate {
-    background-color: var(--color3);
+  .subpage__intro--secondary {
+    --slapdash-color: var(--peach-more-trans);
+    background-color: var(--purple);
+  }
+
+  .subpage__intro--tertiary {
+    --slapdash-color: var(--magenta-more-trans);
+    background-color: var(--peach);
   }
 
   .subpage__intro:after {
-    background-color: var(--color5-trans);
+    background-color: var(--black-trans);
   }
 
   .subpage__header,
   .subpage__subheader {
-    color: var(--color4);
-    text-shadow: .126ch .126ch var(--color5-trans);
+    color: var(--white);
+  }
+
+  .subpage__intro--secondary .subpage__header,
+  .subpage__intro--secondary .subpage__subheader {
+    color: var(--peach);
+  }
+
+  .subpage__intro--tertiary .subpage__header,
+  .subpage__intro--tertiary .subpage__subheader {
+    color: var(--magenta);
   }
 
   .subpage__header {

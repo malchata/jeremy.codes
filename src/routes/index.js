@@ -2,7 +2,7 @@ import Home from "../components/Home";
 
 export const Metadata = {
   title: "Welcome",
-  description: "Independent web performance consultant. Web developer. International speaker. Author.",
+  description: "The home page of web performance consultant, developer, speaker, and author.",
   date: "14 January, 2019",
   lastBuildDate: "14 July, 2019",
   slug: "/",

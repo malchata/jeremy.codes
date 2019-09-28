@@ -9,6 +9,8 @@ export default props => (
         <span className="header__nav-separator" aria-hidden="true">::</span>
         <a className="header__nav-link" href="https://speaking.jeremy.codes/" rel="noopener">Speaking</a>
         <span className="header__nav-separator" aria-hidden="true">::</span>
+        <a className={`header__nav-link ${props.slug === "projects" ? "header__nav-link--on" : ""}`} href="/projects/" rel="noopener">Projects</a>
+        <span className="header__nav-separator" aria-hidden="true">::</span>
         <a className={`header__nav-link ${props.slug === "contact" ? "header__nav-link--on" : ""}`} href="/contact/" rel="noopener">Get in touch</a>
       </nav>
     </div>

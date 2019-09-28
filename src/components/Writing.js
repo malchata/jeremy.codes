@@ -1,5 +1,5 @@
 import { h, render } from "preact";
-import ArticleEntry from "../ArticleEntry";
+import ArticleEntry from "./ArticleEntry";
 
 export default () => (
   <main>
