@@ -4,7 +4,7 @@ export default () => (
   <main>
     <section className="subpage__intro subpage__intro--tertiary">
       <h1 className="subpage__header">Projects &amp; hobby horses</h1>
-      <h4 className="subpage__subheader">Interested in working with me, or want to book me to speak at your event? Or maybe you just want to say &quot;hello&quot;? The form below will deliver your message to my inbox in no time.</h4>
+      <h4 className="subpage__subheader">I've made a thing or three, sometimes even a thing that people like to use every now and then! Below is a list of my projects for your perusal. Some of it is code. Some of it is, well, something else entirely.</h4>
     </section>
     <section className="projects">
       <h2 className="projects__category">Code</h2>
@@ -12,7 +12,7 @@ export default () => (
         <li className="project">
           <h3 className="project__name">yall.js</h3>
           <p className="project__copy">
-            I wrote a chapter about image optimization in <a rel="noopener" href="https://www.manning.com/books/web-performance-in-action?a_aid=webopt&a_bid=63c31090">my web performance book</a> in which I guided readers in writing their own lazy loader. After noodling around a bit, I decided to write my own. I called it yall, which stands for <strong>Y</strong>et <strong>A</strong>nother <strong>L</strong>azy <strong>L</strong>oader. This project endures for some reason I can't fathom, and stands as the most popular thing I ever bothered to slap up on Github. I suppose that's how these things go sometimes.
+            I wrote a chapter about image optimization in <a rel="noopener" href="https://www.manning.com/books/web-performance-in-action?a_aid=webopt&a_bid=63c31090">my web performance book</a> in which I showed readers how to write their own lazy loader. After some refinement, I came up with something I felt was worth putting out there. I called it yall, which stands for Yet Another Lazy Loader. This project endures for some reason I can't fathom, and stands as the most popular thing I ever bothered to slap up on Github. I suppose that's how these things go sometimes.
           </p>
           <p className="project__links">
             <a rel="noopener" href="https://github.com/malchata/yall.js">Source</a> &mdash; <a rel="noopener" href="https://www.npmjs.com/package/yall-js">npm package</a>
@@ -39,7 +39,7 @@ export default () => (
         <li className="project">
           <h3 className="project__name">Tundra Sunrise Atom Theme</h3>
           <p className="project__copy">
-            One of the biggest reasons I love the <a rel="noopener" href="https://atom.io/">Atom text editor</a> is because its appearance is totally hackable with CSS. Because I never seem to like any themes that ship with <em>any</em> text editor, I decided to go ahead and make one that's right for me, and that is how Tundra Sunrise was born. If you like dark themes with boldly cold colors, this theme might be a fit for you, too.
+            One of the biggest reasons I love the <a rel="noopener" href="https://atom.io/">Atom text editor</a> is because its appearance is totally hackable with CSS. Because I never seem to like any themes that ship with <em>any</em> text editor, I decided to go ahead and make one that's just right for me. Thus, Tundra Sunrise was born. If you like dark themes with boldly cold colors, this theme might be a fit for you, too.
           </p>
           <p className="project__links">
             <a rel="noopener" href="https://github.com/malchata/tundra-sunrise-syntax">Source</a> &mdash; <a rel="noopener" href="https://atom.io/packages/tundra-sunrise-syntax">apm package</a>
@@ -48,7 +48,7 @@ export default () => (
         <li className="project">
           <h3 className="project__name">Paintlets</h3>
           <p className="project__copy">
-            Ever since I discovered <a rel="noopener" href="https://generativeartistry.com/">generative artistry</a> by <a rel="noopener" href="">Tim Holman</a>, I've been intrigued by just how (pseudo)randomly beautiful JavaScript-generated 2D art can be. The <a rel="noopener" href="https://css-tricks.com/the-css-paint-api/">CSS Paint API</a> allows for some fantastic opportunities to not only generate and embed 2D generated art in CSS, but it also allows you to change that artwork with custom CSS properties. This lets you adapt your generated art to various contexts with ease in a way the Canvas API couldn't. As an homage to how much I love the intersection of weird and practical, I developed a site called Paintlets which showcases various CSS Paint API worklets for your perusal and personal use&mdash;should the moment strike you. <em><strong>Attention:</strong> This site requires Chrome, or a Chromium-based browser!</em>
+            Ever since I discovered <a rel="noopener" href="https://generativeartistry.com/">generative art</a> via <a rel="noopener" href="">Tim Holman</a>, I've been intrigued by just how (pseudo)randomly beautiful JavaScript-generated 2D art can be. The <a rel="noopener" href="https://css-tricks.com/the-css-paint-api/">CSS Paint API</a> allows for some fantastic opportunities to not only generate and embed 2D generated art in CSS, but it also allows you to change that artwork with custom CSS properties. This lets you adapt your generated art to various contexts with ease in a way the Canvas API couldn't. As an homage to how much I love the intersection of weird and practical, I developed a site called Paintlets which showcases various CSS Paint API worklets for your perusal and personal use&mdash;should the moment strike you. <em><strong>Attention:</strong> This site requires Chrome, or a Chromium-based browser!</em>
           </p>
           <p className="project__links">
             <a rel="noopener" href="https://github.com/malchata/paintlets">Source</a> &mdash; <a rel="noopener" href="https://paintlets.herokuapp.com/">Site</a>

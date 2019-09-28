@@ -1,7 +1,7 @@
 import { h, render } from "preact";
 
-export default props => (
+export default ({ children }) => (
   <div className="blog__code"><pre><code>
-    {props.children}
+    {children}
   </code></pre></div>
 );

@@ -15,11 +15,13 @@
 .subpage__intro--secondary {
   background-color: #541388;
   background-image: url("/img/pattern-peach.svg");
+  background-image: paint(slapdash);
 }
 
 .subpage__intro--tertiary {
   background-color: #ffdbc7;
   background-image: url("/img/pattern-magenta.svg");
+  background-image: paint(slapdash);
 }
 
 .subpage__intro:after {
