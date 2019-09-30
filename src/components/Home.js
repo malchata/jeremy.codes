@@ -6,7 +6,7 @@ export default ({ latestArticleLink, latestArticleTitle }) => (
       <div className="section__container">
         <div className="section__copy">
           <h1 className="section__header">Hi, I'm Jeremy.</h1>
-          <h2 className="section__body">I'm a web developer, writer, and speaker. I work to make the web faster for everyone, everywhere.</h2>
+          <h2 className="section__body">I'm a web performance consultant, developer, writer, and speaker. I work to make the web faster for everyone, everywhere.</h2>
         </div>
         <picture>
           <source srcset="/img/home/jeremy-384w.webp 384w, /img/home/jeremy-512w.webp 512w, /img/home/jeremy-640w.webp 640w, /img/home/jeremy-768w.webp 768w, /img/home/jeremy-896w.webp 896w, /img/home/jeremy-1024w.webp 1024w, /img/home/jeremy-1152w.webp 1152w" type="image/webp" />
@@ -71,7 +71,7 @@ export default ({ latestArticleLink, latestArticleTitle }) => (
       <div className="section__container">
         <div className="section__copy">
           <h2 className="section__header">I make things.</h2>
-          <h3 className="section__body">I make things when the mood strikes me. I've written various bits of open source software, and have even a bit of music from time to time.</h3>
+          <h3 className="section__body">I make things when the mood strikes me. I've written various bits of open source software, and even a little music. <a rel="noopener" href="/projects/">Take a peek</a> if you're so inclined.</h3>
         </div>
         <picture>
           <source data-srcset="/img/home/keyboard-256w.webp 256w, /img/home/keyboard-384w.webp 384w, /img/home/keyboard-512w.webp 512w, /img/home/keyboard-640w.webp 640w, /img/home/keyboard-768w.webp 768w, /img/home/keyboard-896w.webp 896w, /img/home/keyboard-1024w.webp 1024w, /img/home/keyboard-1152w.webp 1152w" type="image/webp" />

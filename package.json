@@ -32,28 +32,28 @@
   },
   "homepage": "https://github.com/malchata/jeremy.codes#readme",
   "dependencies": {
-    "@babel/runtime": "^7.6.0",
+    "@babel/runtime": "^7.6.2",
     "dnstradamus": "^1.1.0",
     "quicklink": "^1.0.1",
-    "yall-js": "^3.1.5"
+    "yall-js": "^3.1.6"
   },
   "devDependencies": {
-    "@babel/cli": "^7.6.0",
-    "@babel/core": "^7.6.0",
-    "@babel/node": "^7.6.1",
-    "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
+    "@babel/cli": "^7.6.2",
+    "@babel/core": "^7.6.2",
+    "@babel/node": "^7.6.2",
+    "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
-    "@babel/plugin-transform-runtime": "^7.6.0",
-    "@babel/preset-env": "^7.6.0",
+    "@babel/plugin-transform-runtime": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
     "@babel/preset-react": "^7.0.0",
-    "@babel/register": "^7.6.0",
+    "@babel/register": "^7.6.2",
     "autoprefixer": "^9.6.1",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.2.0",
     "cssnano": "^4.1.10",
     "cwebp-bin": "^5.1.0",
-    "eslint": "^6.3.0",
+    "eslint": "^6.5.0",
     "eslint-plugin-react": "^7.14.3",
     "express": "^4.17.1",
     "file-loader": "^4.2.0",
@@ -65,7 +65,7 @@
     "preact": "^8.5.2",
     "preact-render-to-string": "^4.1.0",
     "rimraf": "^3.0.0",
-    "webpack": "^4.39.3",
-    "webpack-cli": "^3.3.8"
+    "webpack": "^4.41.0",
+    "webpack-cli": "^3.3.9"
   }
 }
