@@ -12,6 +12,11 @@ export default () => (
         <h2 className="writing__year__header">2019</h2>
         <ol className="articles">
           <ArticleEntry
+            date="9 October"
+            link="/blog/indelible-lines/"
+            title="Indelible Lines"
+          />
+          <ArticleEntry
             date="18 July"
             link="/blog/a-less-risky-differential-serving-pattern/"
             title="A Less Risky Differential Serving Pattern"
