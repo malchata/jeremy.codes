@@ -229,13 +229,6 @@ export default () => (
             publication="A List Apart"
             publicationLink="https://alistapart.com/"
           />
-          <ArticleEntry
-            date="16 January"
-            link="https://www.manning.com/books/web-performance-in-action?a_aid=webopt&amp;a_bid=63c31090"
-            title="Web Performance in Action, First Edition"
-            publication="Manning Publications"
-            publicationLink="https://www.manning.com/"
-          />
         </ol>
       </li>
       <li className="writing__year">

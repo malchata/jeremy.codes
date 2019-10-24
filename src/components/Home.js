@@ -20,32 +20,16 @@ export default ({ latestArticleLink, latestArticleTitle }) => (
           <h2 className="section__header">I write.</h2>
           <h3 className="section__body">A central part of my learning is documenting it. This has lead to <a href="/writing/" rel="noopener">articles and books</a>. I also write on my blog when the mood strikes. My latest article is: <em><a href={latestArticleLink} rel="noopener">{latestArticleTitle}</a></em></h3>
         </div>
-        <div className="books">
-          <a href="https://www.manning.com/books/web-performance-in-action?a_aid=webopt&amp;a_bid=63c31090" rel="noopener" className="book__link">
-            <picture>
-              <source data-srcset="/img/home/wpia-128w.webp 128w, /img/home/wpia-256w.webp 256w, /img/home/wpia-384w.webp 384w, /img/home/wpia-512w.webp 512w, /img/home/wpia-640w.webp 640w" type="image/webp" />
-              <img className="book__image lazy" width="128" height="160" src="/img/home/wpia-placeholder.png" data-src="/img/home/wpia-128w.png" data-srcset="/img/home/wpia-128w.png 128w, /img/home/wpia-256w.png 256w, /img/home/wpia-384w.png 384w, /img/home/wpia-512w.png 512w, /img/home/wpia-640w.png 640w" alt="The book cover for Web Performance in Action" sizes="(min-width: 960px) 199px, (min-width: 800px) calc(23.57vw - 37px), (min-width: 640px) calc(22.14vw - 35px), calc(41.56vw - 37px)" />
-            </picture>
-            <noscript>
-              <picture>
-                <source srcset="/img/home/wpia-128w.webp 128w, /img/home/wpia-256w.webp 256w, /img/home/wpia-384w.webp 384w, /img/home/wpia-512w.webp 512w, /img/home/wpia-640w.webp 640w" type="image/webp" />
-                <img className="book__image" width="128" height="160" src="/img/home/wpia-128w.png" srcset="/img/home/wpia-128w.png 128w, /img/home/wpia-256w.png 256w, /img/home/wpia-384w.png 384w, /img/home/wpia-512w.png 512w, /img/home/wpia-640w.png 640w" alt="The book cover for Web Performance in Action" sizes="(min-width: 960px) 199px, (min-width: 800px) calc(23.57vw - 37px), (min-width: 640px) calc(22.14vw - 35px), calc(41.56vw - 37px)" />
-              </picture>
-            </noscript>
-          </a>
-          <a href="https://www.smashingmagazine.com/ebooks/the-webp-manual/" rel="noopener" className="book__link">
-            <picture>
-              <source data-srcset="/img/home/twm-128w.webp 128w, /img/home/twm-256w.webp 256w, /img/home/twm-384w.webp 384w, /img/home/twm-512w.webp 512w, /img/home/twm-640w.webp 640w" type="image/webp" />
-              <img className="book__image lazy" width="128" height="160" src="/img/home/twm-placeholder.png" data-src="/img/home/twm-128w.png" data-srcset="/img/home/twm-128w.png 128w, /img/home/twm-256w.png 256w, /img/home/twm-384w.png 384w, /img/home/twm-512w.png 512w, /img/home/twm-640w.png 640w" alt="The book cover for The WebP Manual" sizes="(min-width: 960px) 199px, (min-width: 800px) calc(23.57vw - 37px), (min-width: 640px) calc(22.14vw - 35px), calc(41.56vw - 37px)" />
-            </picture>
-            <noscript>
-              <picture>
-                <source srcset="/img/home/twm-128w.webp 128w, /img/home/twm-256w.webp 256w, /img/home/twm-384w.webp 384w, /img/home/twm-512w.webp 512w, /img/home/twm-640w.webp 640w" type="image/webp" />
-                <img className="book__image" width="128" height="160" src="/img/home/twm-128w.png" srcset="/img/home/twm-128w.png 128w, /img/home/twm-256w.png 256w, /img/home/twm-384w.png 384w, /img/home/twm-512w.png 512w, /img/home/twm-640w.png 640w" alt="The book cover for The WebP Manual" sizes="(min-width: 960px) 199px, (min-width: 800px) calc(23.57vw - 37px), (min-width: 640px) calc(22.14vw - 35px), calc(41.56vw - 37px)" />
-              </picture>
-            </noscript>
-          </a>
-        </div>
+        <picture>
+          <source data-srcset="/img/home/twm-128w.webp 128w, /img/home/twm-256w.webp 256w, /img/home/twm-384w.webp 384w, /img/home/twm-512w.webp 512w, /img/home/twm-640w.webp 640w" type="image/webp" />
+          <img className="section__image lazy" width="128" height="160" src="/img/home/twm-placeholder.png" data-src="/img/home/twm-128w.png" data-srcset="/img/home/twm-128w.png 128w, /img/home/twm-256w.png 256w, /img/home/twm-384w.png 384w, /img/home/twm-512w.png 512w, /img/home/twm-640w.png 640w" alt="The book cover for The WebP Manual" sizes="(min-width: 960px) 199px, (min-width: 800px) calc(23.57vw - 37px), (min-width: 640px) calc(22.14vw - 35px), calc(41.56vw - 37px)" />
+        </picture>
+        <noscript>
+          <picture>
+            <source srcset="/img/home/twm-128w.webp 128w, /img/home/twm-256w.webp 256w, /img/home/twm-384w.webp 384w, /img/home/twm-512w.webp 512w, /img/home/twm-640w.webp 640w" type="image/webp" />
+            <img className="section__image" width="128" height="160" src="/img/home/twm-128w.png" srcset="/img/home/twm-128w.png 128w, /img/home/twm-256w.png 256w, /img/home/twm-384w.png 384w, /img/home/twm-512w.png 512w, /img/home/twm-640w.png 640w" alt="The book cover for The WebP Manual" sizes="(min-width: 960px) 199px, (min-width: 800px) calc(23.57vw - 37px), (min-width: 640px) calc(22.14vw - 35px), calc(41.56vw - 37px)" />
+          </picture>
+        </noscript>
       </div>
     </section>
     <section className="section section--speaking">

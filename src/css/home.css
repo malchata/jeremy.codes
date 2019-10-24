@@ -115,20 +115,13 @@
   text-align: center;
 }
 
-.books {
-  background-color: #541388;
-  padding: 1rem;
-  width: 83.333%;
-  margin: 0 auto;
-  display: inline-flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-}
-
-.book__image {
+.section--writing .section__image {
   display: block;
-  width: 100%;
-  height: auto;
+  background-color: #541388;
+  padding: .5em;
+  box-shadow: .666ch .666ch 0 #54138866;
+  max-width: 50%;
+  margin: 0 auto;
 }
 
 .section--speaking {
@@ -201,6 +194,10 @@
     width: 100%;
   }
 
+  .section--writing .section__image {
+    max-width: 66%;
+  }
+
   .section--intro .section__image,
   .section--speaking .section__image {
     align-self: flex-end;
@@ -211,39 +208,19 @@
     order: 1;
   }
 
-  .books {
-    padding: 0;
-    background: transparent;
-    box-shadow: none;
-    margin: auto;
-    width: auto;
-  }
-
-  .books a {
-    background-color: #541388;
-    padding: .5em;
-    box-shadow: .666ch .666ch 0 #54138866;
-  }
-
-  .writing__book {
-    position: relative;
-    z-index: 2;
-    border: .125em solid #54138866;
-  }
-
   .section--speaking {
     padding-bottom: 0;
   }
 }
 
 @media (min-width: 50rem) {
-  .books a {
+  .section--writing .section__image {
     padding: .625em;
   }
 }
 
 @media (min-width: 60rem) {
-  .books a {
+  .section--writing .section__image {
     padding: .75em;
   }
 }
@@ -295,10 +272,6 @@
     color: var(--purple);
   }
 
-  .books {
-    background-color: var(--purple);
-  }
-
   .section--speaking {
     background-color: var(--magenta);
     --slapdash-color: var(--white-more-trans);
@@ -338,13 +311,9 @@
   }
 
   @media (min-width: 40rem) {
-    .books a {
+    .section--writing .section__image {
       background-color: var(--purple);
       box-shadow: .666ch .666ch 0 var(--purple-trans);
-    }
-
-    .writing__book {
-      border: .125em solid var(--purple-trans);
     }
   }
 }
@@ -352,12 +321,6 @@
 @supports (display: grid) {
   .section__container {
     max-width: 60rem;
-  }
-
-  .books {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 1rem;
   }
 
   @media (min-width: 40rem) {
@@ -390,55 +353,6 @@
     .section--writing .section__copy,
     .section--work .section__copy {
       margin: 0;
-    }
-
-    .books {
-      padding: 0;
-      grid-gap: .5em;
-      grid-template-columns: repeat(20, 1fr);
-      grid-template-rows: repeat(20, 1fr);
-      background: transparent;
-      box-shadow: none;
-      margin: auto;
-      width: auto;
-    }
-
-    .books a:first-child {
-      grid-row: 1 / 13;
-      grid-column: 1 / 13;
-    }
-
-    .books a:last-child {
-      grid-row: 9 / 21;
-      grid-column: 9 / 21;
-    }
-  }
-
-  @media (min-width: 50rem) {
-    .books a:first-child {
-      grid-row: 1 / 14;
-      grid-column: 1 / 14;
-    }
-
-    .books a:last-child {
-      grid-row: 8 / 21;
-      grid-column: 8 / 21;
-    }
-  }
-
-  @media (min-width: 60rem) {
-    .books a {
-      padding: .75em;
-    }
-
-    .books a:first-child {
-      grid-row: 1 / 15;
-      grid-column: 1 / 15;
-    }
-
-    .books a:last-child {
-      grid-row: 7 / 21;
-      grid-column: 7 / 21;
     }
   }
 }
