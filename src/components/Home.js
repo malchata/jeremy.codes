@@ -36,7 +36,7 @@ export default ({ latestArticleLink, latestArticleTitle }) => (
       <div className="section__container">
         <div className="section__copy">
           <h2 className="section__header">I speak.</h2>
-          <h3 className="section__body">Sometimes <a href="https://speaking.jeremy.codes/" rel="noopener">I speak at conferences</a> about the web. If you'd like me to speak at your event, <a href="/contact/" rel="noopener">let's talk</a>. <em>Latest talk: <a href="https://speaking.jeremy.codes/OcdV79/make-it-boring" rel="noopener">Make it Boring</a>.</em>
+          <h3 className="section__body">Sometimes <a href="https://speaking.jeremy.codes/" rel="noopener">I talk about the web</a>. If you'd like me to speak at your event, <a href="/contact/" rel="noopener">let's talk</a>. <em>Latest talk: <a href="https://www.youtube.com/watch?v=VccJldua8tc" rel="noopener">The Weirdly Practical World of Paint Worklets</a>.</em>
           </h3>
         </div>
         <picture>

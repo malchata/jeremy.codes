@@ -12,6 +12,13 @@ export default () => (
         <h2 className="writing__year__header">2019</h2>
         <ol className="articles">
           <ArticleEntry
+            date="14 November"
+            link="https://alistapart.com/article/responsible-javascript-part-3"
+            title="Responsible JavaScript: Part III"
+            publication="A List Apart"
+            publicationLink="https://alistapart.com/"
+          />
+          <ArticleEntry
             date="9 October"
             link="/blog/indelible-lines/"
             title="Indelible Lines"
