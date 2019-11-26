@@ -5,19 +5,11 @@
   "main": "./src/index.js",
   "scripts": {
     "clean": "npx rimraf dist",
-    "build": "npm run clean && npm run webpack && npm run copy && npm run imageopt && npm run build:xml",
-    "build:dev": "npm run clean && npx webpack --progress && npm run copy && npm run imageopt:webp-png",
+    "build": "npm run clean && npm run webpack && npm run copy && npm run imageopt",
+    "build:dev": "npm run clean && npx webpack --progress && npm run copy",
     "webpack": "NODE_ENV=production npx webpack --progress",
-    "copy": "echo \"Copying assets...\" && cp -fv ./src/google7b88ad726109dad3.html ./dist/google7b88ad726109dad3.html && cp -fv ./src/js/slapdash.js ./dist/js/slapdash.js && cp -fv ./src/icons/*.* ./dist && cp -fv ./src/*.txt ./dist && cp -Rfv ./src/img ./dist/img",
-    "imageopt": "npm run imageopt:png && npm run imageopt:png-placeholder && npm run imageopt:webp-png && npm run imageopt:jpg && npm run imageopt:svg",
-    "imageopt:webp-png": "echo \"Converting PNGs to WebP...\" && find ./dist/img -type f -name '*.png' | xargs -P 32 -I {} sh -c 'npx cwebp -quiet -q 80 $1 -o \"${1%.png}.webp\"' _ {} \\;",
-    "imageopt:png": "echo \"Optimizing PNGs...\" && find ./dist -type f -name '*.png' | xargs -P 32 -I {} sh -c 'npx pngquant --force --skip-if-larger --quality 60-80 --output $1 --speed 1 --strip $1' _ {} \\;",
-    "imageopt:png-placeholder": "echo \"Optimizing Placeholder PNGs...\" && find ./dist -type f -name '*-placeholder.png' | xargs -P 32 -I {} sh -c 'npx pngquant --force --skip-if-larger --quality 0-1 --nofs --output $1 --speed 1 --posterize 0 --strip $1' _ {} \\;",
-    "imageopt:jpg": "echo \"Optimizing JPEGs...\" && find ./dist -type f -name '*.jpg' | xargs -P 32 -I {} sh -c 'npx jpeg-recompress -a -l 16 -m smallfry -s -n 55 -x 85 -Q $1 $1' _ {} \\;",
-    "imageopt:svg": "echo \"Optimizing SVGs...\" && find ./dist -type f -name '*.svg' | xargs -P 32 -I {} sh -c 'npx svgo -q -i $1 -o $1 -p 1 --multipass' _ {} \\;",
-    "build:xml": "npm run build:rss && npm run build:sitemap",
-    "build:rss": "echo \"Building RSS feed...\" && npx babel-node ./scripts/build-rss.js > ./dist/rss.xml",
-    "build:sitemap": "echo \"Building Sitemap...\" && npx babel-node ./scripts/build-sitemap.js > ./dist/sitemap.xml",
+    "copy": "echo \"Copying assets...\" && cp -fv ./src/google7b88ad726109dad3.html ./dist/google7b88ad726109dad3.html && cp -fv ./src/*.txt ./dist && cp -Rfv ./src/img ./dist/img",
+    "imageopt": "echo \"Optimizing SVGs...\" && find ./dist -type f -name '*.svg' | xargs -P 32 -I {} sh -c 'npx svgo -q -i $1 -o $1 -p 1 --multipass' _ {} \\;",
     "lint": "npx eslint ./src/**/*.js",
     "preview": "npm run build:dev && node http.js"
   },
@@ -33,9 +25,7 @@
   "homepage": "https://github.com/malchata/jeremy.codes#readme",
   "dependencies": {
     "@babel/runtime": "^7.6.2",
-    "dnstradamus": "^1.1.0",
-    "quicklink": "^1.0.1",
-    "yall-js": "^3.1.6"
+    "dnstradamus": "^1.1.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.2",

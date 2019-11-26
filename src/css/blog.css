@@ -14,12 +14,8 @@
   width: 100%;
   height: 100%;
   mix-blend-mode: multiply;
-  --slapdash-tile-size: 64;
-  --slapdash-weight: 3;
-  --slapdash-probability: .33;
   background-image: url("/img/pattern-peach.svg");
   background-size: 16rem 16rem;
-  background-image: paint(slapdash);
 }
 
 .blog__intro:after {
@@ -99,7 +95,7 @@
   font-size: 1.44233125rem;
 }
 
-.blog__content p:nth-last-of-type(2):after {
+.blog__content p:last-of-type:after {
   content: "";
   font-size: 1.44233125rem;
   display: inline-block;
@@ -110,7 +106,7 @@
 }
 
 .blog__content code {
-  font-family: "Overpass Mono", monospace;
+  font-family: monospace;
   color: #131515;
   display: inline-block;
 }
@@ -157,11 +153,6 @@
 }
 
 @supports (--css: variables) {
-  .blog__intro:before,
-  .blog__intro:after {
-    --slapdash-color: var(--peach-more-trans);
-  }
-
   .blog__intro:after {
     background-color: var(--magenta);
   }
@@ -209,7 +200,7 @@
     border-top-color: var(--magenta);
   }
 
-  .blog__content p:nth-last-of-type(2):after {
+  .blog__content p:last-of-type:after {
     font-size: var(--h4);
     background-image: linear-gradient(45deg, var(--purple), var(--magenta));
   }

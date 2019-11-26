@@ -12,9 +12,6 @@ import MiniCssExtractPlugin from "mini-css-extract-plugin";
 // App-specific
 import { h } from "preact";
 import renderToString from "preact-render-to-string";
-import Header from "./src/components/Header";
-import Footer from "./src/components/Footer";
-import Writing from "./src/components/Writing";
 
 const mode = process.env.NODE_ENV !== "production" ? "development": "production";
 const src = (...args) => resolve(__dirname, "src", ...args);
@@ -25,7 +22,6 @@ let entry = {
   "global-css": src("css", "global.css"),
   "home-css": src("css", "home.css"),
   "projects-css": src("css", "projects.css"),
-  "subpage-css": src("css", "subpage.css"),
   "writing-css": src("css", "writing.css"),
 };
 let htmlOutputs = [];
@@ -39,8 +35,7 @@ function buildRoutes (routes) {
       collapseWhitespace: mode === "development" ? false : true,
       minifyJS: mode === "development" ? false : true,
       minifyCSS: mode === "development" ? false : true
-    },
-    footer: renderToString(<Footer />)
+    }
   };
 
   readdirSync(routes).forEach(route => {
@@ -51,20 +46,11 @@ function buildRoutes (routes) {
       let metadata = routeModule.Metadata;
 
       if (!metadata.exclude) {
-        if (routeSlug === "routes") {
-          const { title, link } = Writing().children[1].children[0].children[1].children[0].attributes;
-          var latestArticle = {
-            title,
-            link
-          };
-        }
-
         htmlOutputs.push(new HtmlWebpackPlugin({
           filename: join(routes.replace("src/routes", "dist"), "index.html"),
           title: metadata.title,
           description: metadata.description,
-          content: routeSlug === "routes" ? renderToString(<routeModule.default latestArticleTitle={latestArticle.title} latestArticleLink={latestArticle.link} />) : renderToString(<routeModule.default />),
-          header: renderToString(<Header slug={routeSlug} />),
+          content: renderToString(<routeModule.default />),
           slug: routeSlug === "routes" ? "home" : routeSlug,
           robots: metadata.hide ? "noindex, nofollow" : "index, follow",
           pageUrl: `https://jeremy.codes${metadata.slug}`,
