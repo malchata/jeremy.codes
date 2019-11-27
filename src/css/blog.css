@@ -209,10 +209,6 @@
     border-left-color: var(--magenta);
   }
 
-  .no-save-data .blog__content code {
-    font-family: var(--monospace);
-  }
-
   .blog__content a {
     color: var(--magenta);
     text-decoration-color: var(--purple);
