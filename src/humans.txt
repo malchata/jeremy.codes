@@ -1,0 +1,12 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Jeremy Wagner -- Designer, Developer, Author -- @malchata
+    David Tesch -- Favicon -- @flipty
+
+# TECHNOLOGY COLOPHON
+
+    HTML5, CSS3, JavaScript, SVG, Paint Worklets
+    webpack, PostCSS, Node, preact-render-to-string

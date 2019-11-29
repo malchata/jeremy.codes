@@ -1,12 +1,25 @@
 /* Fonts! */
 
 @font-face {
+  font-family: "Overpass Mono";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Overpass Mono Bold"),
+       local("OverpassMono-Bold"),
+       url("../fonts/overpass-mono-700.woff2") format("woff2"),
+       url("../fonts/overpass-mono-700.woff") format("woff");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
   src: local("Poppins Regular"),
        local("Poppins-Regular"),
-       url("../fonts/poppins-400.woff2") format("woff2");
+       url("../fonts/poppins-400.woff2") format("woff2"),
+       url("../fonts/poppins-400.woff") format("woff");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
   font-display: swap;
 }
@@ -17,7 +30,8 @@
   font-weight: 400;
   src: local("Poppins Italic"),
        local("Poppins-Italic"),
-       url("../fonts/poppins-400i.woff2") format("woff2");
+       url("../fonts/poppins-400i.woff2") format("woff2"),
+       url("../fonts/poppins-400i.woff") format("woff");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
   font-display: swap;
 }
@@ -28,7 +42,8 @@
   font-weight: 600;
   src: local("Poppins Semibold"),
        local("Poppins-Semibold"),
-       url("../fonts/poppins-600.woff2") format("woff2");
+       url("../fonts/poppins-600.woff2") format("woff2"),
+       url("../fonts/poppins-600.woff") format("woff");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
   font-display: swap;
 }
@@ -39,7 +54,8 @@
   font-weight: 600;
   src: local("Poppins SemiBold Italic"),
        local("Poppins-SemiBoldItalic"),
-       url("../fonts/poppins-600i.woff2") format("woff2");
+       url("../fonts/poppins-600i.woff2") format("woff2"),
+       url("../fonts/poppins-600i.woff") format("woff");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
   font-display: swap;
 }
@@ -154,7 +170,7 @@ body {
   font-family: "Poppins", sans-serif;
   background: #f7fff7;
   font-size: 16px;
-  padding: 0 0 .1666rem;
+  padding: 0 0 6rem;
 }
 
 ol,
@@ -214,7 +230,7 @@ table {
 .header__nav-link,
 .header__nav-separator {
   display: inline-block;
-  font-family: monospace;
+  font-family: "Overpass Mono", monospace;
   text-decoration: none;
   color: #ffdbc7;
   font-size: 1.243925rem;
@@ -341,7 +357,7 @@ table {
 
     /* Fonts */
     --sans: "Poppins", sans-serif;
-    --monospace: monospace;
+    --monospace: "Overpass Mono", monospace;
 
     /* Base Type Sizes */
     --h1: calc(2rem + (2.319 - 2) * ((100vw - 20rem) / (60 - 20)));
@@ -383,6 +399,12 @@ table {
     font-family: "Consolas", "Courier New", monospace;
     color: var(--peach);
     font-size: var(--p);
+  }
+
+  .no-save-data .header__site-name,
+  .no-save-data .header__nav-link,
+  .no-save-data .header__nav-separator {
+    font-family: var(--monospace);
   }
 
   .header__site-name:before,

@@ -8,6 +8,7 @@ export default ({ title, date, children }) => (
     </section>
     <article className="blog__content">
       {children}
+      <p className="blog__footnote">Feel like reading more? Head on back to <a href="/writing/" rel="noopener">the article list</a>!</p>
     </article>
   </main>
 );
