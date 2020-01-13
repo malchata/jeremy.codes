@@ -9,6 +9,16 @@ export default () => (
     </section>
     <ol className="writing__archive">
       <li className="writing__year">
+        <h2 className="writing__year__header">2020</h2>
+        <ol className="articles">
+          <ArticleEntry
+            date="12 January"
+            link="/blog/achievement-is-no-substitute-for-happiness/"
+            title="Achievement is No Substitute for Happiness"
+          />
+        </ol>
+      </li>
+      <li className="writing__year">
         <h2 className="writing__year__header">2019</h2>
         <ol className="articles">
           <ArticleEntry
