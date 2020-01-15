@@ -23,6 +23,7 @@ let entry = {
   "blog-css": src("css", "blog.css"),
   "global-css": src("css", "global.css"),
   "home-css": src("css", "home.css"),
+  "contact-css": src("css", "contact.css"),
   "projects-css": src("css", "projects.css"),
   "subpage-css": src("css", "subpage.css"),
   "writing-css": src("css", "writing.css"),

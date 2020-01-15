@@ -10,6 +10,8 @@ export default ({ slug }) => (
         <a className="header__nav-link" href="https://speaking.jeremy.codes/" rel="noopener">Speaking</a>
         <span className="header__nav-separator" aria-hidden="true">::</span>
         <a className={`header__nav-link ${slug === "projects" ? "header__nav-link--on" : ""}`} href="/projects/" rel="noopener">Projects</a>
+        <span className="header__nav-separator" aria-hidden="true">::</span>
+        <a className={`header__nav-link ${slug === "contact" ? "header__nav-link--on" : ""}`} href="/contact/" rel="noopener">Contact me</a>
       </nav>
     </div>
   </header>

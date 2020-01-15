@@ -25,6 +25,18 @@
     <% } %>
 
     <% for (chunk in htmlWebpackPlugin.files.css) { %>
+      <% if (htmlWebpackPlugin.options.slug === "contact" && htmlWebpackPlugin.files.css[chunk].indexOf("subpage") !== -1) { %>
+        <link href="<%= htmlWebpackPlugin.files.css[chunk] %>" rel="stylesheet">
+      <% } %>
+    <% } %>
+
+    <% for (chunk in htmlWebpackPlugin.files.css) { %>
+      <% if (htmlWebpackPlugin.options.slug === "contact" && htmlWebpackPlugin.files.css[chunk].indexOf("contact") !== -1) { %>
+        <link href="<%= htmlWebpackPlugin.files.css[chunk] %>" rel="stylesheet">
+      <% } %>
+    <% } %>
+
+    <% for (chunk in htmlWebpackPlugin.files.css) { %>
       <% if (htmlWebpackPlugin.options.slug === "writing" && htmlWebpackPlugin.files.css[chunk].indexOf("subpage") !== -1) { %>
         <link href="<%= htmlWebpackPlugin.files.css[chunk] %>" rel="stylesheet">
       <% } %>
