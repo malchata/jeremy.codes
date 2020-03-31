@@ -12,6 +12,13 @@ export default () => (
         <h2 className="writing__year__header">2020</h2>
         <ol className="articles">
           <ArticleEntry
+            date="31 January"
+            link="https://css-tricks.com/innovation-cant-keep-the-web-fast/"
+            title="Innovation Can’t Keep the Web Fast"
+            publication="CSS-Tricks"
+            publicationLink="https://css-tricks.com/"
+          />
+          <ArticleEntry
             date="15 January"
             link="/blog/responsible-javascript-the-book/"
             title="Call for Publishers: Responsible JavaScript"
