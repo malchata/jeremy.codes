@@ -53,6 +53,7 @@ function buildRoutes (routes) {
       if (!metadata.exclude) {
         if (routeSlug === "routes") {
           const { title, link } = Writing().children[1].children[0].children[1].children[0].attributes;
+
           var latestArticle = {
             title,
             link

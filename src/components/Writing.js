@@ -19,11 +19,6 @@ export default () => (
             publicationLink="https://css-tricks.com/"
           />
           <ArticleEntry
-            date="15 January"
-            link="/blog/responsible-javascript-the-book/"
-            title="Call for Publishers: Responsible JavaScript"
-          />
-          <ArticleEntry
             date="12 January"
             link="/blog/achievement-is-no-substitute-for-happiness/"
             title="Achievement is No Substitute for Happiness"

@@ -7,6 +7,8 @@ export default ({ slug }) => (
       <nav className="header__nav">
         <a className={`header__nav-link ${slug === "writing" || slug === "blog" ? "header__nav-link--on" : ""}`} href="/writing/" rel="noopener">Writing</a>
         <span className="header__nav-separator" aria-hidden="true">::</span>
+        <a className="header__nav-link" href="https://hellforperf.dev/" rel="noopener">Videos</a>
+        <span className="header__nav-separator" aria-hidden="true">::</span>
         <a className="header__nav-link" href="https://speaking.jeremy.codes/" rel="noopener">Speaking</a>
         <span className="header__nav-separator" aria-hidden="true">::</span>
         <a className={`header__nav-link ${slug === "projects" ? "header__nav-link--on" : ""}`} href="/projects/" rel="noopener">Projects</a>
