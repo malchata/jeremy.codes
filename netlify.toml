@@ -6,6 +6,12 @@ ID = "jeremy.codes"
   command = "npm run build"
 
 [[headers]]
+  for = "/*.html"
+
+  [headers.values]
+    Cache-Control = "max-age=600, must-revalidate, private"
+
+[[headers]]
   for = "/*.xml"
 
   [headers.values]
