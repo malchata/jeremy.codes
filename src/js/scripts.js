@@ -4,7 +4,7 @@ import preconnect from "preconnect";
 
 document.addEventListener("DOMContentLoaded", () => {
   quicklink({
-    ignores: uri => /\.(xml|jpe?g|webp|gif|png|svg|m?jsx?|css)$/i.test(uri)
+    ignores: uri => /\.(xml|jpe?g|webp|gif|png|svg|m?jsx?|css)$/i.test(uri) || (uri.indexOf(document.location.host) > -1 && /#/.test(uri))
   });
 
   dnstradamus();

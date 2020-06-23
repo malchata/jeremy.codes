@@ -10,15 +10,15 @@
 }
 
 .writing__year__header {
-  font-size: 1.92779375rem;
-  color: #b8336a;
+  font-size: var(--h2);
+  color: var(--magenta);
   font-weight: 600;
   line-height: 1.1595;
   position: relative;
   margin: 0 0 .666ch;
 }
 
-.writing__year__header:after {
+.writing__year__header::after {
   content: "";
   width: 100%;
   position: absolute;
@@ -26,7 +26,7 @@
   bottom: -.125rem;
   display: block;
   height: .125rem;
-  background-image: linear-gradient(22.5deg, #b8336a, #ffdbc7);
+  background-image: linear-gradient(22.5deg, var(--magenta), var(--peach));
 }
 
 .article {
@@ -39,36 +39,36 @@
 }
 
 .article__date {
-  font-size: 1.243925rem;
+  font-size: var(--p);
   font-weight: 600;
-  color: #541388;
+  color: var(--purple);
   display: block;
 }
 
 .article__title {
-  font-size: 1.44233125rem;
+  font-size: var(--h4);
   font-weight: 600;
-  color: #b8336a;
+  color: var(--magenta);
   font-style: italic;
 }
 
 .article__publication {
-  font-size: 1.243925rem;
+  font-size: var(--p);
   font-weight: 400;
-  color: #541388;
+  color: var(--purple);
   display: block;
   text-decoration: none;
 }
 
 .writing__footnote {
-  color: #131515;
-  font-size: .92579375rem;
+  color: var(--black);
+  font-size: var(--tiny);
   font-style: italic;
   font-weight: 400;
   max-width: 62rem;
   padding: 0 1rem;
   margin: 0 auto 2ch;
-  text-align: right;
+  line-height: 1.618;
 }
 
 @media (min-width: 34rem) {
@@ -85,36 +85,5 @@
 
   .article__meta {
     flex-basis: 66.666%;
-  }
-}
-
-@supports (--css: variables) {
-  .writing__year__header {
-    font-size: var(--h2);
-    color: var(--magenta);
-  }
-
-  .writing__year__header:after {
-    background-image: linear-gradient(22.5deg, var(--magenta), var(--peach));
-  }
-
-  .article__date {
-    font-size: var(--p);
-    color: var(--purple);
-  }
-
-  .article__title {
-    font-size: var(--h4);
-    color: var(--magenta);
-  }
-
-  .article__publication {
-    font-size: var(--p);
-    color: var(--purple);
-  }
-
-  .writing__footnote {
-    color: var(--black);
-    font-size: var(--tiny);
   }
 }

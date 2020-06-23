@@ -24,7 +24,7 @@ module.exports = {
     "no-unused-vars": [
       "error",
       {
-        varsIgnorePattern: "^(h|render|Component|.*Styles)$"
+        varsIgnorePattern: "^(h|render|Fragment|Component|.*Styles)$"
       }
     ],
     indent: [

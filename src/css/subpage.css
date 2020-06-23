@@ -1,8 +1,5 @@
 .subpage__intro {
-  --slapdash-tile-size: 64;
-  --slapdash-weight: 3;
-  --slapdash-probability: .33;
-  background-color: #b8336a;
+  background-color: var(--magenta);
   background-image: url("/img/pattern-white.svg");
   background-size: 16rem 16rem;
   background-image: paint(slapdash);
@@ -10,27 +7,43 @@
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 2.25rem));
   position: relative;
   margin: 0 0 1rem;
+  --slapdash-tile-size: 64;
+  --slapdash-weight: 3;
+  --slapdash-probability: .33;
+  --slapdash-color: var(--white-more-trans);
 }
 
 .subpage__intro--secondary {
-  background-color: #541388;
+  background-color: var(--purple);
   background-image: url("/img/pattern-peach.svg");
   background-image: paint(slapdash);
+  --slapdash-color: var(--peach-more-trans);
 }
 
 .subpage__intro--tertiary {
-  background-color: #ffdbc7;
+  background-color: var(--peach);
   background-image: url("/img/pattern-magenta.svg");
   background-image: paint(slapdash);
+  --slapdash-color: var(--magenta-more-trans);
 }
 
-.subpage__intro:after {
+.subpage__intro--secondary .subpage__header,
+.subpage__intro--secondary .subpage__subheader {
+  color: var(--peach);
+}
+
+.subpage__intro--tertiary .subpage__header,
+.subpage__intro--tertiary .subpage__subheader {
+  color: var(--magenta);
+}
+
+.subpage__intro::after {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 2.125rem;
-  background-color: #13151566;
+  background-color: var(--black-trans);
   display: block;
   position: absolute;
   content: "";
@@ -43,60 +56,16 @@
   margin: 0 auto;
   max-width: 60rem;
   line-height: 1.319;
-  color: #f7fff7;
+  color: var(--white);
 }
 
 .subpage__header {
-  font-size: 2.24841875rem;
+  font-size: var(--h1);
   font-weight: 600;
   margin-bottom: .333ch;
 }
 
 .subpage__subheader {
-  font-size: 1.44233125rem;
+  font-size: var(--h4);
   font-weight: 400;
-}
-
-@supports (--css: variables) {
-  .subpage__intro {
-    --slapdash-color: var(--white-more-trans);
-    background-color: var(--magenta);
-  }
-
-  .subpage__intro--secondary {
-    --slapdash-color: var(--peach-more-trans);
-    background-color: var(--purple);
-  }
-
-  .subpage__intro--tertiary {
-    --slapdash-color: var(--magenta-more-trans);
-    background-color: var(--peach);
-  }
-
-  .subpage__intro:after {
-    background-color: var(--black-trans);
-  }
-
-  .subpage__header,
-  .subpage__subheader {
-    color: var(--white);
-  }
-
-  .subpage__intro--secondary .subpage__header,
-  .subpage__intro--secondary .subpage__subheader {
-    color: var(--peach);
-  }
-
-  .subpage__intro--tertiary .subpage__header,
-  .subpage__intro--tertiary .subpage__subheader {
-    color: var(--magenta);
-  }
-
-  .subpage__header {
-    font-size: var(--h1);
-  }
-
-  .subpage__subheader {
-    font-size: var(--h4);
-  }
 }

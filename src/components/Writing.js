@@ -12,9 +12,14 @@ export default () => (
         <h2 className="writing__year__header">2020</h2>
         <ol className="articles">
           <ArticleEntry
+            date="23 June"
+            link="/blog/experimenting-with-webp-recompression/"
+            title="Experimenting with WebP Recompression"
+          />
+          <ArticleEntry
             date="31 January"
             link="https://css-tricks.com/innovation-cant-keep-the-web-fast/"
-            title="Innovation Can’t Keep the Web Fast"
+            title="Innovation Can't Keep the Web Fast"
             publication="CSS-Tricks"
             publicationLink="https://css-tricks.com/"
           />
@@ -98,9 +103,10 @@ export default () => (
           />
           <ArticleEntry
             date="6 August"
-            link="https://developers.google.com/web/fundamentals/performance/optimizing-javascript/code-splitting/"
+            link="http://web.archive.org/web/20200526175237/https://developers.google.com/web/fundamentals/performance/optimizing-javascript/code-splitting/"
             title="Reduce JavaScript Payloads with Code Splitting"
             coauthor={true}
+            archived={true}
             publication="Google Web Fundamentals"
             publicationLink="https://developers.google.com/web/fundamentals/"
           />
@@ -142,8 +148,9 @@ export default () => (
           />
           <ArticleEntry
             date="31 March"
-            link="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/replace-animated-gifs-with-video/"
+            link="http://web.archive.org/web/20200513231155/https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/replace-animated-gifs-with-video/"
             title="Replace Animated GIFs with Video"
+            archived={true}
             publication="Google Web Fundamentals"
             publicationLink="https://developers.google.com/web/fundamentals/"
           />
@@ -296,6 +303,9 @@ export default () => (
         </ol>
       </li>
     </ol>
-    <p className="writing__footnote">&dagger; Indicates a co-written article.</p>
+    <p className="writing__footnote">
+      &dagger; Indicates a co-written article.<br />
+      &Dagger; Indicates an article which has been deleted by the publisher, and that the link is to an archived version.
+    </p>
   </main>
 );

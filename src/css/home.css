@@ -12,13 +12,13 @@
   font-weight: 600;
 }
 
-.section:before {
+.section::before {
   height: 2.125rem;
   width: 100%;
   top: 0;
   left: 0;
   content: "";
-  background-color: #13151566;
+  background-color: var(--black-trans);
   display: block;
   position: absolute;
   mix-blend-mode: multiply;
@@ -31,14 +31,15 @@
 .section--intro {
   padding-top: 1.5rem;
   padding-bottom: 0;
-  background-color: #541388;
+  background-color: var(--purple);
   background-image: url("/img/pattern-peach.svg");
   background-image: paint(slapdash);
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 1.5rem));
   margin-bottom: -1.5rem;
+  --slapdash-color: var(--peach-more-trans);
 }
 
-.section--intro:before {
+.section--intro::before {
   content: none;
 }
 
@@ -50,25 +51,25 @@
 .section__header {
   display: inline-block;
   padding: .5ch .666ch;
-  font-size: 2.24841875rem;
+  font-size: var(--h1);
   margin: 0 0 .666ch;
   font-weight: 600;
   clip-path: polygon(0 0, 100% .25rem, 100% calc(100% - .25rem), 0 100%);
-  box-shadow: inset .166ch 0 0 #13151566;
+  box-shadow: inset .166ch 0 0 var(--black-trans);
 }
 
 .section--intro .section__header {
-  background-color: #ffdbc7;
-  color: #541388;
+  background-color: var(--peach);
+  color: var(--purple);
 }
 
 .section__body {
   line-height: 1.618;
-  font-size: 1.44233125rem;
+  font-size: var(--h4);
 }
 
 .section--intro .section__body {
-  color: #ffdbc7;
+  color: var(--peach);
 }
 
 .section--intro .section__image {
@@ -83,32 +84,33 @@
 }
 
 .section--writing {
-  background-color: #f7fff7;
-  --slapdash-direction: 1;
+  background-color: var(--white);
   background-image: url("/img/pattern-purple.svg");
   background-image: paint(slapdash);
   background-size: 16rem 16rem;
   clip-path: polygon(0 0, 100% 1.5rem, 100% calc(100% - 1.5rem), 0 100%);
   margin-bottom: -1.5rem;
+  --slapdash-direction: 1;
+  --slapdash-color: var(--purple-more-trans);
 }
 
-.section--writing:before {
+.section--writing::before {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 .15rem);
 }
 
 .section--writing a {
-  color: #541388;
+  color: var(--purple);
 }
 
 .section--writing .section__header {
-  background-color: #541388;
-  box-shadow: inset -.166ch 0 0 #13151566;
-  color: #f7fff7;
+  background-color: var(--purple);
+  box-shadow: inset -.166ch 0 0 var(--black-trans);
+  color: var(--white);
   clip-path: polygon(0 .25rem, 100% 0, 100% 100%, 0 calc(100% - .25rem));
 }
 
 .section--writing .section__body {
-  color: #541388;
+  color: var(--purple);
 }
 
 .section--writing .section__container {
@@ -126,57 +128,59 @@
 
 .section--speaking {
   padding-bottom: 0;
-  background-color: #b8336a;
+  background-color: var(--magenta);
   background-image: url("/img/pattern-white.svg");
   background-image: paint(slapdash);
   clip-path: polygon(0 1.5rem, 100% 0, 100% 100%, 0 calc(100% - 1.5rem));
   margin-bottom: -1.5rem;
+  --slapdash-color: var(--white-more-trans);
 }
 
-.section--speaking:before {
+.section--speaking::before {
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 1.5rem), 0 calc(100% - .375rem));
 }
 
 .section--speaking a {
-  color: #f7fff7;
+  color: var(--white);
 }
 
 .section--speaking .section__header {
-  background-color: #f7fff7;
-  color: #b8336a;
+  background-color: var(--white);
+  color: var(--magenta);
 }
 
 .section--speaking .section__body {
-  color: #f7fff7;
+  color: var(--white);
 }
 
 .section--work {
   background-image: url("/img/pattern-magenta.svg");
   background-image: paint(slapdash);
-  background-color: #ffdbc7;
+  background-color: var(--peach);
   padding-bottom: 7rem;
   margin-bottom: -6rem;
   clip-path: polygon(0 0, 100% 1.5rem, 100% 100%, 0 100%);
+  --slapdash-color: var(--magenta-more-trans);
 }
 
-.section--work:before {
+.section--work::before {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 .15rem);
 }
 
 .section--work a {
-  color: #b8336a;
+  color: var(--magenta);
 }
 
 .section--work .section__header {
-  background-color: #b8336a;
-  box-shadow: .25ch .25ch 0 #b8336a66;
-  color: #ffdbc7;
-  box-shadow: inset -.166ch 0 0 #13151566;
+  background-color: var(--magenta);
+  box-shadow: .25ch .25ch 0 var(--magenta-trans);
+  color: var(--peach);
+  box-shadow: inset -.166ch 0 0 var(--black-trans);
   clip-path: polygon(0 .25rem, 100% 0, 100% 100%, 0 calc(100% - .25rem));
 }
 
 .section--work .section__body {
-  color: #b8336a;
+  color: var(--magenta);
 }
 
 @media (min-width: 40rem) {
@@ -213,6 +217,13 @@
   }
 }
 
+@media (min-width: 40rem) {
+  .section--writing .section__image {
+    background-color: var(--purple);
+    box-shadow: .666ch .666ch 0 var(--purple-trans);
+  }
+}
+
 @media (min-width: 50rem) {
   .section--writing .section__image {
     padding: .625em;
@@ -222,99 +233,6 @@
 @media (min-width: 60rem) {
   .section--writing .section__image {
     padding: .75em;
-  }
-}
-
-@supports (--css: variables) {
-  .section:before {
-    background-color: var(--black-trans);
-  }
-
-  .section--intro {
-    background-color: var(--purple);
-    --slapdash-color: var(--peach-more-trans);
-  }
-
-  .section__header {
-    font-size: var(--h1);
-    box-shadow: inset .166ch 0 0 var(--black-trans);
-  }
-
-  .section--intro .section__header {
-    background-color: var(--peach);
-    color: var(--purple);
-  }
-
-  .section__body {
-    font-size: var(--h4);
-  }
-
-  .section--intro .section__body {
-    color: var(--peach);
-  }
-
-  .section--writing {
-    background-color: var(--white);
-    --slapdash-color: var(--purple-more-trans);
-  }
-
-  .section--writing a {
-    color: var(--purple);
-  }
-
-  .section--writing .section__header {
-    background-color: var(--purple);
-    box-shadow: inset -.166ch 0 0 var(--black-trans);
-    color: var(--white);
-  }
-
-  .section--writing .section__body {
-    color: var(--purple);
-  }
-
-  .section--speaking {
-    background-color: var(--magenta);
-    --slapdash-color: var(--white-more-trans);
-  }
-
-  .section--speaking a {
-    color: var(--white);
-  }
-
-  .section--speaking .section__header {
-    background-color: var(--white);
-    color: var(--magenta);
-  }
-
-  .section--speaking .section__body {
-    color: var(--white);
-  }
-
-  .section--work {
-    background-color: var(--peach);
-    --slapdash-color: var(--magenta-more-trans);
-  }
-
-  .section--work a {
-    color: var(--magenta);
-  }
-
-  .section--work .section__header {
-    background-color: var(--magenta);
-    box-shadow: .25ch .25ch 0 var(--magenta-trans);
-    color: var(--peach);
-    box-shadow: inset -.166ch 0 0 var(--black-trans);
-  }
-
-  .section--work .section__body {
-    color: var(--magenta);
-  }
-
-  @media (min-width: 40rem) {
-    .section--writing .section__image {
-      background-color: var(--purple);
-      box-shadow: .666ch .666ch 0 var(--purple-trans);
-    }
   }
 }
 
