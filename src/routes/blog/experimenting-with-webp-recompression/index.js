@@ -46,7 +46,7 @@ export default () => (
     <p>Given this command, SSIMULACRA will provide a score between 0 and 1, where 0 means the image is identical to its source and 1 means the image is completely different. According to <a href="https://github.com/cloudinary/ssimulacra/blob/master/ssimulacra.cpp#L163-L166" rel="noopener">SSIMULACRA's help text</a>, images that score above 0.1 are likely to contain distortions which are “perceptible/annoying”. Using SSIMULACRA, webp-recompress adopts the following strategy:</p>
     <ol type="1">
       <li>It verifies that the input is a JPEG.</li>
-      <li>Assuming the input is a JPEG, it's current quality is guessed.</li>
+      <li>Assuming the input is a JPEG, its quality is guessed.</li>
       <li>webp-recompress then undergoes several iterations of encoding lossy WebP images at various quality settings. It stops when it finds a WebP image candidate that is both smaller and within a certain SSIMULACRA scoring threshold.</li>
     </ol>
     <p>This is just an overview of what the program does, so if you're interested in knowing what's going on under the hood in detail, I recommend reading <a href="https://github.com/malchata/webp-recompress" rel="noopener">the webp-recompress documentation</a> and maybe even <a href="https://github.com/malchata/webp-recompress/tree/main/src" rel="noopener">the project's source code</a>.</p>
