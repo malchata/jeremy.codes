@@ -95,7 +95,7 @@ export default {
     path: resolve(__dirname, "dist"),
     publicPath: "/"
   },
-  devtool: mode === "development" ? "source-map" : "hidden-source-map",
+  devtool: "source-map",
   module: {
     rules: [
       {
