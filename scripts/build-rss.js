@@ -13,7 +13,7 @@ for (let postList of postLists) {
   const year = postList.children[0].children;
 
   for (let post of posts) {
-    const { date, title } = post.attributes;
+    const { date, title, description } = post.attributes;
     let { link } = post.attributes;
 
     if (link.indexOf("?") > -1) {
@@ -22,7 +22,7 @@ for (let postList of postLists) {
       link = linkParts[0] + "?" + encodeURIComponent(linkParts[1]);
     }
 
-    rssXml += `<item><title>${title}</title><link>${link.search(/^https?:\/\//i) < 0 ? `https://jeremy.codes${link}` : link}</link><guid isPermaLink="true">${link.search(/^https?:\/\//i) < 0 ? `https://jeremy.codes${link}` : link}</guid><pubDate>${pubDate(`${date}, ${year}`)}</pubDate></item>`;
+    rssXml += `<item><title>${title}</title><link>${link.search(/^https?:\/\//i) < 0 ? `https://jeremy.codes${link}` : link}</link><description>${description}</description><guid isPermaLink="true">${link.search(/^https?:\/\//i) < 0 ? `https://jeremy.codes${link}` : link}</guid><pubDate>${pubDate(`${date}, ${year}`)}</pubDate></item>`;
   }
 }
 

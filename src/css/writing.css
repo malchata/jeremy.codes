@@ -39,7 +39,7 @@
 }
 
 .article__date {
-  font-size: var(--p);
+  font-size: var(--h4);
   font-weight: 600;
   color: var(--purple);
   display: block;
@@ -48,16 +48,24 @@
 .article__title {
   font-size: var(--h4);
   font-weight: 600;
-  color: var(--magenta);
   font-style: italic;
 }
 
+.article__title > a {
+  color: var(--magenta);
+}
+
 .article__publication {
-  font-size: var(--p);
+  font-size: var(--h5);
   font-weight: 400;
   color: var(--purple);
   display: block;
   text-decoration: none;
+}
+
+.article__description {
+  font-size: var(--p);
+  color: var(--black);
 }
 
 .writing__footnote {
