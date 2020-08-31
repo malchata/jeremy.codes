@@ -12,6 +12,14 @@ export default () => (
         <h2 className="writing__year__header">2020</h2>
         <ol className="articles">
           <ArticleEntry
+            date="19 August"
+            link="https://css-tricks.com/radeventlistener-a-tale-of-client-side-framework-performance/"
+            title="radEventListener: a Tale of Client-side Framework Performance"
+            publication="CSS-Tricks"
+            publicationLink="https://css-tricks.com/"
+            description="React has its place when complex state management is required. In my experience, however, it doesn’t belong in most scenarios. When even a bit of React is a problem on devices slow and fast alike, using it is a choice to exclude those on low-end hardware."
+          />
+          <ArticleEntry
             date="23 June"
             link="/blog/experimenting-with-webp-recompression/"
             title="Experimenting with WebP Recompression"
