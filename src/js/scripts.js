@@ -1,6 +1,7 @@
 import quicklink from "quicklink";
 import dnstradamus from "dnstradamus";
 import preconnect from "preconnect";
+import { getCLS, getFID, getLCP, getFCP, getTTFB } from "web-vitals";
 
 document.addEventListener("DOMContentLoaded", () => {
   quicklink({
@@ -54,3 +55,77 @@ if ("loading" in HTMLImageElement.prototype && images.length) {
     yall.default();
   });
 }
+
+window.addEventListener("load", () => {
+  let sent = false;
+
+  const reportMetrics = metrics => {
+    if (!sent) {
+      const endpoint = "https://jlwagner.net/jot/index.php";
+
+      const fetchOptions = {
+        body: JSON.stringify(metrics),
+        method: "POST",
+        keepalive: true,
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      };
+
+      const fetchCallback = () => {
+        sent = true;
+      };
+
+      // if ("sendBeacon" in navigator) {
+      //   navigator.sendBeacon(endpoint, body);
+      //
+      //   return;
+      // }
+
+      if ("fetch" in window) {
+        if ("requestIdleCallback" in window) {
+          fetch(endpoint, fetchOptions).then(fetchCallback);
+
+          return;
+        } else {
+          fetch(endpoint, fetchOptions).then(fetchCallback);
+        }
+
+        return;
+      }
+    }
+  };
+
+  let metrics = {
+    uri: document.location.pathname
+  };
+
+  if ("connection" in navigator) {
+    if ("saveData" in navigator.connection) {
+      metrics.savedata = navigator.connection.saveData ? "on" : "off";
+    }
+
+    metrics.ect = navigator.connection.effectiveType;
+    metrics.downlink = navigator.connection.downlink;
+    metrics.rtt = navigator.connection.rtt;
+  }
+
+  if ("deviceMemory" in navigator) {
+    metrics.devicemem = navigator.deviceMemory;
+  }
+
+  const addMetric = metric => {
+    metrics[metric.name.toLowerCase()] = metric.value;
+  };
+
+  getCLS(addMetric, true);
+  getFID(addMetric, true);
+  getLCP(addMetric, true);
+  getTTFB(addMetric, true);
+  getFCP(addMetric, true);
+
+  setTimeout(() => {
+    reportMetrics(metrics);
+  }, 5e3);
+});

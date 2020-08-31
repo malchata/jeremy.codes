@@ -35,6 +35,7 @@
     "dnstradamus": "^1.1.0",
     "preconnect": "^1.0.1",
     "quicklink": "^1.0.1",
+    "web-vitals": "^0.2.4",
     "yall-js": "^3.2.0"
   },
   "devDependencies": {
