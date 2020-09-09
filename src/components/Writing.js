@@ -33,12 +33,6 @@ export default () => (
             publicationLink="https://css-tricks.com/"
             description="Every so often, the fruits of innovation bear fruit in the form of improvements to the foundational layers of the web. Unfortunately, web developers are locked in an arms race between these foundational improvements, and ever-increasing page sizes."
           />
-          <ArticleEntry
-            date="12 January"
-            link="/blog/achievement-is-no-substitute-for-happiness/"
-            title="Achievement is No Substitute for Happiness"
-            description="It's a new decade, and a new chance for a long overdue investment in my own well-being."
-          />
         </ol>
       </li>
       <li className="writing__year">
@@ -51,12 +45,6 @@ export default () => (
             publication="A List Apart"
             publicationLink="https://alistapart.com/"
             description="Jeremy Wagner shows us how to get and keep third-party JavaScript under control through clean-up sprints and eternal vigilance."
-          />
-          <ArticleEntry
-            date="9 October"
-            link="/blog/indelible-lines/"
-            title="Indelible Lines"
-            description="What we're willing to accept as our ethical responsibility as web developers will define what we stand for, and what we will not tolerate."
           />
           <ArticleEntry
             date="18 July"

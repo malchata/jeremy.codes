@@ -62,9 +62,10 @@ window.addEventListener("load", () => {
   const reportMetrics = metrics => {
     if (!sent) {
       const endpoint = "https://jlwagner.net/jot/index.php";
+      const body = JSON.stringify(metrics);
 
       const fetchOptions = {
-        body: JSON.stringify(metrics),
+        body,
         method: "POST",
         keepalive: true,
         mode: "cors",
@@ -77,11 +78,11 @@ window.addEventListener("load", () => {
         sent = true;
       };
 
-      // if ("sendBeacon" in navigator) {
-      //   navigator.sendBeacon(endpoint, body);
-      //
-      //   return;
-      // }
+      if ("sendBeacon" in navigator) {
+        navigator.sendBeacon(endpoint, body);
+
+        return;
+      }
 
       if ("fetch" in window) {
         if ("requestIdleCallback" in window) {
@@ -127,5 +128,5 @@ window.addEventListener("load", () => {
 
   setTimeout(() => {
     reportMetrics(metrics);
-  }, 5e3);
+  }, 1e4);
 });
