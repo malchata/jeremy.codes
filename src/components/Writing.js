@@ -12,6 +12,12 @@ export default () => (
         <h2 className="writing__year__header">2020</h2>
         <ol className="articles">
           <ArticleEntry
+            date="14 September"
+            link="/blog/canned-web-development/"
+            title="Canned Web Development"
+            description="A recent feature addition to Lighthouse had me wondering about the intersection of modern web development techniques and the exploitation of the free labor of open source software maintainers."
+          />
+          <ArticleEntry
             date="19 August"
             link="https://css-tricks.com/radeventlistener-a-tale-of-client-side-framework-performance/"
             title="radEventListener: a Tale of Client-side Framework Performance"
