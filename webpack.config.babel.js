@@ -8,6 +8,7 @@ import { resolve, join } from "path";
 // webpack-specific
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import AssetsPlugin from "assets-webpack-plugin";
 
 // App-specific
 import { h } from "preact";
@@ -140,6 +141,17 @@ export default {
     new MiniCssExtractPlugin({
       filename: join("css", mode === "development" ? "[name].css" : "[name].[contenthash:8].css"),
       chunkFilename: join("css", mode === "development" ? "[name].css" : "[name].[contenthash:8].css")
+    }),
+    new AssetsPlugin({
+      filename: "assets.json",
+      useCompilerPath: true,
+      prettyPrint: true,
+      includeAllFileTypes: false,
+      fileTypes: [
+        "js",
+        "css",
+        "woff2"
+      ]
     }),
     ...htmlOutputs
   ]

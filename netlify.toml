@@ -6,6 +6,12 @@ ID = "jeremy.codes"
   command = "npm run build"
 
 [[headers]]
+  for = "/*"
+
+  [headers.values]
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+
+[[headers]]
   for = "/*.html"
 
   [headers.values]
@@ -76,3 +82,9 @@ ID = "jeremy.codes"
 
   [headers.values]
     Cache-Control = "max-age=31557600, immutable, public"
+
+[[headers]]
+  for = "/sw.js"
+
+  [headers.values]
+    Cache-Control = "max-age=0, private, no-store, no-cache"

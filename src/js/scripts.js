@@ -1,13 +1,8 @@
-import quicklink from "quicklink";
 import dnstradamus from "dnstradamus";
 import preconnect from "preconnect";
 import { getCLS, getFID, getLCP, getFCP, getTTFB } from "web-vitals";
 
 document.addEventListener("DOMContentLoaded", () => {
-  quicklink({
-    ignores: uri => /\.(xml|jpe?g|webp|gif|png|svg|m?jsx?|css)$/i.test(uri) || (uri.indexOf(document.location.host) > -1 && /#/.test(uri))
-  });
-
   dnstradamus();
 
   const outboundLinks = [].slice.call(document.querySelectorAll("a[href^=\"http://\"],a[href^=\"https://\"]"));
