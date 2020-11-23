@@ -66,6 +66,12 @@ ID = "jeremy.codes"
     Cache-Control = "max-age=31557600, immutable, public"
 
 [[headers]]
+  for = "/*.svg"
+
+  [headers.values]
+    Cache-Control = "max-age=31557600, immutable, public"
+
+[[headers]]
   for = "/*.jpg"
 
   [headers.values]
@@ -73,12 +79,6 @@ ID = "jeremy.codes"
 
 [[headers]]
   for = "/*.woff2"
-
-  [headers.values]
-    Cache-Control = "max-age=31557600, immutable, public"
-
-[[headers]]
-  for = "/*.woff"
 
   [headers.values]
     Cache-Control = "max-age=31557600, immutable, public"

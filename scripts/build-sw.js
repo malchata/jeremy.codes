@@ -1,12 +1,27 @@
 /* eslint-env node */
 /* eslint no-console: "off" */
 
+// Built-ins
 const fs = require("fs");
 const path = require("path");
 
-const template = require("./sw-template.js");
+// Vendors
+const compile = require("es6-template-strings/compile");
+const resolveToString = require("es6-template-strings/resolve-to-string");
+const terser = require("terser");
+
+// Asset manifest
 const assetManifest = require("../dist/assets.json");
-const assets = [
+
+// Service worker template
+const serviceWorkerTemplate = fs.readFileSync(path.join(__dirname, "/sw-template.js")).toString();
+const compiledServiceWorkerString = compile(serviceWorkerTemplate);
+
+// Service worker cache name
+const cacheVersion = +new Date();
+
+// Assets to pass to CacheStorage
+const cachedAssets = [
   assetManifest["global-css"].css,
   assetManifest["home-css"].css,
   assetManifest["scripts"].js,
@@ -18,4 +33,13 @@ const assets = [
   ...assetManifest[""].woff2
 ];
 
-console.log(template(+new Date(), assets));
+const serviceWorker = resolveToString(compiledServiceWorkerString, {
+  cacheVersion,
+  cachedAssets
+});
+
+const result = terser.minify(serviceWorker, {
+  toplevel: true
+});
+
+console.log(result.code);

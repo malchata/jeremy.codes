@@ -6,15 +6,15 @@ import Writing from "../src/components/Writing";
 // Begin RSS feed markup
 let rssXml = "<?xml version=\"1.0\" encoding=\"utf-8\" ?><rss version=\"2.0\"><channel><title>Jeremy Wagner's web development blog.</title><description>The assorted thoughts, research, and opinion of web developer and speaker Jeremy Wagner.</description><link>https://jeremy.codes/</link>";
 
-const postLists = Writing().children[1].children;
+const postLists = Writing().props.children[1].props.children;
 
 for (let postList of postLists) {
-  const posts = postList.children[1].children;
-  const year = postList.children[0].children;
+  const posts = postList.props.children[1].props.children;
+  const year = postList.props.children[0].props.children;
 
   for (let post of posts) {
-    const { date, title, description } = post.attributes;
-    let { link } = post.attributes;
+    const { date, title, description } = post.props;
+    let { link } = post.props;
 
     if (link.indexOf("?") > -1) {
       const linkParts = link.split("?");

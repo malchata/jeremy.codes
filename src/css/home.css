@@ -4,7 +4,7 @@
   --slapdash-tile-size: 64;
   --slapdash-weight: 3;
   --slapdash-probability: .33;
-  background-image: url("/img/pattern-black.svg");
+  background-image: url("../img/pattern-black.svg");
   background-size: 16rem 16rem;
 }
 
@@ -32,7 +32,7 @@
   padding-top: 1.5rem;
   padding-bottom: 0;
   background-color: var(--purple);
-  background-image: url("/img/pattern-peach.svg");
+  background-image: url("../img/pattern-peach.svg");
   background-image: paint(slapdash);
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 1.5rem));
   margin-bottom: -1.5rem;
@@ -85,7 +85,7 @@
 
 .section--writing {
   background-color: var(--white);
-  background-image: url("/img/pattern-purple.svg");
+  background-image: url("../img/pattern-purple.svg");
   background-image: paint(slapdash);
   background-size: 16rem 16rem;
   clip-path: polygon(0 0, 100% 1.5rem, 100% calc(100% - 1.5rem), 0 100%);
@@ -129,7 +129,7 @@
 .section--speaking {
   padding-bottom: 0;
   background-color: var(--magenta);
-  background-image: url("/img/pattern-white.svg");
+  background-image: url("../img/pattern-white.svg");
   background-image: paint(slapdash);
   clip-path: polygon(0 1.5rem, 100% 0, 100% 100%, 0 calc(100% - 1.5rem));
   margin-bottom: -1.5rem;
@@ -154,7 +154,7 @@
 }
 
 .section--work {
-  background-image: url("/img/pattern-magenta.svg");
+  background-image: url("../img/pattern-magenta.svg");
   background-image: paint(slapdash);
   background-color: var(--peach);
   padding-bottom: 7rem;

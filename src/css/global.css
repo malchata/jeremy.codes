@@ -192,10 +192,6 @@ table {
   border-spacing: 0;
 }
 
-.no-js .lazy {
-  display: none;
-}
-
 .header {
   background: #131515;
   box-shadow: 0 .5ch #13151566;

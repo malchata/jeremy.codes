@@ -65,9 +65,8 @@
     <meta name="msvalidate.01" content="809873D08F8A1121D48A5D6CC057EC6C">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <link rel="dns-prefetch" href="https://polyfill.io/">
-    <link rel="preconnect" href="https://polyfill.io/" crossorigin>
     <link rel="dns-prefetch" href="https://jlwagner.net/">
+    <link rel="preconnect" href="https://jlwagner.net/">
     <link rel="canonical" href="<%= htmlWebpackPlugin.options.pageUrl %>">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@malchata">
@@ -92,7 +91,6 @@
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="shortcut icon" href="/favicon.ico">
     <script>
       document.documentElement.classList.remove("no-js");
       var saveData = typeof navigator.connection !== "undefined" && "saveData" in navigator.connection ? navigator.connection.saveData : false;
@@ -106,22 +104,13 @@
     <%= htmlWebpackPlugin.options.header %>
     <%= htmlWebpackPlugin.options.content %>
     <%= htmlWebpackPlugin.options.footer %>
-    <script>
-      window.addEventListener("load", () => {
-        if ("serviceWorker" in navigator) {
-          navigator.serviceWorker.register("/sw.js", {
-            scope: "/"
-          });
-        }
-      });
-    </script>
-    <script defer src="https://polyfill.io/v2/polyfill.min.js?features=IntersectionObserver"></script>
     <% for (chunk in htmlWebpackPlugin.files.js) { %>
       <% if (htmlWebpackPlugin.files.js[chunk].indexOf("scripts") !== -1) { %>
         <script defer src="<%= htmlWebpackPlugin.files.js[chunk] %>"></script>
       <% } %>
     <% } %>
     <script>
+      // Register custom properties for paint worklets
       if (window.CSS.registerProperty) {
         CSS.registerProperty({
           name: "--slapdash-tile-size",
@@ -166,9 +155,17 @@
         });
       }
 
+      // Register paint worklet
       if (window.CSS.paintWorklet && (navigator.deviceMemory || 8) >= 4) {
         CSS.paintWorklet.addModule("/js/slapdash.js");
       }
+
+      // Register service worker on load event
+      window.addEventListener("load", () => {
+        if ("serviceWorker" in navigator) {
+          navigator.serviceWorker.register("/sw.js");
+        }
+      });
     </script>
   </body>
 </html>

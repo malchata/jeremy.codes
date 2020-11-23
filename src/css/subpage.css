@@ -1,6 +1,6 @@
 .subpage__intro {
   background-color: var(--magenta);
-  background-image: url("/img/pattern-white.svg");
+  background-image: url("../img/pattern-white.svg");
   background-size: 16rem 16rem;
   background-image: paint(slapdash);
   padding: 1.75rem 1rem 4rem;
@@ -15,14 +15,14 @@
 
 .subpage__intro--secondary {
   background-color: var(--purple);
-  background-image: url("/img/pattern-peach.svg");
+  background-image: url("../img/pattern-peach.svg");
   background-image: paint(slapdash);
   --slapdash-color: var(--peach-more-trans);
 }
 
 .subpage__intro--tertiary {
   background-color: var(--peach);
-  background-image: url("/img/pattern-magenta.svg");
+  background-image: url("../img/pattern-magenta.svg");
   background-image: paint(slapdash);
   --slapdash-color: var(--magenta-more-trans);
 }

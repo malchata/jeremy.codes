@@ -19,16 +19,6 @@ import Writing from "./src/components/Writing";
 
 const mode = process.env.NODE_ENV !== "production" ? "development": "production";
 const src = (...args) => resolve(__dirname, "src", ...args);
-let entry = {
-  "scripts": src("js", "scripts.js"),
-  "blog-css": src("css", "blog.css"),
-  "global-css": src("css", "global.css"),
-  "home-css": src("css", "home.css"),
-  "contact-css": src("css", "contact.css"),
-  "projects-css": src("css", "projects.css"),
-  "subpage-css": src("css", "subpage.css"),
-  "writing-css": src("css", "writing.css"),
-};
 let htmlOutputs = [];
 
 function buildRoutes (routes) {
@@ -36,10 +26,10 @@ function buildRoutes (routes) {
     template: join("src", "html", "template.html"),
     inject: false,
     minify: {
-      removeComments: mode === "development" ? false : true,
-      collapseWhitespace: mode === "development" ? false : true,
-      minifyJS: mode === "development" ? false : true,
-      minifyCSS: mode === "development" ? false : true
+      removeComments: mode === "production",
+      collapseWhitespace: mode === "production",
+      minifyJS: mode === "production",
+      minifyCSS: mode === "production"
     },
     footer: renderToString(<Footer />)
   };
@@ -53,7 +43,7 @@ function buildRoutes (routes) {
 
       if (!metadata.exclude) {
         if (routeSlug === "routes") {
-          const { title, link } = Writing().children[1].children[0].children[1].children[0].attributes;
+          const { title, link } = Writing().props.children[1].props.children[0].props.children[1].props.children[0].props;
 
           var latestArticle = {
             title,
@@ -83,13 +73,22 @@ function buildRoutes (routes) {
   });
 }
 
-console.log("Gathering HTML routes...");
+// console.log("Gathering HTML routes...");
 buildRoutes(join(__dirname, "src", "routes"));
-console.log("Routes gathered! Building site...");
+// console.log("Routes gathered! Building site...");
 
 export default {
   mode,
-  entry,
+  entry: {
+    "scripts": src("js", "scripts.js"),
+    "blog-css": src("css", "blog.css"),
+    "global-css": src("css", "global.css"),
+    "home-css": src("css", "home.css"),
+    "contact-css": src("css", "contact.css"),
+    "projects-css": src("css", "projects.css"),
+    "subpage-css": src("css", "subpage.css"),
+    "writing-css": src("css", "writing.css"),
+  },
   output: {
     filename: mode === "development" ? "js/[name].js" : "js/[name].[chunkhash:8].js",
     chunkFilename: mode === "development" ? "js/[name].js" : "js/[name].[chunkhash:8].js",
@@ -101,7 +100,7 @@ export default {
     rules: [
       {
         test: /\.m?js$/i,
-        exclude: /node_modules\/(?!(yall-js|quicklink|dnstradamus)\/)/i,
+        exclude: /node_modules\/(?!(dnstradamus)\/)/i,
         use: {
           loader: "babel-loader",
           options: {
@@ -113,7 +112,13 @@ export default {
         test: /\.css$/i,
         use: [
           MiniCssExtractPlugin.loader,
-          "css-loader",
+          {
+            loader: "css-loader",
+            options: {
+              // Ensures that only web font URLs are parsed
+              url: url => /\.woff2?/i.test(url)
+            }
+          },
           "postcss-loader"
         ]
       },

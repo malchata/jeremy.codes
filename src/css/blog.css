@@ -14,7 +14,7 @@
   width: 100%;
   height: 100%;
   mix-blend-mode: multiply;
-  background-image: url("/img/pattern-peach.svg");
+  background-image: url("../img/pattern-peach.svg");
   background-size: 16rem 16rem;
   background-image: paint(slapdash);
   --slapdash-tile-size: 64;
