@@ -1,9 +1,12 @@
 :root {
   /* Colors */
-  --rich-black-fogra29: #050d1e;
-  --rich-brilliant-lavender: #e59eff;
-  --alice-blue: #f4f9ff;
+  --black: #050d1e;
+  --medium-purple: #9589ff;
+  --white: #f4f9ff;
 
   /* Fonts */
-  --cutive-mono: "Cutive Mono", monospace;
+  --monospace: "Cutive Mono", monospace;
+
+  /* Dimensions */
+  --max-container-width: 72rem;
 }

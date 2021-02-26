@@ -1,4 +1,13 @@
-header {
-  font-family: var(--cutive-mono);
-  color: var(--alice-blue);
+.header {
+  font-family: var(--monospace);
+  color: var(--white);
+  margin: 0 auto;
+  max-width: var(--max-container-width);
+  width: 100%;
+  padding: 1rem;
+}
+
+.header__home-link {
+  color: var(--medium-purple);
+  text-decoration: none;
 }

@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 html,
 body,
 div,
@@ -102,7 +106,7 @@ html {
 }
 
 body {
-  background: var(--rich-black-fogra29);
+  background: var(--black);
   line-height: 1;
 }
 
