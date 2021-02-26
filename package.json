@@ -15,5 +15,7 @@
   },
   "homepage": "https://github.com/malchata/jeremy.codes#readme",
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "express": "^4.17.1"
+  }
 }
