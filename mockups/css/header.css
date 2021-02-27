@@ -1,13 +1,20 @@
 .header {
   font-family: var(--monospace);
   color: var(--white);
+  padding: var(--size-7);
+  border-bottom: var(--size-0) solid #54baff;
+}
+
+.header__container {
   margin: 0 auto;
   max-width: var(--max-container-width);
   width: 100%;
-  padding: 1rem;
 }
 
 .header__home-link {
-  color: var(--medium-purple);
+  color: var(--orange);
   text-decoration: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: var(--size-9);
 }

@@ -1,0 +1,33 @@
+@font-face {
+  font-family: "Belinsky Text";
+  font-style: italic;
+  font-weight: 400;
+  src:
+    url("/fonts/belinsky-text-italic.woff2") format("woff2"),
+    url("/fonts/belinsky-text-italic.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Belinsky Text";
+  font-style: italic;
+  font-weight: 700;
+  src:
+    url("/fonts/belinsky-text-bold-italic.woff2") format("woff2"),
+    url("/fonts/belinsky-text-bold-italic.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Belinsky Text";
+  font-weight: 700;
+  src:
+    url("/fonts/belinsky-text-bold.woff2") format("woff2"),
+    url("/fonts/belinsky-text-bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Belinsky Text";
+  font-weight: 400;
+  src:
+    url("/fonts/belinsky-text-regular.woff2") format("woff2"),
+    url("/fonts/belinsky-text-regular.woff") format("woff");
+}

@@ -3,10 +3,27 @@
   --black: #050d1e;
   --medium-purple: #9589ff;
   --white: #f4f9ff;
+  --orange: #ff893a;
 
   /* Fonts */
-  --monospace: "Cutive Mono", monospace;
+  --monospace: "Belinsky Text", monospace;
+
+  /* Font Sizes */
+  --size-0: 0.1518388851rem;
+  --size-1: 0.198759681rem;
+  --size-2: 0.2601798002rem;
+  --size-3: 0.34057978rem;
+  --size-4: 0.44582472rem;
+  --size-5: 0.583592135rem;
+  --size-6: 0.7639320225rem;
+  --size-7: 1rem;
+  --size-8: 1.3090169944rem;
+  --size-9: 1.7135254916rem;
+  --size-10: 2.2430339888rem;
 
   /* Dimensions */
   --max-container-width: 72rem;
+
+  /* Media Queries */
+  --mobile: 24rem;
 }
