@@ -5,20 +5,36 @@
     <link rel="stylesheet" href="/css/fonts.css">
     <link rel="stylesheet" href="/css/vars.css">
     <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/global.css">
     <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/home.css">
     <title>
       Jeremy Wagner
     </title>
   </head>
   <body>
+    <!-- Start header -->
     <header class="header">
-      <div class="header__container">
+      <div class="constricted">
         <a class="header__home-link" href="/" rel="noopener"><span aria-hidden>//&nbsp;</span>Jeremy Wagner</a>
       </div>
     </header>
-    <main class="home">
-      <section class="home__section">
+    <!-- End header -->
+    <!-- Begin Main Content -->
+    <main>
+      <!-- Begin Home Content Section -->
+      <section class="home__section home__section--first">
+        <div class="home__section__content-container constricted">
+          <section class="home__section__content">
+            <h1 class="home__section__heading">Hello, I'm Jeremy.</h1>
+            <p class="home__section__text">I'm a web developer with a focus in web performance.</p>
+          </section>
+          <img class="home__section__image" src="/img/portrait.svg">
+        </div>
       </section>
+      <!-- End Home Content Section -->"
     </main>
+    <!-- End Main Content -->
+    <script src="https://unpkg.com/css-paint-polyfill"></script>
   </body>
 </html>

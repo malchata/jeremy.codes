@@ -1,0 +1,19 @@
+.home__section {
+  padding-top: var(--size-8);
+  padding-bottom: var(--size-8);
+}
+
+.home__section__heading {
+  color: var(--cyan);
+}
+
+.home__section__content-container {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  padding-top: var(--size-4);
+  padding-bottom: var(--size-4);
+}
+
+.home__section--first {
+  background: #17347a;
+}

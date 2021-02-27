@@ -1,14 +1,9 @@
 .header {
   font-family: var(--monospace);
   color: var(--white);
-  padding: var(--size-7);
-  border-bottom: var(--size-0) solid #54baff;
-}
-
-.header__container {
-  margin: 0 auto;
-  max-width: var(--max-container-width);
-  width: 100%;
+  padding-top: var(--size-7);
+  padding-bottom: var(--size-7);
+  border-bottom: var(--size-0) solid var(--cyan);
 }
 
 .header__home-link {

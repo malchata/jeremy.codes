@@ -2,27 +2,40 @@
   /* Colors */
   --black: #050d1e;
   --medium-purple: #9589ff;
+  --cyan: #54baff;
   --white: #f4f9ff;
   --orange: #ff893a;
+  --green: #07ff83;
 
   /* Fonts */
   --monospace: "Belinsky Text", monospace;
+  --sans-serif: "Atkinson Hyperlegible", sans-serif;
 
   /* Font Sizes */
   --size-0: 0.1518388851rem;
+  --size-0-5: 0.1752992831rem;
   --size-1: 0.198759681rem;
+  --size-1-5: 0.2294697406rem;
   --size-2: 0.2601798002rem;
+  --size-2-5: 0.3003797901rem;
   --size-3: 0.34057978rem;
+  --size-3-5: 0.39320225rem;
   --size-4: 0.44582472rem;
+  --size-4-5: 0.5147084275rem;
   --size-5: 0.583592135rem;
+  --size-5-5: 0.6737620788rem;
   --size-6: 0.7639320225rem;
+  --size-6-5: 0.8819660113rem;
   --size-7: 1rem;
+  --size-7-5: 1.1545084972rem;
   --size-8: 1.3090169944rem;
+  --size-8-5: 1.511271243rem;
   --size-9: 1.7135254916rem;
+  --size-9-5: 1.9782797402rem;
   --size-10: 2.2430339888rem;
 
   /* Dimensions */
-  --max-container-width: 72rem;
+  --max-container-width: 74rem;
 
   /* Media Queries */
   --mobile: 24rem;

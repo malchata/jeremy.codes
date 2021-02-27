@@ -1,3 +1,4 @@
+/* Monospace font */
 @font-face {
   font-family: "Belinsky Text";
   font-style: italic;
@@ -30,4 +31,22 @@
   src:
     url("/fonts/belinsky-text-regular.woff2") format("woff2"),
     url("/fonts/belinsky-text-regular.woff") format("woff");
+}
+
+/* Sans-serif font */
+
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  font-weight: 400;
+  src:
+    url("/fonts/atkinson-hyperlegible-regular.woff2") format("woff2"),
+    url("/fonts/atkinson-hyperlegible-regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  font-weight: 700;
+  src:
+    url("/fonts/atkinson-hyperlegible-bold.woff2") format("woff2"),
+    url("/fonts/atkinson-hyperlegible-bold.woff") format("woff");
 }

@@ -101,12 +101,7 @@ section {
   display: block;
 }
 
-html {
-  font-size: 16px;
-}
-
 body {
-  background: var(--black);
   line-height: 1;
 }
 
