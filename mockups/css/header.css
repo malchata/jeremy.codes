@@ -1,15 +1,135 @@
-.header {
+header {
   font-family: var(--monospace);
-  color: var(--white);
-  padding-top: var(--size-7);
-  padding-bottom: var(--size-7);
-  border-bottom: var(--size-0) solid var(--cyan);
+  padding-top: var(--size-9);
+  padding-bottom: var(--size-9);
+  border-bottom: var(--size-0) solid var(--orange);
+  margin-bottom: var(--size-10);
 }
 
-.header__home-link {
+header > .constricted {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.home-link {
   color: var(--orange);
   text-decoration: none;
   font-weight: 700;
   text-transform: uppercase;
-  font-size: var(--size-9);
+  font-size: var(--size-8);
+  line-height: 1ex;
+}
+
+.nav-container {
+  line-height: 1ex;
+}
+
+.nav-toggle {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  font-family: var(--monospace);
+  color: var(--purple);
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: var(--size-8);
+  position: relative;
+  z-index: 3;
+  padding: 0;
+  cursor: pointer;
+  line-height: 1ex;
+}
+
+.nav-toggle.open {
+  color: var(--black);
+}
+
+.nav-items {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 100%;
+  background: var(--purple);
+  z-index: 2;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  transition: transform 0.33s ease-out;
+}
+
+.nav-items.open {
+  transform: translateX(-100%);
+}
+
+.nav-item {
+  margin: 0 auto;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: var(--size-8);
+  line-height: 3.236;
+}
+
+.nav-item > a {
+  color: var(--black);
+  text-decoration: none;
+}
+
+.nav-item-separator {
+  display: none;
+}
+
+@media (min-width: 48rem) {
+  header > .constricted {
+    align-items: center;
+  }
+
+  .nav-toggle {
+    display: none;
+  }
+
+  .nav-items {
+    display: inline-flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: static;
+    background: transparent;
+    width: auto;
+    height: auto;
+    flex-flow: row nowrap;
+    transition: none;
+  }
+
+  .nav-items.open {
+    transform: none;
+  }
+
+  .nav-item {
+    margin: 0 var(--size-6);
+    line-height: 1ex;
+  }
+
+  .nav-item:first-child {
+    margin-left: 0;
+  }
+
+  .nav-item:last-child {
+    margin-right: 0;
+  }
+
+  .nav-item > a {
+    color: var(--purple);
+  }
+
+  .nav-item-separator {
+    font-weight: 400;
+    font-size: var(--size-9);
+    color: var(--orange);
+    line-height: 1ex;
+    display: inline-block;
+  }
 }

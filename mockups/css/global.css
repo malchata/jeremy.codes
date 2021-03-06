@@ -26,7 +26,12 @@ h4 {
 }
 
 h1 {
-  font-size: var(--size-9);
+  font-size: var(--size-10);
+}
+
+p {
+  font-size: var(--size-8);
+  line-height: 1.618;
 }
 
 @media screen and (min-width: 48rem) {

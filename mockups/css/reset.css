@@ -11,8 +11,6 @@ h1,
 h2,
 h3,
 h4,
-h5,
-h6,
 p,
 blockquote,
 pre,
@@ -126,4 +124,12 @@ q::after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+em {
+  font-style: italic;
+}
+
+strong {
+  font-weight: 700;
 }

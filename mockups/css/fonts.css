@@ -45,8 +45,26 @@
 
 @font-face {
   font-family: "Atkinson Hyperlegible";
+  font-weight: 400;
+  font-style: italic;
+  src:
+    url("/fonts/atkinson-hyperlegible-italic.woff2") format("woff2"),
+    url("/fonts/atkinson-hyperlegible-italic.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Atkinson Hyperlegible";
   font-weight: 700;
   src:
     url("/fonts/atkinson-hyperlegible-bold.woff2") format("woff2"),
     url("/fonts/atkinson-hyperlegible-bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  font-weight: 700;
+  font-style: italic;
+  src:
+    url("/fonts/atkinson-hyperlegible-bold-italic.woff2") format("woff2"),
+    url("/fonts/atkinson-hyperlegible-bold-italic.woff") format("woff");
 }

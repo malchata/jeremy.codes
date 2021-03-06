@@ -1,6 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" class="no-js">
   <head>
+    <title>
+      Jeremy Wagner
+    </title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="/css/fonts.css">
     <link rel="stylesheet" href="/css/vars.css">
@@ -8,33 +11,62 @@
     <link rel="stylesheet" href="/css/global.css">
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/home.css">
-    <title>
-      Jeremy Wagner
-    </title>
+    <script>document.documentElement.classList.remove("no-js")</script>
   </head>
   <body>
     <!-- Start header -->
-    <header class="header">
+    <header>
       <div class="constricted">
-        <a class="header__home-link" href="/" rel="noopener"><span aria-hidden>//&nbsp;</span>Jeremy Wagner</a>
+        <a class="home-link" href="/" rel="noopener">Jeremy Wagner</a>
+        <nav class="nav-container">
+          <button class="nav-toggle" aria-expanded="false" aria-controls="menu">Menu</button>
+          <ul class="nav-items" id="menu">
+            <li class="nav-item">
+              <a href="/writing/">Writing</a>
+            </li>
+            <li class="nav-item-separator" aria-hidden>
+              <span>//</span>
+            </li>
+            <li class="nav-item">
+              <a href="https://hellforperf.dev/">Videos</a>
+            </li>
+            <li class="nav-item-separator" aria-hidden>
+              <span>//</span>
+            </li>
+            <li class="nav-item">
+              <a href="https://speaking.jeremy.codes/">Speaking</a>
+            </li>
+            <li class="nav-item-separator" aria-hidden>
+              <span>//</span>
+            </li>
+            <li class="nav-item">
+              <a href="/projects/">Projects</a>
+            </li>
+            <li class="nav-item-separator" aria-hidden>
+              <span>//</span>
+            </li>
+            <li class="nav-item">
+              <a href="/contact/">Contact Me</a>
+            </li>
+          </ul>
+        </nav>
       </div>
     </header>
     <!-- End header -->
     <!-- Begin Main Content -->
-    <main>
-      <!-- Begin Home Content Section -->
-      <section class="home__section home__section--first">
-        <div class="home__section__content-container constricted">
-          <section class="home__section__content">
-            <h1 class="home__section__heading">Hello, I'm Jeremy.</h1>
-            <p class="home__section__text">I'm a web developer with a focus in web performance.</p>
-          </section>
-          <img class="home__section__image" src="/img/portrait.svg">
+    <main class="constricted">
+      <!-- Begin Home Content -->
+      <section class="home-content">
+        <div class="home-splash">
+          <div aria-hidden class="decorative-block">&nbsp;</div>
+          <div class="splash-image">
+            <img src="/img/portrait.svg" alt="A stylized vector drawing of Jeremy Wagner">
+          </div>
         </div>
       </section>
-      <!-- End Home Content Section -->"
+      <!-- End Home Content -->
     </main>
     <!-- End Main Content -->
-    <script src="https://unpkg.com/css-paint-polyfill"></script>
+    <script src="/js/menu.js"></script>
   </body>
 </html>
