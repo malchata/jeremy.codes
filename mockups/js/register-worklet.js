@@ -3,31 +3,19 @@ if ("registerProperty" in window.CSS && "paintWorklet" in window.CSS) {
   const properties = {
     "tile-width": {
       syntax: "<integer>",
-      value: 64
+      value: 48
     },
     "stroke-weight": {
       syntax: "<number>",
-      value: 0.833
+      value: 1
     },
     "stroke-color": {
       syntax: "<color>",
       value: "#050d1e"
     },
-    "fill-color": {
-      syntax: "<color>",
-      value: "#ce6c47"
-    },
     "stroke-probability": {
       syntax: "<number>",
-      value: 0.666
-    },
-    "cap-probability": {
-      syntax: "<number>",
-      value: 0.75
-    },
-    "color-step": {
-      syntax: "<integer>",
-      value: -4
+      value: 0.571
     }
   };
 

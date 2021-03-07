@@ -2,14 +2,30 @@
   position: relative;
 }
 
-.home-section::before,
-.home-section::after {
+.home-section:first-child::before,
+.home-section:first-child::after {
   content: "";
   display: block;
   font-size: 0;
   position: absolute;
   top: 0;
   height: 100%;
+  width: 20%;
+  background: paint(chemistreak);
+  z-index: -1;
+
+  --chemistreak-stroke-color: var(--orange);
+  --chemistreak-tile-width: 48;
+  --chemistreak-stroke-probability: 0.4285714286;
+  --chemistreak-stroke-weight: 1.8226728375;
+}
+
+.home-section:first-child::before {
+  left: 0;
+}
+
+.home-section:first-child::after {
+  right: 0;
 }
 
 .home-section-content h1,

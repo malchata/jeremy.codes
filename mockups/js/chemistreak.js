@@ -6,31 +6,26 @@ class Chemistreak {
       "--chemistreak-tile-width",
       "--chemistreak-stroke-weight",
       "--chemistreak-stroke-color",
-      "--chemistreak-fill-color",
-      "--chemistreak-stroke-probability",
-      "--chemistreak-cap-probability",
-      "--chemistreak-color-step"
+      "--chemistreak-stroke-probability"
     ];
   }
 
   paint (ctx, geom, properties) {
     const tileWidth = parseInt(properties.get("--chemistreak-tile-width"));
     const strokeProbability = parseFloat(properties.get("--chemistreak-stroke-probability"));
-    const capProbability = parseFloat(properties.get("--chemistreak-cap-probability"));
     const tileHeight = tileWidth * (7 / 6);
     const halfTileWidth = tileWidth / 2;
     const heightIncrement = tileHeight * (1 / 7);
     const xTiles = geom.width / tileWidth;
     const yTiles = geom.height / tileHeight;
     const strokeWeight = parseFloat(properties.get("--chemistreak-stroke-weight"));
-    const colorStep = parseInt(properties.get("--chemistreak-color-step"));
 
     // These need to adjust on every pass, so no const here
     let strokeColor = properties.get("--chemistreak-stroke-color").toString().trim();
-    let fillColor = properties.get("--chemistreak-fill-color").toString().trim();
 
     ctx.lineWidth = strokeWeight;
     ctx.lineCap = "round";
+    ctx.strokeStyle = strokeColor;
 
     for (let y = 0; y < yTiles; y++) {
       const yOffset = y * tileHeight;
@@ -39,7 +34,6 @@ class Chemistreak {
         if (Math.random() >= strokeProbability) {
           const xOffset = x * tileWidth;
           const xMidTile = xOffset + halfTileWidth;
-          const yMidTile = yOffset + (heightIncrement * 4);
           const xFullTile = xOffset + tileWidth;
           const midTop = yOffset + (heightIncrement * 2);
           const midBottom = yOffset + (heightIncrement * 5);
@@ -51,7 +45,9 @@ class Chemistreak {
             [xOffset  , midBottom           ],  // Left bottom
             [xOffset  , midTop              ]   // Left top
           ];
+
           const randoms = [
+            Math.random() >= strokeProbability,
             Math.random() >= strokeProbability,
             Math.random() >= strokeProbability,
             Math.random() >= strokeProbability,
@@ -59,12 +55,10 @@ class Chemistreak {
             Math.random() >= strokeProbability
           ];
 
-          ctx.strokeStyle = strokeColor;
-
           for (let i = 0; i < coords.length; i++) {
             if (randoms[i]) {
-              const coord = i < coords.length - 1 ? coords[i] : coords[4];
-              const nextCoord = i < coords.length - 1 ? coords[i + 1] : coords[5];
+              const coord = i < coords.length - 1 ? coords[i] : coords[5];
+              const nextCoord = i < coords.length - 1 ? coords[i + 1] : coords[0];
 
               ctx.beginPath();
               ctx.moveTo(coord[0], coord[1]);
@@ -73,49 +67,9 @@ class Chemistreak {
               ctx.stroke();
             }
           }
-
-          if (Math.random() >= capProbability) {
-            ctx.strokeStyle = fillColor;
-            ctx.fillStyle = fillColor;
-
-            ctx.beginPath();
-            ctx.moveTo(coords[0][0], coords[0][1]);
-            ctx.lineTo(coords[1][0], coords[1][1]);
-            ctx.lineTo(xMidTile, yMidTile);
-            ctx.lineTo(coords[5][0], coords[5][1]);
-            ctx.lineTo(coords[0][0], coords[0][1]);
-            ctx.closePath();
-            ctx.stroke();
-            ctx.fill();
-          }
         }
       }
-
-      strokeColor = this.adjustBrightness(strokeColor, colorStep);
-      fillColor = this.adjustBrightness(fillColor, colorStep);
     }
-  }
-
-  adjustBrightness (rgbString, amt) {
-    rgbString = rgbString.replace(/rgba?\(/g, "").replace(/\)/g, "").replace(/\s/g, "");
-
-    const rgbParts = rgbString.split(",").map((rgbPart, index) => {
-      if (index > 2) {
-        return;
-      }
-
-      rgbPart = parseInt(rgbPart) + amt;
-
-      if (rgbPart < 0) {
-        rgbPart = 0;
-      } else if (rgbPart > 255) {
-        rgbPart = 255;
-      }
-
-      return rgbPart;
-    });
-
-    return rgbString.indexOf("rgba") !== -1 ? `rgba(${rgbParts.join(",")})` : `rgb(${rgbParts.join(",")})`;
   }
 }
 
