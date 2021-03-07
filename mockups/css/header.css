@@ -3,7 +3,6 @@ header {
   padding-top: var(--size-9);
   padding-bottom: var(--size-9);
   border-bottom: var(--size-0) solid var(--orange);
-  margin-bottom: var(--size-10);
 }
 
 header > .constricted {
@@ -59,7 +58,7 @@ header > .constricted {
   align-items: center;
   align-content: center;
   justify-content: center;
-  transition: transform 0.33s ease-out;
+  transition: transform 0.166s ease-out;
 }
 
 .nav-items.open {
@@ -70,7 +69,7 @@ header > .constricted {
   margin: 0 auto;
   font-weight: 700;
   text-transform: uppercase;
-  font-size: var(--size-8);
+  font-size: var(--size-9);
   line-height: 3.236;
 }
 
@@ -83,7 +82,7 @@ header > .constricted {
   display: none;
 }
 
-@media (min-width: 48rem) {
+@media (min-width: 64rem) {
   header > .constricted {
     align-items: center;
   }
@@ -109,6 +108,7 @@ header > .constricted {
   }
 
   .nav-item {
+    font-size: var(--size-8);
     margin: 0 var(--size-6);
     line-height: 1ex;
   }
